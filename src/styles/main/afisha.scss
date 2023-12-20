@@ -1,0 +1,84 @@
+.afisha {
+
+    h2 {
+        font-size: 54px;
+        font-weight: 500;
+        line-height: 65px;
+        color: $beige;
+        text-align: center;
+    }
+
+    &-calendar {
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+
+        button{
+            position: relative;
+            height: 46px;
+            max-width: 165px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+
+            background-color: $beige;
+            border-radius: 10px;
+
+            padding: 13px;
+        }
+    }
+
+    &-items {
+
+    }
+}
+
+.ant-picker {
+    visibility: hidden !important;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.ant-picker-dropdown .ant-picker-panel-container .ant-picker-panels {
+    display: inline-flex;
+    animation: none;
+    flex-wrap: nowrap;
+    direction: ltr;
+    @media (max-width: 768px) {
+        display: inline-grid;
+    }
+}
+
+.ant-picker-dropdown {
+    //position: absolute;
+    //top: 50% !important;
+    //left: 50% !important;
+    //transform: translate(-50%, -50%) !important;
+    //width: 100% !important;
+}
+
+.ant-picker-panel-container {
+    width: 100% !important;
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+    //&:before{
+    //    content: 'x';
+    //    position: absolute;
+    //    top: 10px;
+    //    right: 10px;
+    //}
+}
+
+.ant-picker-panel-layout {
+    width: 100% !important;
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+}
