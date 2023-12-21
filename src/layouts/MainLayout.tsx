@@ -1,5 +1,6 @@
 import React, {FC, PropsWithChildren} from 'react';
 import Footer from "../components/Footer/Footer";
+import MobHeader from "../components/MobHeader/MobHeader";
 
 const MainLayout: FC<PropsWithChildren<any>> = ({
                                                     children,
@@ -14,7 +15,8 @@ const MainLayout: FC<PropsWithChildren<any>> = ({
             minHeight: '100vh',
             justifyContent: "space-between"
         }}>
-            <div style={{flex: 1}}>
+            <MobHeader/>
+            <div className="main-block">
                 {children}
             </div>
             <Footer/>

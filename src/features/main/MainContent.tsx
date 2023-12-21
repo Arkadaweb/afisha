@@ -12,8 +12,10 @@ const MainContent: FC<PropsWithChildren<any>> = ({}) => {
             <div className="main-content">
                 <div className="main-content-img">
                     <Image
-                        layout={'fill'}
+                        // layout={'fill'}
                         src={mainLogo}
+                        width={933}
+                        height={undefined}
                         objectFit="contain"
                     />
                 </div>

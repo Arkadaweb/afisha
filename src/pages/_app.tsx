@@ -10,9 +10,19 @@ import {ConfigProvider} from "antd";
 import {PersistGate} from 'redux-persist/integration/react';
 import NProgress from 'nprogress';
 import Router from 'next/router';
+import locale from "antd/locale/ru_RU";
+import dayjs from "dayjs";
+import utc from "dayjs/plugin/utc";
+import timezone from "dayjs/plugin/timezone";
 
+import("dayjs/locale/ru");
+dayjs.extend(utc);
+dayjs.extend(timezone);
+dayjs.tz.setDefault('Europe/Moscow');
+dayjs.locale('ru');
 
 export default function App({Component, pageProps}: AppProps) {
+
 
     NProgress.configure({
         minimum: 0.3,
@@ -54,7 +64,7 @@ export default function App({Component, pageProps}: AppProps) {
                     content="width=device-width, user-scalable=no"
                 />
             </Head>
-            <ConfigProvider theme={antdTheme}>
+            <ConfigProvider theme={antdTheme} locale={locale}>
                 <Provider store={store}>
                     <PersistGate loading={null} persistor={persistor}>
                         <Component {...pageProps} />

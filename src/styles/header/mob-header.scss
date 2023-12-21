@@ -1,0 +1,143 @@
+.mob-header {
+    &-content {
+        display: none;
+        position: fixed;
+        top: 10px;
+        left: 20px;
+        right: 20px;
+        z-index: 9999;
+        cursor: pointer;
+        box-sizing: border-box;
+
+        @media(max-width: 1024px) {
+            display: flex;
+        }
+
+        &-wrap {
+            padding: 17px 12px;
+            width: 100%;
+
+            background-color: $grey;
+            border-radius: 10px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        &-phone {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            font-size: 18px;
+            font-weight: 500;
+            line-height: 22px;
+            color: $beige;
+        }
+
+        &-burger {
+
+            &.mob-header-content-burger-hide {
+                display: none;
+
+            }
+        }
+
+    }
+
+    &-menu {
+        position: fixed;
+        z-index: 99999;
+        height: 100vh;
+        width: 100%;
+
+        background-color: $beige;
+
+        padding: 30px 20px;
+
+        transform: translateX(500px);
+        opacity: 0;
+        visibility: hidden;
+
+        transition: all 0.5s;
+
+        &.mob-header-menu-open {
+            transform: translateX(0);
+            opacity: 1;
+            visibility: visible;
+            transition: all 0.5s;
+        }
+
+        &-top {
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(29, 29, 27, 0.1);
+
+            &-logo {
+                width: 158px;
+                height: 48px;
+                position: relative;
+            }
+
+            &-close {
+                cursor: pointer;
+            }
+        }
+
+        &-menu {
+            margin-top: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid rgba(29, 29, 27, 0.1);
+
+            a {
+                font-size: 24px;
+                font-weight: 400;
+                line-height: 29px;
+                color: $grey;
+            }
+        }
+
+        &-bottom{
+
+            &-phone{
+                margin-top: 30px;
+                display: flex;
+                align-items: center;
+                gap: 13px;
+
+                font-size: 24px;
+                font-weight: 500;
+                line-height: 29px;
+                color: $grey;
+            }
+
+            &-email{
+                margin-top: 30px;
+                display: flex;
+                align-items: center;
+                gap: 13px;
+
+                font-size: 24px;
+                font-weight: 500;
+                line-height: 29px;
+                color: $grey;
+            }
+
+            &-search{
+                margin-top: 30px;
+            }
+
+            &-city{
+                margin-top: 20px;
+            }
+        }
+    }
+}

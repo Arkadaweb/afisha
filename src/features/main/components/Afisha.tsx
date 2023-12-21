@@ -1,19 +1,17 @@
-import React, {FC, PropsWithChildren, useState} from 'react';
+import React, {FC, PropsWithChildren, useEffect, useState} from 'react';
 import {Button, DatePicker} from "antd";
 import CalendarIcon from "../../../assets/icons/common/CalendarIcon";
+import Image from "next/dist/client/legacy/image";
+import testImage from '../../../../public/test-slide-img.png'
 
 const {RangePicker} = DatePicker;
 
 const Afisha: FC<PropsWithChildren<any>> = () => {
 
-    const [selectedDates, setSelectedDates] = useState([]);
-    const [pickerVisible, setPickerVisible] = useState(false);
+    const [selectedDates, setSelectedDates] = useState<any>([]);
+    const [pickerOpen, setPickerOpen] = useState<any>(false)
 
-    const handleApply = () => {
-        // Обработка применения выбранных дат
-        console.log('Выбранные даты:', selectedDates);
-        setPickerVisible(false); // Скрытие компонента DatePicker.RangePicker
-    };
+    const items = [1,2,3,4]
 
     const handleReset = () => {
         // Обработка сброса дат
@@ -27,7 +25,10 @@ const Afisha: FC<PropsWithChildren<any>> = () => {
         // setSelectedDates([dateStrings[0], dateStrings[1]])
     }
 
-    const [pickerOpen, setPickerOpen] = useState(false)
+    const onClose = () => {
+        console.log('1')
+        setPickerOpen(false)
+    }
 
     return (
         <div className="afisha">
@@ -35,19 +36,23 @@ const Afisha: FC<PropsWithChildren<any>> = () => {
                 АФИША
             </h2>
             <div className="afisha-calendar">
-                <button
-                    onClick={() => setPickerOpen(true)}
-                >
-                    <CalendarIcon/>
-                    Выбрать дату
+                <div className="afisha-calendar-wrap">
+                    <button
+                        onClick={() => setPickerOpen(true)}
+                    >
+                        <CalendarIcon/>
+                        Выбрать дату
+                    </button>
+
                     <RangePicker
+                        format={"dd.MM.yyyy"}
                         onCalendarChange={(dates) => {
                             console.log(dates)
                             setSelectedDates(dates);
                         }}
                         value={selectedDates}
-                        onOpenChange={(e) =>{
-                            if (!e){
+                        onOpenChange={(e) => {
+                            if (!e) {
                                 setPickerOpen(false)
                             }
                         }}
@@ -56,18 +61,55 @@ const Afisha: FC<PropsWithChildren<any>> = () => {
                             await handleRangeChangeTable(date)
                             await setPickerOpen(false)
                         }}
-                        renderExtraFooter={() => {
+                        renderExtraFooter={(e) => {
                             return (
-                                <div style={{padding: 10, width: '100%', display: "flex", justifyContent: 'center', alignItems: "center"}}>
-                                    <Button onClick={handleReset}>Сбросить</Button>
+                                <div className="extra-footer-calendar">
+                                    <Button
+                                        onClick={handleReset}
+                                        className="extra-footer-calendar-button"
+                                    >
+                                        Сбросить
+                                    </Button>
+                                    <Button
+                                        onClick={onClose}
+                                        className="extra-footer-calendar-button"
+                                    >
+                                        Закрыть
+                                    </Button>
                                 </div>
                             )
                         }}
                     />
-                </button>
+                </div>
+
             </div>
             <div className="afisha-items">
-
+                {
+                    items?.map((item: any) =>
+                        <div className="afisha-items-item">
+                            <div className="afisha-items-item-top">
+                                <h2>
+                                    MINECRAFT ШОУ
+                                </h2>
+                                <p>
+                                    17 февраля, 12:00
+                                    ДК Железнодорожников
+                                </p>
+                                <h3>
+                                    от 800 руб.
+                                </h3>
+                                <div className="afisha-items-item-top-bot"/>
+                            </div>
+                            <div className="afisha-items-item-bottom">
+                                <Image
+                                    src={testImage}
+                                    layout={'fill'}
+                                />
+                                <div className="afisha-items-item-bottom-bot"/>
+                            </div>
+                        </div>
+                    )
+                }
             </div>
         </div>
     );

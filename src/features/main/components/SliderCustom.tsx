@@ -37,23 +37,24 @@ const SliderCustom: FC<PropsWithChildren<any>> = ({
     };
 
 
+    const slides = [1,2,3,4,5,6]
+
     return (
         <div className="slider-content">
             <Slider ref={(c) => (slider = c)} {...settings} beforeChange={handleBeforeChange}>
-                <div className="slider-content-item">
-                    <Image
-                        layout={'fill'}
-                        src={testImage}
-                        objectFit="contain"
-                    />
-                </div>
-                <div className="slider-content-item">
-                    <Image
-                        layout={'fill'}
-                        src={testImage}
-                        objectFit="contain"
-                    />
-                </div>
+                {
+                    slides?.map((item: any) =>
+                        <div className="slider-content-item">
+                            <Image
+                                // layout={'fill'}
+                                src={testImage}
+                                objectFit="contain"
+                                width={undefined}
+                                height={undefined}
+                            />
+                        </div>
+                    )
+                }
             </Slider>
             <div className="slider-content-arrows">
                 <button

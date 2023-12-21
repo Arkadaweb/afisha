@@ -147,5 +147,13 @@ input::placeholder {
     height: 20px;
 }
 
+.main-block{
+    flex: 1;
+    margin-bottom: 244px;
+
+    @media(max-width: 1024px) {
+        margin-bottom: 0px;
+    }
+}
 
 
