@@ -3,10 +3,10 @@ import {Input} from "antd";
 import SearchIcon from "../../assets/icons/footer/SearchIcon";
 
 const CustomInput: FC<PropsWithChildren<any>> = ({
-                                                     backgroundColor,
-                                                     color,
-                                                     placeholderColor = 'rgba(29, 29, 27, 1)',
-                                                     iconColor = ''
+                                                     backgroundColor = 'rgba(197, 163, 94, 1)',
+                                                     color = 'rgba(29, 29, 27, 1)',
+                                                     placeholderColor = 'dark',
+                                                     iconColor = '#1D1D1B'
                                                  }) => {
     return (
         <div className={`input ${placeholderColor === 'light' && 'input-light'}`}>

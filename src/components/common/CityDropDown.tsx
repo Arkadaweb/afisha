@@ -4,7 +4,7 @@ import CityIcon from "../../assets/icons/footer/CityIcon";
 const CityDropDown = ({
                           backgroundColor = 'rgba(197, 163, 94, 1)',
                           color = 'rgba(29, 29, 27, 1)',
-                          iconColor = ''
+                          iconColor = 'rgba(29, 29, 27, 1)'
                       }) => {
     return (
         <div

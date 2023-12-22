@@ -3,9 +3,6 @@ import MaxWithLayout from "../../layouts/MaxWithLayout";
 import Link from "next/link";
 import logo from '../../../public/logo-small.png'
 import Image from "next/dist/client/legacy/image";
-import {Input} from "antd";
-import CityIcon from "../../assets/icons/footer/CityIcon";
-import SearchIcon from "../../assets/icons/footer/SearchIcon";
 import Phone from "../../assets/icons/footer/Phone";
 import CustomInput from "../common/CustomInput";
 import CityDropDown from "../common/CityDropDown";

@@ -2,7 +2,6 @@
     max-width: 307px;
     width: 100%;
     position: relative;
-    height: 40px;
 
     @media(max-width: 1024px) {
         max-width: 100%;
@@ -47,7 +46,8 @@
     span {
         cursor: pointer;
         position: absolute;
-        top: 11px;
+        top: 55%;
+        transform: translateY(-50%);
         right: 10px;
     }
 }
