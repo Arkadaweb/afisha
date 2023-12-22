@@ -25,6 +25,19 @@ const MainContent: FC<PropsWithChildren<any>> = ({}) => {
                 <div className="main-content-afisha">
                     <Afisha/>
                 </div>
+
+                <div
+                    style={{
+                        margin: '120px 0',
+                        fontSize: 32,
+                        fontWeight: 500,
+                        lineHeight: '38px',
+                        color: 'rgba(197, 163, 94, 1)'
+                    }}
+                >
+                    Сейчас сайт находится в разработке, поэтому часть разделов пока недоступна, но вы уже сейчас можете
+                    забронировать себе место на мероприятии - это главное!
+                </div>
             </div>
         </MaxWithLayout>
     );

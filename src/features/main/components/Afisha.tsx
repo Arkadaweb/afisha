@@ -3,15 +3,49 @@ import {Button, DatePicker} from "antd";
 import CalendarIcon from "../../../assets/icons/common/CalendarIcon";
 import Image from "next/dist/client/legacy/image";
 import testImage from '../../../../public/test-slide-img.png'
+import testImage1 from '../../../../public/testImage1.png'
+import testImage2 from '../../../../public/testImage2.png'
+import testImage3 from '../../../../public/testImage3.png'
+import {useOrderTicket} from "../../../components/common/OrderTicketController";
 
 const {RangePicker} = DatePicker;
 
 const Afisha: FC<PropsWithChildren<any>> = () => {
 
+    const uOrderTicket = useOrderTicket()
     const [selectedDates, setSelectedDates] = useState<any>([]);
     const [pickerOpen, setPickerOpen] = useState<any>(false)
 
-    const items = [1,2,3,4]
+    const items = [
+        {
+            id: 1,
+            title: 'MINECRAFT ШОУ',
+            place: '17 февраля, 12:00 ДК Железнодорожников',
+            price: 'от 800 руб.',
+            img: testImage1
+        },
+        {
+            id: 2,
+            title: 'MINECRAFT ШОУ',
+            place: '17 февраля, 12:00 ДК Железнодорожников',
+            price: 'от 800 руб.',
+            img: testImage1
+        },
+        {
+            id: 3,
+            title: 'Юлия Славянская',
+            place: '08 мая, 19:00 ДК Железнодорожников',
+            price: 'от 1000 руб.',
+            img: testImage2
+        },
+        {
+            id: 4,
+            title: 'Новогодняя ночь во дворце',
+            place: '14 декабря, 19:00 ДК Железнодорожников',
+            price: 'от 300 руб.',
+            img: testImage3
+        },
+    ]
 
     const handleReset = () => {
         // Обработка сброса дат
@@ -86,23 +120,25 @@ const Afisha: FC<PropsWithChildren<any>> = () => {
             <div className="afisha-items">
                 {
                     items?.map((item: any) =>
-                        <div className="afisha-items-item">
+                        <div className="afisha-items-item" onClick={() => uOrderTicket({
+                            isOpen: true,
+                            id: 5427
+                        })}>
                             <div className="afisha-items-item-top">
                                 <h2>
-                                    MINECRAFT ШОУ
+                                    {item?.title}
                                 </h2>
                                 <p>
-                                    17 февраля, 12:00
-                                    ДК Железнодорожников
+                                    {item?.place}
                                 </p>
                                 <h3>
-                                    от 800 руб.
+                                    {item?.price}
                                 </h3>
                                 <div className="afisha-items-item-top-bot"/>
                             </div>
                             <div className="afisha-items-item-bottom">
                                 <Image
-                                    src={testImage}
+                                    src={item?.img}
                                     layout={'fill'}
                                 />
                                 <div className="afisha-items-item-bottom-bot"/>

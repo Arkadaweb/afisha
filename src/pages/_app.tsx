@@ -14,6 +14,7 @@ import locale from "antd/locale/ru_RU";
 import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc";
 import timezone from "dayjs/plugin/timezone";
+import {OrderTicketController} from "../components/common/OrderTicketController";
 
 import("dayjs/locale/ru");
 dayjs.extend(utc);
@@ -67,7 +68,9 @@ export default function App({Component, pageProps}: AppProps) {
             <ConfigProvider theme={antdTheme} locale={locale}>
                 <Provider store={store}>
                     <PersistGate loading={null} persistor={persistor}>
-                        <Component {...pageProps} />
+                        <OrderTicketController>
+                            <Component {...pageProps} />
+                        </OrderTicketController>
                     </PersistGate>
                 </Provider>
             </ConfigProvider>
