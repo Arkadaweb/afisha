@@ -18,28 +18,28 @@ const Afisha: FC<PropsWithChildren<any>> = () => {
 
     const items = [
         {
-            id: 1,
+            id: 5427,
+            title: 'MINECRAFT ШОУ',
+            place: '17 февраля, 12:00 ДК Железнодорожников',
+            price: 'от 800 руб.',
+            img: testImage1,
+        },
+        {
+            id: 5428,
             title: 'MINECRAFT ШОУ',
             place: '17 февраля, 12:00 ДК Железнодорожников',
             price: 'от 800 руб.',
             img: testImage1
         },
         {
-            id: 2,
-            title: 'MINECRAFT ШОУ',
-            place: '17 февраля, 12:00 ДК Железнодорожников',
-            price: 'от 800 руб.',
-            img: testImage1
-        },
-        {
-            id: 3,
+            id: 5387,
             title: 'Юлия Славянская',
             place: '08 мая, 19:00 ДК Железнодорожников',
             price: 'от 1000 руб.',
             img: testImage2
         },
         {
-            id: 4,
+            id: 5461,
             title: 'Новогодняя ночь во дворце',
             place: '14 декабря, 19:00 ДК Железнодорожников',
             price: 'от 300 руб.',
@@ -122,7 +122,7 @@ const Afisha: FC<PropsWithChildren<any>> = () => {
                     items?.map((item: any) =>
                         <div className="afisha-items-item" onClick={() => uOrderTicket({
                             isOpen: true,
-                            id: 5427
+                            id: item?.id
                         })}>
                             <div className="afisha-items-item-top">
                                 <h2>

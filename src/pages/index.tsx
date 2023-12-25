@@ -13,6 +13,7 @@ const Home: FC<PropsWithChildren<any>> = ({
         <Meta title={'Главная'}>
             <MainLayout
                 meta={meta}
+
             >
                 <MainContent/>
             </MainLayout>
@@ -25,16 +26,12 @@ export async function getStaticProps(context: any) {
     try {
 
         return {
-            props: {
-
-            },
+            props: {},
             revalidate: 60,
         }
     } catch (e: any) {
         return {
-            props: {
-
-            },
+            props: {},
             revalidate: 60,
         }
     }
