@@ -6,6 +6,7 @@ import testImage from '../../../../public/test-slide-img.png'
 import testImage1 from '../../../../public/testImage1.png'
 import testImage2 from '../../../../public/testImage2.png'
 import testImage3 from '../../../../public/testImage3.png'
+import testImage4 from '../../../../public/testmImage4.png'
 import {useOrderTicket} from "../../../components/common/OrderTicketController";
 
 const {RangePicker} = DatePicker;
@@ -18,32 +19,32 @@ const Afisha: FC<PropsWithChildren<any>> = () => {
 
     const items = [
         {
-            id: 5427,
-            title: 'MINECRAFT ШОУ',
-            place: '17 февраля, 15:00 ДК Железнодорожников',
-            price: 'от 800 руб.',
-            img: testImage1,
-        },
-        {
             id: 5428,
             title: 'MINECRAFT ШОУ',
             place: '17 февраля, 12:00 ДК Железнодорожников',
             price: 'от 800 руб.',
-            img: testImage1
+            img: testImage1,
+        },
+        {
+            id: 5427,
+            title: 'MINECRAFT ШОУ',
+            place: '17 февраля, 15:00 ДК Железнодорожников',
+            price: 'от 800 руб.',
+            img: testImage2
         },
         {
             id: 5387,
             title: 'Юлия Славянская',
             place: '08 мая, 19:00 ДК Железнодорожников',
             price: 'от 1000 руб.',
-            img: testImage2
+            img: testImage3
         },
         {
             id: 5461,
             title: 'Новогодняя ночь во дворце',
             place: '14 декабря, 19:00 ДК Железнодорожников',
             price: 'от 300 руб.',
-            img: testImage3
+            img: testImage4
         },
     ]
 
