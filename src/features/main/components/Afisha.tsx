@@ -20,7 +20,7 @@ const Afisha: FC<PropsWithChildren<any>> = () => {
         {
             id: 5427,
             title: 'MINECRAFT ШОУ',
-            place: '17 февраля, 12:00 ДК Железнодорожников',
+            place: '17 февраля, 15:00 ДК Железнодорожников',
             price: 'от 800 руб.',
             img: testImage1,
         },

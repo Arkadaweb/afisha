@@ -9,15 +9,17 @@ const MainContent: FC<PropsWithChildren<any>> = ({}) => {
     return (
         <MaxWithLayout>
             <div className="main-content">
-                <ReactPlayer
-                    url={'https://xn--80atghghgz.xn--p1ai/wp-content/uploads/2023/12/Компас_логотип_анимация_с_фоном_1920х1080.mp4'}
-                    controls={false}
-                    playing={true}
-                    loop={true}
-                    muted={true}
-                    width={'100%'}
-                    height={'100%'}
-                />
+                <div className="main-content-video">
+                    <ReactPlayer
+                        url={'https://xn--80atghghgz.xn--p1ai/wp-content/uploads/2023/12/Компас_логотип_анимация_3D_933х791_с_фоном_вариант_2.mp4'}
+                        controls={false}
+                        playing={true}
+                        loop={true}
+                        muted={true}
+                        width={'100%'}
+                        height={'100%'}
+                    />
+                </div>
                 {/*<div className="main-content-img">*/}
 
                 {/*</div>*/}

@@ -55,12 +55,12 @@ const Footer: FC<PropsWithChildren<any>> = ({}) => {
                         </div>
                         <div className="footer-content-top-main">
                             <CustomInput/>
-                            <a href={'tel:999999999'} className="footer-content-top-main-phone">
+                            <a href={'tel:+7 904-471-07-14'} className="footer-content-top-main-phone">
                                 +7 904-471-07-14
                             </a>
-                            <div className="footer-content-top-main-email">
+                            <a href={'mailto:showbiz.23@mail.ru'} className="footer-content-top-main-email">
                                 showbiz.23@mail.ru
-                            </div>
+                            </a>
                             <div className="footer-content-top-main-icons">
                                 <a href={'tel:999999999'} >
                                     <Phone/>

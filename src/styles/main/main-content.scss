@@ -2,6 +2,12 @@
 
     margin: 32px 0 20px;
 
+    &-video{
+        @media(max-width: 1024px) {
+            margin-top: 100px;
+        }
+    }
+
     &-img{
         margin: 0 auto;
         position: relative;
