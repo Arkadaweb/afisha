@@ -1,6 +1,7 @@
 import React, {FC, PropsWithChildren} from 'react';
 import Footer from "../components/Footer/Footer";
 import MobHeader from "../components/MobHeader/MobHeader";
+import ScrollToTopButton from "../components/common/ScrollToTopButton";
 
 const MainLayout: FC<PropsWithChildren<any>> = ({
                                                     children,
@@ -20,6 +21,7 @@ const MainLayout: FC<PropsWithChildren<any>> = ({
                 {children}
             </div>
             <Footer/>
+            <ScrollToTopButton/>
         </div>
     );
 };

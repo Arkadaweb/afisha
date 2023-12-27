@@ -48,8 +48,7 @@ const MobHeader: FC<PropsWithChildren<any>> = () => {
             title: 'Контакты'
         },
     ]
-
-
+    
     useEffect(() => {
         let buildQuerySelector = document.querySelector('body')
 

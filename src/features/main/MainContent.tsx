@@ -18,6 +18,7 @@ const MainContent: FC<PropsWithChildren<any>> = ({}) => {
                         muted={true}
                         width={'100%'}
                         height={'100%'}
+                        playsinline
                     />
                 </div>
                 {/*<div className="main-content-img">*/}
