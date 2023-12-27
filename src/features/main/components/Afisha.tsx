@@ -50,7 +50,6 @@ const Afisha: FC<PropsWithChildren<any>> = () => {
     ]
 
     const handleReset = () => {
-        // Обработка сброса дат
         console.log('Выбранные даты:', selectedDates);
 
         setSelectedDates([]);
