@@ -68,7 +68,7 @@ const MobHeader: FC<PropsWithChildren<any>> = () => {
             <MaxWithLayout>
                 <div className="mob-header-content">
                     <div className="mob-header-content-wrap">
-                        <a className="mob-header-content-phone">
+                        <a href="tel:+7 904-471-07-14" className="mob-header-content-phone">
                             <PhoneIcon/>
                             +7 904-471-07-14
                         </a>
@@ -103,14 +103,14 @@ const MobHeader: FC<PropsWithChildren<any>> = () => {
                     }
                 </div>
                 <div className="mob-header-menu-bottom">
-                    <a className="mob-header-menu-bottom-phone">
+                    <a href="tel:+7 904-471-07-14" className="mob-header-menu-bottom-phone">
                         <PhoneBurgerIcon/>
                         +7 904-471-07-14
                     </a>
-                    <div className="mob-header-menu-bottom-email">
+                    <a href="mailto:+7 904-471-07-14" className="mob-header-menu-bottom-email">
                         <EmailIcon/>
                         showbiz.23@mail.ru
-                    </div>
+                    </a>
                     <div className="mob-header-menu-bottom-search">
                         <CustomInput
                             backgroundColor={'rgba(29, 29, 27, 1)'}

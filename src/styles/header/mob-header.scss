@@ -1,5 +1,7 @@
 .mob-header {
+
     &-content {
+
         display: none;
         position: fixed;
         top: 10px;
@@ -47,6 +49,7 @@
     }
 
     &-menu {
+        overflow-y: auto;
         position: fixed;
         z-index: 99999;
         height: 100vh;
@@ -80,6 +83,8 @@
 
             &-logo {
                 width: 158px;
+                min-width: 158px;
+                min-height: 48px;
                 height: 48px;
                 position: relative;
             }

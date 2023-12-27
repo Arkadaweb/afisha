@@ -3,7 +3,10 @@
     bottom: 0;
     width: 100%;
     padding: 50px 0 20px;
-    border-radius: 20px 20px 0 0;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
 
     //backdrop-filter: blur(20px);
     //background-color: rgba(29, 29, 27, 0.8);
@@ -14,7 +17,10 @@
     @media(max-width: 1024px) {
         position: static;
         padding: 20px 0 20px;
-        border-radius: 0;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+        border-top-right-radius: 0;
+        border-top-left-radius: 0;
     }
 
     &-content {
@@ -36,6 +42,8 @@
             &-logo {
                 position: relative;
                 width: 295px;
+                min-width: 295px;
+                min-height: 91px;
                 height: 91px;
             }
 

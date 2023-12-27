@@ -19,3 +19,21 @@
 @import 'common/city-drop-down';
 
 @import 'modal/modal-order-ticket';
+
+#is-service-frame{
+    display: none;
+}
+
+.test-text{
+    margin: 120px 0;
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 38px;
+    color: $beige;
+
+    @media(max-width: 1024px) {
+        margin: 60px 0;
+        font-size: 22px;
+        line-height: 24px;
+    }
+}

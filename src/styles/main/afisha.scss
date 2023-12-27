@@ -21,6 +21,10 @@
 
         &-wrap {
             position: relative;
+
+            button{
+                color: $grey;
+            }
         }
 
         @media(max-width: 1024px) {
@@ -72,9 +76,17 @@
             width: 100%;
             cursor: pointer;
             //max-width: 300px;
+
+            transition: all 1s;
             &:hover{
+
                 transform: scale(1.05);
+
+                @media(max-width: 1024px) {
+                    transform: scale(1);
+                }
             }
+
             &-top {
                 width: 100%;
                 min-height: 145px;
