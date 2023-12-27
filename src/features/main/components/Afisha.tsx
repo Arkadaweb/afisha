@@ -67,7 +67,7 @@ const Afisha: FC<PropsWithChildren<any>> = () => {
 
     const onOpenAfisha = (item: any) => {
         if (isIos === 'IOS') {
-            window.open(`'https://btickets.ru/widget/${item.id}/scheme'`, '_blank');
+            window.open(`https://btickets.ru/widget/${item.id}/scheme`, '_blank');
         } else {
             uOrderTicket({
                 isOpen: true,
