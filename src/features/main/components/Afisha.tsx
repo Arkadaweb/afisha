@@ -16,6 +16,7 @@ const Afisha: FC<PropsWithChildren<any>> = () => {
     const uOrderTicket = useOrderTicket()
     const [selectedDates, setSelectedDates] = useState<any>([]);
     const [pickerOpen, setPickerOpen] = useState<any>(false)
+    const [isIos, setIsIos] = useState('')
 
     const items = [
         {
@@ -64,6 +65,30 @@ const Afisha: FC<PropsWithChildren<any>> = () => {
         console.log('1')
         setPickerOpen(false)
     }
+
+    const onOpenAfisha = (item) => {
+        if (isIos === 'IOS') {
+            window.open(`'https://btickets.ru/widget/${item.id}/scheme'`, '_blank');
+        } else {
+            uOrderTicket({
+                isOpen: true,
+                id: item?.id
+            })
+        }
+    }
+
+    useEffect(() => {
+        if (typeof window !== 'undefined' && window.navigator) {
+            const userAgent = window.navigator.userAgent;
+            const isiPhone = /iPhone/i.test(userAgent);
+
+            if (isiPhone) {
+                setIsIos('IOS')
+            } else {
+                setIsIos(userAgent)
+            }
+        }
+    }, []);
 
     return (
         <div className="afisha">
@@ -121,10 +146,7 @@ const Afisha: FC<PropsWithChildren<any>> = () => {
             <div className="afisha-items">
                 {
                     items?.map((item: any) =>
-                        <div className="afisha-items-item" onClick={() => uOrderTicket({
-                            isOpen: true,
-                            id: item?.id
-                        })}>
+                        <div className="afisha-items-item" onClick={() => onOpenAfisha(item)}>
                             <div className="afisha-items-item-top">
                                 <h2>
                                     {item?.title}

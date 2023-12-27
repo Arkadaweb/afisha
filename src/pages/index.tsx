@@ -8,24 +8,7 @@ const Home: FC<PropsWithChildren<any>> = ({
                                               meta
                                           }) => {
 
-    const [isIos, setIsIos] = useState('')
-    useEffect(() => {
-        // Проверка наличия объекта navigator в окружении браузера
-        if (typeof window !== 'undefined' && window.navigator) {
-            const userAgent = window.navigator.userAgent;
 
-            // Проверка, содержит ли строка userAgent слово "iPhone"
-            const isiPhone = /iPhone/i.test(userAgent);
-
-            if (isiPhone) {
-                setIsIos('IOS')
-                console.log('Пользователь зашел на сайт с iPhone');
-                // Здесь можно выполнить необходимые действия для iPhone
-            } else {
-                setIsIos(userAgent)
-            }
-        }
-    }, []);
 
     return (
         <Meta title={'Главная'}>
