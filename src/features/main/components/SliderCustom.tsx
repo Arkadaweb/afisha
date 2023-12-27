@@ -4,6 +4,9 @@ import ArrowToLeftIcon from "../../../assets/icons/common/ArrowToLeftIcon";
 import Image from "next/dist/client/legacy/image";
 
 import testImage from '../../../../public/test-slide-img.png'
+import slide1 from '../../../../public/slide1.png'
+import slide2 from '../../../../public/slide2.png'
+import slide3 from '../../../../public/slide3.png'
 
 const SliderCustom: FC<PropsWithChildren<any>> = ({
                                                       elements
@@ -37,17 +40,30 @@ const SliderCustom: FC<PropsWithChildren<any>> = ({
     };
 
 
-    const slides = [1,2,3,4,5,6]
+    const slides = [
+        {
+            id: 1,
+            src: slide1
+        },
+        {
+            id: 2,
+            src: slide2
+        },
+        {
+            id: 3,
+            src: slide3
+        },
+    ]
 
     return (
         <div className="slider-content">
             <Slider ref={(c) => (slider = c)} {...settings} beforeChange={handleBeforeChange}>
                 {
                     slides?.map((item: any) =>
-                        <div className="slider-content-item">
+                        <div className="slider-content-item" id={item.id}>
                             <Image
                                 // layout={'fill'}
-                                src={testImage}
+                                src={item.src}
                                 objectFit="contain"
                                 width={undefined}
                                 height={undefined}
