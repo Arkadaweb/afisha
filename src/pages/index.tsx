@@ -16,12 +16,6 @@ const Home: FC<PropsWithChildren<any>> = ({
                 meta={meta}
 
             >
-                <div style={{
-                    fontSize: 44,
-                    color: '#fff'
-                }}>
-                    {isIos}
-                </div>
                 <MainContent/>
             </MainLayout>
         </Meta>
