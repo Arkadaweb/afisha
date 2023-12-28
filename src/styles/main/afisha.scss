@@ -102,7 +102,7 @@
                     transform: translateX(-50%);
                     width: 19px;
                     height: 19px;
-                    background-color: rgb(51,51,51);
+                    background-color: rgb(1,0,1);
                     border-radius: 50px;
                 }
 
@@ -149,7 +149,7 @@
                     transform: translateX(-50%);
                     width: 19px;
                     height: 19px;
-                    background-color: rgb(51,51,51);
+                    background-color: rgb(1,0,1);
                     border-radius: 50px;
                 }
             }
@@ -266,15 +266,37 @@
     .ant-picker-cell-inner {
         background-color: rgba(0, 0, 0, 0.9) !important;
     }
+    div{
+        background-color: rgba(0, 0, 0, 0.9) !important;
+    }
 }
 
 .ant-picker-cell-range-end {
     .ant-picker-cell-inner {
         background-color: rgba(0, 0, 0, 0.9) !important;
     }
+    div{
+        background-color: rgba(0, 0, 0, 0.9) !important;
+        border-radius: 0 10px 10px 0;
+        color: $white;
+        position: relative;
+        z-index: 999;
+    }
 
     &:before {
         background: rgba(0, 0, 0, 0.2) !important;
+    }
+}
+.ant-picker-cell-range-start {
+    &:before {
+        background: rgba(0, 0, 0, 0.2) !important;
+    }
+    div{
+        background-color: rgba(0, 0, 0, 0.9) !important;
+        border-radius: 10px 0 0 10px;
+        color: $white;
+        position: relative;
+        z-index: 999;
     }
 }
 
@@ -282,12 +304,7 @@
     &:before {
         background-color: rgba(0, 0, 0, 0.2);
     }
-}
 
-.ant-picker-cell-range-start {
-    &:before {
-        background: rgba(0, 0, 0, 0.2) !important;
-    }
 }
 
 .ant-picker-cell-in-view.ant-picker-cell-in-range::before {
@@ -309,4 +326,9 @@
 
     background-color: none;
 
+}
+
+.highlighted-date{
+    background-color: #ff6a28;
+    border-radius: 10px;
 }

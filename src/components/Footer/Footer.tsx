@@ -6,6 +6,8 @@ import Image from "next/dist/client/legacy/image";
 import Phone from "../../assets/icons/footer/Phone";
 import CustomInput from "../common/CustomInput";
 import CityDropDown from "../common/CityDropDown";
+import {useAppDispatch, useAppSelector} from "../../store/store";
+import {setCityOpen} from '../../store/slices/citySlice'
 
 const Footer: FC<PropsWithChildren<any>> = ({}) => {
 
@@ -62,19 +64,19 @@ const Footer: FC<PropsWithChildren<any>> = ({}) => {
                                 showbiz.23@mail.ru
                             </a>
                             <div className="footer-content-top-main-icons">
-                                <a href={'tel:999999999'} >
+                                <a href={'tel:999999999'}>
                                     <Phone/>
                                 </a>
                             </div>
-                           <CityDropDown/>
+                            <CityDropDown/>
                         </div>
                     </div>
                     <div className="footer-content-nav">
                         {
                             nav?.map((item: any) =>
-                            <Link href={item.path}>
-                                {item?.title}
-                            </Link>
+                                <Link href={item.path}>
+                                    {item?.title}
+                                </Link>
                             )
                         }
                     </div>

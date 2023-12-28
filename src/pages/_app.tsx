@@ -15,6 +15,7 @@ import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc";
 import timezone from "dayjs/plugin/timezone";
 import {OrderTicketController} from "../components/common/OrderTicketController";
+import {CityController} from "../components/common/CityController";
 
 import("dayjs/locale/ru");
 dayjs.extend(utc);
@@ -77,7 +78,9 @@ export default function App({Component, pageProps}: AppProps) {
                 <Provider store={store}>
                     <PersistGate loading={null} persistor={persistor}>
                         <OrderTicketController>
-                            <Component {...pageProps} />
+                            <CityController>
+                                <Component {...pageProps} />
+                            </CityController>
                         </OrderTicketController>
                     </PersistGate>
                 </Provider>

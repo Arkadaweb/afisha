@@ -4,8 +4,10 @@ import CalendarIcon from "../../../assets/icons/common/CalendarIcon";
 import Image from "next/dist/client/legacy/image";
 import testImage from '../../../../public/test-slide-img.png'
 import testImage1 from '../../../../public/testImage1.png'
+import testImage11 from '../../../../public/tesImage1.1.png'
 import testImage2 from '../../../../public/testImage2.png'
 import testImage3 from '../../../../public/testImage3.png'
+import testImage31 from '../../../../public/testimage3.1.png'
 import testImage4 from '../../../../public/testmImage4.png'
 import {useOrderTicket} from "../../../components/common/OrderTicketController";
 
@@ -24,21 +26,21 @@ const Afisha: FC<PropsWithChildren<any>> = () => {
             title: 'MINECRAFT ШОУ',
             place: '17 февраля, 12:00 ДК Железнодорожников',
             price: 'от 800 руб.',
-            img: testImage1,
+            img: testImage11,
         },
         {
             id: 5427,
             title: 'MINECRAFT ШОУ',
             place: '17 февраля, 15:00 ДК Железнодорожников',
             price: 'от 800 руб.',
-            img: testImage2
+            img: testImage11
         },
         {
             id: 5387,
             title: 'Юлия Славянская',
             place: '08 мая, 19:00 ДК Железнодорожников',
             price: 'от 1000 руб.',
-            img: testImage3
+            img: testImage31
         },
         {
             id: 5461,
@@ -89,6 +91,30 @@ const Afisha: FC<PropsWithChildren<any>> = () => {
         }
     }, []);
 
+    const highlightedDates = [
+        '2023-12-17',
+        '2023-12-15',
+        '2023-12-13',
+        // Добавьте другие даты, которые вы хотите выделить
+    ];
+
+    // Функция для проверки, нужно ли выделить определенный день
+    const isHighlighted = (date: any) => {
+        return highlightedDates.includes(date.format('YYYY-MM-DD'));
+    };
+
+    const dateCellRender = (current: any) => {
+        const date = current.format('YYYY-MM-DD');
+        // if (isHighlighted(current)) {
+        //     return (
+        //         <div className="highlighted-date">
+        //             {current.date()}
+        //         </div>
+        //     );
+        // }
+        return <div>{current.date()}</div>;
+    };
+
     return (
         <div className="afisha">
             <h2>
@@ -104,6 +130,7 @@ const Afisha: FC<PropsWithChildren<any>> = () => {
                     </button>
 
                     <RangePicker
+                        dateRender={dateCellRender}
                         format={"dd.MM.yyyy"}
                         onCalendarChange={(dates) => {
                             console.log(dates)

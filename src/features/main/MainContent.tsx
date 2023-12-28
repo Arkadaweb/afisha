@@ -11,7 +11,7 @@ const MainContent: FC<PropsWithChildren<any>> = ({}) => {
             <div className="main-content">
                 <div className="main-content-video">
                     <ReactPlayer
-                        url={'https://xn--80atghghgz.xn--p1ai/wp-content/uploads/2023/12/Компас_логотип_анимация_3D_933х791_с_фоном_вариант_2.mp4'}
+                        url={'https://xn--80atghghgz.xn--p1ai/wp-content/uploads/2023/12/Компас_логотип_анимация_3D_933х791_с_фоном_вариант_2.0.2.mp4'}
                         controls={false}
                         playing={true}
                         loop={true}

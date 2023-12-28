@@ -1,6 +1,6 @@
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import filter from './slices/filterSlice';
-import bucket from './slices/bucketSlice';
+import city from './slices/citySlice';
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
@@ -9,13 +9,13 @@ import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 const persistConfig = {
 	key: 'root',
 	storage,
-	whitelist: ['bucket'],
+	whitelist: ['city'],
 };
 
 // Use combineReducers from Redux Toolkit to combine slices
 const rootReducer = combineReducers({
 	filter,
-	bucket,
+	city,
 });
 
 // Wrap your original reducers with persistReducer
