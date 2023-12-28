@@ -4,11 +4,11 @@ export const citySlice = createSlice({
     name: 'city',
     initialState: {
         isOpen: false,
-        currentCity: 'Москва'
+        currentCity: 'Тюмень'
     },
     reducers: {
         setCity: (state: any, action: any) => {
-            state.currentCity = action?.payload
+            state.currentCity = 'Тюмень'
         },
         setCityOpen: (state: any) => {
             state.isOpen = true
