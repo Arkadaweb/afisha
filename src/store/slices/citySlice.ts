@@ -4,7 +4,7 @@ export const citySlice = createSlice({
     name: 'city',
     initialState: {
         isOpen: false,
-        currentCity: 'Тюмень'
+        currentCity: ''
     },
     reducers: {
         setCity: (state: any, action: any) => {

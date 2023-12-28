@@ -1,11 +1,23 @@
-import React, {FC, PropsWithChildren} from 'react';
+import React, {FC, PropsWithChildren, useEffect} from 'react';
 import Footer from "../components/Footer/Footer";
 import MobHeader from "../components/MobHeader/MobHeader";
 import ScrollToTopButton from "../components/common/ScrollToTopButton";
+import {useAppDispatch, useAppSelector} from "../store/store";
+import {setCityOpen} from '../store/slices/citySlice'
 
 const MainLayout: FC<PropsWithChildren<any>> = ({
                                                     children,
                                                 }) => {
+
+    const {currentCity} = useAppSelector((state: any) => state.city)
+    const dispatch = useAppDispatch()
+
+    useEffect(() =>{
+        if (!currentCity){
+            dispatch(setCityOpen())
+        }
+    },[currentCity])
+
 
     return (
         <div style={{
