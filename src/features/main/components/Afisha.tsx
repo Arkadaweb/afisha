@@ -117,9 +117,11 @@ const Afisha: FC<PropsWithChildren<any>> = () => {
 
     return (
         <div className="afisha">
-            <h2>
-                АФИША
-            </h2>
+            <div className="afisha-title">
+                <h2>
+                    АФИША
+                </h2>
+            </div>
             <div className="afisha-calendar">
                 <div className="afisha-calendar-wrap">
                     <button

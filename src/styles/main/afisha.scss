@@ -1,18 +1,33 @@
 .afisha {
 
-    h2 {
-        font-family: $fontTimes;
-        font-size: 54px;
-        font-weight: 500;
-        line-height: 65px;
-        color: $beige;
-        text-align: center;
+    &-title{
+        display: flex;
+        justify-content: center;
+        align-content: center;
 
-        @media(max-width: 1024px) {
-            font-size: 32px;
-            line-height: 39px;
+        h2 {
+            font-family: $fontTimes;
+            font-size: 54px;
+            font-weight: 500;
+            line-height: 65px;
+            //color: $beige;
+            text-align: center;
+
+            background: linear-gradient(90deg, rgba(216, 184, 81, 0.92) 0%, rgba(238, 217, 114, 0.964053) 21%, #F0DB73 38.14%, #EFC966 67.12%, rgba(196, 156, 57, 0.88) 100%);
+            -webkit-background-clip: text; /* Для WebKit браузеров, чтобы применить градиент к тексту */
+            color: transparent; /* Сделайте текст прозрачным, чтобы градиент виден под текстом */
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+
+
+            @media(max-width: 1024px) {
+                font-size: 32px;
+                line-height: 39px;
+            }
         }
     }
+
 
     &-calendar {
         width: 100%;
@@ -253,11 +268,13 @@
 
 .ant-picker-footer-extra {
     width: 100%;
-    background-color: $beige;
+    background: linear-gradient(90deg, rgba(216, 184, 81, 0.92) 0%, rgba(238, 217, 114, 0.964053) 21%, #F0DB73 38.14%, #EFC966 67.12%, rgba(196, 156, 57, 0.88) 100%);
+
 }
 
 .ant-picker-date-panel {
-    background-color: $beige;
+    background: linear-gradient(90deg, rgba(216, 184, 81, 0.92) 0%, rgba(238, 217, 114, 0.964053) 21%, #F0DB73 38.14%, #EFC966 67.12%, rgba(196, 156, 57, 0.88) 100%);
+
 }
 
 .ant-picker-cell-today {

@@ -19,7 +19,8 @@
             padding: 17px 12px;
             width: 100%;
 
-            background-color: $grey;
+            background: linear-gradient(90deg, rgba(216, 184, 81, 0.92) 0%, rgba(238, 217, 114, 0.964053) 21%, #F0DB73 38.14%, #EFC966 67.12%, rgba(196, 156, 57, 0.88) 100%);
+
             border-radius: 10px;
 
             display: flex;
@@ -35,7 +36,7 @@
             font-size: 18px;
             font-weight: 500;
             line-height: 22px;
-            color: $beige;
+            color: $grey;
         }
 
         &-burger {
