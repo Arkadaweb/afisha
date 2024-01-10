@@ -41,10 +41,10 @@ const SliderCustom: FC<PropsWithChildren<any>> = ({
 
 
     const slides = [
-        {
-            id: 1,
-            src: slide1
-        },
+        // {
+        //     id: 1,
+        //     src: slide1
+        // },
         {
             id: 2,
             src: slide2

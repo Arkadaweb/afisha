@@ -42,13 +42,13 @@ const Afisha: FC<PropsWithChildren<any>> = () => {
             price: 'от 1000 руб.',
             img: testImage31
         },
-        {
-            id: 5461,
-            title: 'Новогодняя ночь во дворце',
-            place: '14 декабря, 19:00 ДК Железнодорожников',
-            price: 'от 300 руб.',
-            img: testImage4
-        },
+        // {
+        //     id: 5461,
+        //     title: 'Новогодняя ночь во дворце',
+        //     place: '14 декабря, 19:00 ДК Железнодорожников',
+        //     price: 'от 300 руб.',
+        //     img: testImage4
+        // },
     ]
 
     const handleReset = () => {

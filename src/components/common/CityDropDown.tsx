@@ -4,7 +4,7 @@ import {useAppDispatch, useAppSelector} from "../../store/store";
 import {setCityOpen} from "../../store/slices/citySlice";
 
 const CityDropDown = ({
-                          backgroundColor = 'rgba(197, 163, 94, 1)',
+                          backgroundColor = 'rgba(231, 207, 126, 1)',
                           color = 'rgba(29, 29, 27, 1)',
                           iconColor = 'rgba(29, 29, 27, 1)'
                       }) => {

@@ -3,7 +3,7 @@ import {Input} from "antd";
 import SearchIcon from "../../assets/icons/footer/SearchIcon";
 
 const CustomInput: FC<PropsWithChildren<any>> = ({
-                                                     backgroundColor = 'rgba(197, 163, 94, 1)',
+                                                     backgroundColor = 'rgba(231, 207, 126, 1)',
                                                      color = 'rgba(29, 29, 27, 1)',
                                                      placeholderColor = 'dark',
                                                      iconColor = '#1D1D1B'

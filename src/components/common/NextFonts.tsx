@@ -24,6 +24,19 @@ const fontInter = localFont({
     fallback: ['sans-serif'],
 })
 
+const fontTimes= localFont({
+    src: [
+        {
+            path: '../../assets/fonts/TimesBold.ttf',
+            weight: '700',
+            style: 'normal',
+        },
+    ],
+    display: 'swap',
+    variable: '--font-base',
+    fallback: ['sans-serif'],
+})
+
 
 
 export const NextFonts = () => {
@@ -31,6 +44,7 @@ export const NextFonts = () => {
         <style jsx global>{`
           :root {
             --font-base: ${fontInter.style.fontFamily};
+            --font-times: ${fontTimes.style.fontFamily};
           }
     `}</style>
     )
