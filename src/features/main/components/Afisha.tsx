@@ -191,7 +191,7 @@ const Afisha: FC<PropsWithChildren<any>> = () => {
                                 <Image
                                     src={item?.img}
                                     layout={'fill'}
-                                    objectFit={'cover'}
+                                    objectFit={'fill'}
                                 />
                                 <div className="afisha-items-item-bottom-bot"/>
                             </div>

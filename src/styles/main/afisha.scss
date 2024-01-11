@@ -1,6 +1,6 @@
 .afisha {
 
-    &-title{
+    &-title {
         display: flex;
         justify-content: center;
         align-content: center;
@@ -38,7 +38,7 @@
         &-wrap {
             position: relative;
 
-            button{
+            button {
                 color: $grey;
                 background: linear-gradient(90deg, rgba(216, 184, 81, 0.92) 0%, rgba(238, 217, 114, 0.964053) 21%, #F0DB73 38.14%, #EFC966 67.12%, rgba(196, 156, 57, 0.88) 100%);
 
@@ -97,7 +97,8 @@
             //max-width: 300px;
 
             transition: all 1s;
-            &:hover{
+
+            &:hover {
 
                 transform: scale(1.05);
 
@@ -115,7 +116,7 @@
                 padding: 20px 15px;
                 position: relative;
 
-                &-bot{
+                &-bot {
                     position: absolute;
                     top: -10px;
                     left: 50%;
@@ -159,11 +160,9 @@
 
                 img {
                     border-radius: 20px;
-
-
                 }
 
-                &-bot{
+                &-bot {
                     position: absolute;
                     bottom: -10px;
                     left: 50%;
@@ -289,7 +288,8 @@
     .ant-picker-cell-inner {
         background-color: rgba(0, 0, 0, 0.9) !important;
     }
-    div{
+
+    div {
         background-color: rgba(0, 0, 0, 0.9) !important;
     }
 }
@@ -298,7 +298,8 @@
     .ant-picker-cell-inner {
         background-color: rgba(0, 0, 0, 0.9) !important;
     }
-    div{
+
+    div {
         background-color: rgba(0, 0, 0, 0.9) !important;
         border-radius: 0 10px 10px 0;
         color: $white;
@@ -310,11 +311,13 @@
         background: rgba(0, 0, 0, 0.2) !important;
     }
 }
+
 .ant-picker-cell-range-start {
     &:before {
         background: rgba(0, 0, 0, 0.2) !important;
     }
-    div{
+
+    div {
         background-color: rgba(0, 0, 0, 0.9) !important;
         border-radius: 10px 0 0 10px;
         color: $white;
@@ -351,7 +354,7 @@
 
 }
 
-.highlighted-date{
+.highlighted-date {
     background-color: #ff6a28;
     border-radius: 10px;
 }
