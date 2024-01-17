@@ -2,7 +2,7 @@ import React, {FC, PropsWithChildren, useEffect, useState} from 'react';
 import {Button, DatePicker} from "antd";
 import CalendarIcon from "../../../assets/icons/common/CalendarIcon";
 import Image from "next/dist/client/legacy/image";
-import testImage11 from '../../../../public/tesImage1.1.png'
+import testImage11 from '../../../../public/testImage11.png'
 import testImage31 from '../../../../public/testimage3.1.png'
 import testImage41 from '../../../../public/testImage41.png'
 import {useOrderTicket} from "../../../components/common/OrderTicketController";
