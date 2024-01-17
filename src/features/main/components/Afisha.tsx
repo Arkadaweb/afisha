@@ -2,13 +2,9 @@ import React, {FC, PropsWithChildren, useEffect, useState} from 'react';
 import {Button, DatePicker} from "antd";
 import CalendarIcon from "../../../assets/icons/common/CalendarIcon";
 import Image from "next/dist/client/legacy/image";
-import testImage from '../../../../public/test-slide-img.png'
-import testImage1 from '../../../../public/testImage1.png'
 import testImage11 from '../../../../public/tesImage1.1.png'
-import testImage2 from '../../../../public/testImage2.png'
-import testImage3 from '../../../../public/testImage3.png'
 import testImage31 from '../../../../public/testimage3.1.png'
-import testImage4 from '../../../../public/testmImage4.png'
+import testImage41 from '../../../../public/testImage41.png'
 import {useOrderTicket} from "../../../components/common/OrderTicketController";
 
 const {RangePicker} = DatePicker;
@@ -42,13 +38,13 @@ const Afisha: FC<PropsWithChildren<any>> = () => {
             price: 'от 1000 руб.',
             img: testImage31
         },
-        // {
-        //     id: 5461,
-        //     title: 'Новогодняя ночь во дворце',
-        //     place: '14 декабря, 19:00 ДК Железнодорожников',
-        //     price: 'от 300 руб.',
-        //     img: testImage4
-        // },
+        {
+            id: 5929,
+            title: 'Однажды вечером',
+            place: '09 апреля, 19:00 ДК Железнодорожников',
+            price: 'от 1500 руб.',
+            img: testImage41
+        },
     ]
 
     const handleReset = () => {

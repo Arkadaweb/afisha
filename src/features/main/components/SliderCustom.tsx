@@ -7,6 +7,7 @@ import testImage from '../../../../public/test-slide-img.png'
 import slide1 from '../../../../public/slide1.png'
 import slide2 from '../../../../public/slide2.png'
 import slide3 from '../../../../public/slide3.png'
+import slide4 from '../../../../public/slide4.png'
 
 const SliderCustom: FC<PropsWithChildren<any>> = ({
                                                       elements
@@ -44,10 +45,10 @@ const SliderCustom: FC<PropsWithChildren<any>> = ({
 
 
     const slides = [
-        // {
-        //     id: 1,
-        //     src: slide1
-        // },
+        {
+            id: 1,
+            src: slide4
+        },
         {
             id: 2,
             src: slide2

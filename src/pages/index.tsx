@@ -13,7 +13,6 @@ const Home: FC<PropsWithChildren<any>> = ({
         <Meta title={'Главная'}>
             <MainLayout
                 meta={meta}
-
             >
                 <MainContent/>
             </MainLayout>
