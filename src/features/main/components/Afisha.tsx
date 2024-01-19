@@ -2,9 +2,9 @@ import React, {FC, PropsWithChildren, useEffect, useState} from 'react';
 import {Button, DatePicker} from "antd";
 import CalendarIcon from "../../../assets/icons/common/CalendarIcon";
 import Image from "next/dist/client/legacy/image";
-import testImage11 from '../../../../public/testImage11.png'
-import testImage31 from '../../../../public/testimage3.1.png'
-import testImage41 from '../../../../public/testImage41.png'
+import testImage11 from '../../../../public/testImage11.jpg'
+import testImage31 from '../../../../public/testImage31.jpg'
+import testImage41 from '../../../../public/testImage41.jpg'
 import {useOrderTicket} from "../../../components/common/OrderTicketController";
 
 const {RangePicker} = DatePicker;
