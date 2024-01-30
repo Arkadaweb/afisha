@@ -14,7 +14,6 @@ const Home: FC<PropsWithChildren<any>> = ({
             <MainLayout
                 meta={meta}
             >
-
                 <MainContent/>
             </MainLayout>
         </Meta>
