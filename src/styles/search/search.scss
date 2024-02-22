@@ -1,0 +1,96 @@
+.search {
+    margin: 40px 0;
+
+    h1 {
+        font-size: 34px;
+        font-weight: 500;
+        line-height: 41px;
+        color: $beige;
+
+        @media(max-width: 1024px) {
+            font-size: 30px;
+            font-weight: 500;
+            line-height: 36px;
+        }
+    }
+
+    &-afisha {
+        margin-top: 60px;
+
+        @media(max-width: 1024px) {
+            margin-top: 25px;
+        }
+
+        h4 {
+            font-size: 32px;
+            font-weight: 500;
+            line-height: 39px;
+            color: $beige;
+
+            @media(max-width: 1024px) {
+                font-size: 24px;
+                font-weight: 500;
+                line-height: 29px;
+            }
+        }
+
+        &-items {
+            margin-top: 30px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+
+
+            @media(max-width: 1200px) {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            @media(max-width: 1024px) {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            @media(max-width: 650px) {
+                grid-template-columns: repeat(1, 1fr);
+            }
+        }
+    }
+
+    &-portfolio {
+        margin-top: 100px;
+
+        @media(max-width: 1024px) {
+            margin-top: 50px;
+        }
+
+        h4 {
+            font-size: 32px;
+            font-weight: 500;
+            line-height: 39px;
+            color: $beige;
+
+            @media(max-width: 1024px) {
+                font-size: 24px;
+                font-weight: 500;
+                line-height: 29px;
+            }
+        }
+
+        &-items {
+            margin-top: 30px;
+
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+
+            @media(max-width: 1024px) {
+                margin-top: 30px;
+            }
+
+            @media(max-width: 900px) {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            @media(max-width: 450px) {
+                grid-template-columns: repeat(1, 1fr);
+            }
+        }
+    }
+}

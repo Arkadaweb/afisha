@@ -43,10 +43,11 @@
         }
     }
 
-    span {
+    a {
+        display: inline-block;
         cursor: pointer;
         position: absolute;
-        top: 55%;
+        top: 58%;
         transform: translateY(-50%);
         right: 10px;
     }

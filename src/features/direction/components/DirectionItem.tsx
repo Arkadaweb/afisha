@@ -3,10 +3,12 @@ import Image from "next/dist/client/legacy/image";
 import directionImg from '../../../../public/direction-img.png'
 import GoldButton from "../../../components/common/GoldButton";
 import {useRouter} from "next/router";
+import {useLeaveMessage} from "../../../components/modals/LeaveMessageController";
 
 const DirectionItem: FC<PropsWithChildren<any>> = () => {
 
     const router = useRouter();
+    const uLeaveMessage = useLeaveMessage()
 
     return (
         <div className="direction-item">
@@ -30,6 +32,7 @@ const DirectionItem: FC<PropsWithChildren<any>> = () => {
                 </p>
                 <div className="direction-item-info-buttons">
                     <GoldButton
+                        onClick={() => uLeaveMessage(true)}
                         title={'Заказать'}
                         padding={'16px 30px'}
                         backColor={'rgba(9, 6, 47, 1)'}

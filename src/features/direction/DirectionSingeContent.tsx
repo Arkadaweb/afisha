@@ -4,8 +4,11 @@ import BreadCrumbs from "../../components/common/BreadCrumbs";
 import GoldButton from "../../components/common/GoldButton";
 import LeaveMessageBlock from "../../components/common/LeaveMessageBlock";
 import PortfolioSlider from "./components/PortfolioSlider";
+import {useLeaveMessage} from "../../components/modals/LeaveMessageController";
 
 const DirectionSingeContent = () => {
+
+    const uLeaveMessage = useLeaveMessage()
 
     const breadCrumbs = [
         {
@@ -76,6 +79,7 @@ const DirectionSingeContent = () => {
                 </div>
                 <div className="direction-single-buttons">
                     <GoldButton
+                        onClick={() => uLeaveMessage(true)}
                         padding={'22px 30px'}
                         title={'Заказать услугу'}
                     />

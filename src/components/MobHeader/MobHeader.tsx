@@ -24,31 +24,31 @@ const MobHeader: FC<PropsWithChildren<any>> = () => {
         },
         {
             id: 2,
-            path: '',
+            path: '/about',
             title: 'О компании'
         },
         {
             id: 3,
-            path: '',
+            path: '/afisha',
             title: 'Афиша'
         },
         {
-            id: 4,
-            path: '',
-            title: 'Услуги'
+            id: 3,
+            path: '/direction',
+            title: 'Направления деятельности'
         },
         {
             id: 5,
-            path: '',
+            path: '/portfolio',
             title: 'Портфолио'
         },
         {
             id: 5,
-            path: '',
+            path: '/contacts',
             title: 'Контакты'
         },
     ]
-    
+
     useEffect(() => {
         let buildQuerySelector = document.querySelector('body')
 

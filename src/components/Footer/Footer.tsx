@@ -77,7 +77,7 @@ const Footer: FC<PropsWithChildren<any>> = ({}) => {
                             />
                         </Link>
                         <div className="footer-content-top-main">
-                            <CustomInput/>
+                            <CustomInput />
                             <a href={'tel:+7 904-471-07-14'} className="footer-content-top-main-phone">
                                 +7 904-471-07-14
                             </a>
@@ -117,10 +117,10 @@ const Footer: FC<PropsWithChildren<any>> = ({}) => {
                         <p>
                             © 2024 Все права защищены
                         </p>
-                        <p>
+                        <Link href={'/policy-privacy'}>
                             Правила продажи и возврата билетов
-                        </p>
-                        <Link href={''}>
+                        </Link>
+                        <Link href={'policy-privacy'}>
                             Политика конфиденциальности
                         </Link>
                     </div>

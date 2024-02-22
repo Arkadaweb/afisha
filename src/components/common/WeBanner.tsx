@@ -2,8 +2,11 @@ import React, {FC, PropsWithChildren} from 'react';
 import Image from "next/dist/client/legacy/image";
 import afishaMainInfo from "../../../public/afisha-main-info.png";
 import GoldButton from "./GoldButton";
+import {useRouter} from "next/router";
 
 const WeBanner: FC<PropsWithChildren<any>> = () => {
+
+    const router = useRouter()
 
     return (
         <div className="we-banner-info">
@@ -24,6 +27,7 @@ const WeBanner: FC<PropsWithChildren<any>> = () => {
                     и другие
                 </p>
                 <GoldButton
+                    onClick={() => router.push('about')}
                     padding={'16px 30px'}
                     title={'Больше о нас'}
                 />

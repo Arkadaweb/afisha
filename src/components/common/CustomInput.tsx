@@ -1,6 +1,7 @@
 import React, {FC, PropsWithChildren} from 'react';
 import {Input} from "antd";
 import SearchIcon from "../../assets/icons/footer/SearchIcon";
+import Link from "next/link";
 
 const CustomInput: FC<PropsWithChildren<any>> = ({
                                                      backgroundColor = 'rgba(231, 207, 126, 1)',
@@ -17,9 +18,9 @@ const CustomInput: FC<PropsWithChildren<any>> = ({
                 }}
                 placeholder={'Поиск по сайту'}
             />
-            <span>
+            <Link href={'/search'}>
                <SearchIcon color={iconColor}/>
-            </span>
+            </Link>
         </div>
     );
 };
