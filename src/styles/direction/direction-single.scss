@@ -1,0 +1,89 @@
+.direction-single {
+
+    h1 {
+        margin-top: 40px;
+
+        font-size: 34px;
+        font-weight: 500;
+        line-height: 41px;
+        color: $beige;
+
+        @media(max-width: 1024px) {
+            margin-top: 20px;
+
+            font-size: 30px;
+            font-weight: 500;
+            line-height: 36px;
+        }
+    }
+
+    &-info {
+        margin-top: 25px;
+
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+
+        @media(max-width: 1024px) {
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+
+        p {
+            font-size: 18px;
+            font-weight: 400;
+            line-height: 22px;
+            color: $beige;
+
+            @media(max-width: 1024px) {
+                font-size: 18px;
+                font-weight: 400;
+                line-height: 22px;
+            }
+        }
+    }
+
+    &-price {
+        margin-top: 40px;
+        font-size: 26px;
+        font-weight: 500;
+        line-height: 31px;
+        color: $beigeHover;
+
+        @media(max-width: 1024px) {
+            margin-top: 25px;
+            font-size: 26px;
+            font-weight: 500;
+            line-height: 31px;
+        }
+    }
+
+    &-buttons {
+        margin-top: 25px;
+
+        display: flex;
+        align-items: center;
+        gap: 20px;
+
+        @media(max-width: 600px) {
+            flex-direction: column;
+        }
+    }
+
+    &-slider {
+        margin: 120px 0;
+
+        @media(max-width: 600px) {
+            margin: 60px 0;
+        }
+    }
+
+    &-questions {
+        margin: 120px 0;
+
+        @media(max-width: 600px) {
+            margin: 60px 0;
+        }
+    }
+}

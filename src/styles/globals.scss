@@ -19,7 +19,7 @@ body {
     background-color: $bck;
 }
 
-*{
+* {
     font-family: $fontBase,
 }
 
@@ -147,7 +147,7 @@ input::placeholder {
     height: 20px;
 }
 
-.main-block{
+.main-block {
     flex: 1;
     margin-bottom: 244px;
 
@@ -156,4 +156,10 @@ input::placeholder {
     }
 }
 
+.margin-top-main {
+    margin-top: 30px;
 
+    @media(max-width: 1024px) {
+        margin-top: 90px;
+    }
+}

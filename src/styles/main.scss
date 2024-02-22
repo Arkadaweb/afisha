@@ -17,9 +17,38 @@
 
 @import 'common/input';
 @import 'common/city-drop-down';
+@import 'common/bread-crumbs';
+@import 'common/gold-button';
+@import 'common/pagination';
+@import 'common/partner';
+@import 'common/leave-message-block';
+@import 'common/we-banner';
+@import 'common/slider-verticle';
+@import 'common/person-item';
 
 @import 'modal/modal-order-ticket';
 @import 'modal/city-choose';
+@import 'modal/leave-message-modal';
+
+@import 'not-found/not-found';
+
+@import 'afisha/afisha';
+@import 'afisha/afisha-single';
+
+@import 'contacts/contacts';
+
+@import 'direction/direction';
+@import 'direction/direction-item';
+@import 'direction/direction-single';
+
+@import 'partfolio/partfolio';
+@import 'partfolio/partfolio-item';
+@import 'partfolio/portfolio-single';
+
+@import 'about/about';
+@import 'about/start-item';
+
+@import 'antd/drop-down';
 
 #is-service-frame{
     display: none;

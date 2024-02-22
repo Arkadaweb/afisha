@@ -14,8 +14,9 @@ import locale from "antd/locale/ru_RU";
 import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc";
 import timezone from "dayjs/plugin/timezone";
-import {OrderTicketController} from "../components/common/OrderTicketController";
-import {CityController} from "../components/common/CityController";
+import {OrderTicketController} from "../components/modals/OrderTicketController";
+import {CityController} from "../components/modals/CityController";
+import {LeaveMessageController} from "../components/modals/LeaveMessageController";
 
 import("dayjs/locale/ru");
 dayjs.extend(utc);
@@ -79,7 +80,9 @@ export default function App({Component, pageProps}: AppProps) {
                     <PersistGate loading={null} persistor={persistor}>
                         <OrderTicketController>
                             <CityController>
-                                <Component {...pageProps} />
+                                <LeaveMessageController>
+                                    <Component {...pageProps} />
+                                </LeaveMessageController>
                             </CityController>
                         </OrderTicketController>
                     </PersistGate>

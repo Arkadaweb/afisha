@@ -1,0 +1,41 @@
+.partfolio-item {
+    width: 100%;
+    max-width: 407px;
+
+    &-img {
+        position: relative;
+        width: 100%;
+        max-height: 238px;
+        height: auto;
+    }
+
+    h3 {
+        margin-top: 13px;
+
+        font-size: 20px;
+        font-weight: 400;
+        line-height: 24px;
+        color: $beige;
+
+        @media(max-width: 1024px) {
+            font-size: 18px;
+            font-weight: 400;
+            line-height: 22px;
+        }
+    }
+
+    p{
+        margin-top: 13px;
+
+        font-size: 16px;
+        font-weight: 300;
+        line-height: 19px;
+        color: $beige;
+
+        @media(max-width: 1024px) {
+            font-size: 14px;
+            font-weight: 300;
+            line-height: 17px;
+        }
+    }
+}

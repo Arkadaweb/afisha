@@ -1,0 +1,185 @@
+.afisha-single {
+
+    &-main {
+        margin-top: 40px;
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        gap: 60px;
+
+        @media(max-width: 1024px) {
+            grid-template-columns: 1fr;
+            gap: 30px;
+        }
+
+        &-img {
+            position: relative;
+            width: 100%;
+            max-width: 447px;
+            height: 100%;
+            max-height: 634px;
+
+            @media(max-width: 1024px) {
+                margin: 0 auto;
+            }
+
+            img {
+                width: 100%;
+                height: 100%;
+            }
+        }
+
+        &-data {
+
+            h1 {
+                margin-bottom: 20px;
+                font-size: 34px;
+                font-weight: 500;
+                line-height: 41px;
+                color: $beige;
+
+                @media(max-width: 1024px) {
+                    font-size: 30px;
+                    font-weight: 500;
+                    line-height: 36px;
+                }
+            }
+
+            p {
+                margin-top: 27px;
+
+                font-size: 18px;
+                font-weight: 400;
+                line-height: 22px;
+                color: $beige;
+
+                @media(max-width: 1024px) {
+                    font-size: 16px;
+                    font-weight: 400;
+                    line-height: 19px;
+                }
+            }
+
+            &-price {
+                margin: 40px 0 25px;
+                font-size: 26px;
+                font-weight: 500;
+                line-height: 31px;
+                color: $beigeHover;
+
+                @media(max-width: 1024px) {
+                    font-size: 24px;
+                    font-weight: 500;
+                    line-height: 29px;
+                }
+            }
+
+            &-info {
+                margin-top: 27px;
+
+                display: flex;
+                flex-direction: column;
+                gap: 12px;
+
+                &-block {
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+
+                    font-size: 18px;
+                    font-weight: 300;
+                    line-height: 22px;
+                    color: $beige;
+
+                    @media(max-width: 1024px) {
+                        font-size: 16px;
+                        font-weight: 300;
+                        line-height: 19px;
+                    }
+                }
+            }
+        }
+    }
+
+    &-partner {
+        margin-top: 120px;
+
+        @media(max-width: 1024px) {
+            margin-top: 60px;
+        }
+
+        h2 {
+            margin-bottom: 35px;
+
+            font-size: 32px;
+            font-weight: 500;
+            line-height: 39px;
+            color: $beige;
+
+            @media(max-width: 700px) {
+                margin-bottom: 20px;
+                font-size: 24px;
+                font-weight: 500;
+                line-height: 29px;
+            }
+        }
+
+        &-items {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+
+            @media(max-width: 700px) {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 13px;
+            }
+        }
+    }
+
+    &-video {
+        margin-top: 100px;
+        height: 100%;
+
+        h2 {
+            margin-bottom: 30px;
+            font-size: 32px;
+            font-weight: 500;
+            line-height: 39px;
+            color: $beige;
+        }
+
+        &-wrap {
+            width: 100%;
+            height: 548px;
+            max-height: 100%;
+
+            @media(max-width: 1024px) {
+                height: 400px;
+                max-height: 100%;
+            }
+            @media(max-width: 600px) {
+                height: 300px;
+                max-height: 100%;
+            }
+        }
+    }
+
+    &-info {
+        margin-top: 60px;
+        margin-bottom: 50px;
+
+        p {
+            font-size: 18px;
+            font-weight: 400;
+            line-height: 22px;
+            color: $beige;
+
+            @media(max-width: 1024px) {
+                font-size: 16px;
+                font-weight: 400;
+                line-height: 19px;
+            }
+        }
+    }
+}

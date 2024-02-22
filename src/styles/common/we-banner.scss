@@ -1,0 +1,52 @@
+.we-banner{
+
+    &-info {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+
+        @media(max-width: 1024px) {
+            margin-top: 60px;
+            grid-template-columns: 1fr;
+        }
+
+        &-img {
+            width: 100%;
+            height: auto;
+        }
+
+        &-data {
+            h2 {
+                font-size: 32px;
+                font-weight: 500;
+                line-height: 39px;
+                color: $beige;
+
+                @media(max-width: 1024px) {
+                    font-size: 24px;
+                    font-weight: 500;
+                    line-height: 29px;
+                }
+
+
+            }
+
+            p {
+                margin: 25px 0 40px;
+
+                font-size: 18px;
+                font-weight: 400;
+                line-height: 22px;
+                color: $beige;
+
+                @media(max-width: 1024px) {
+                    margin: 20px 0 30px;
+
+                    font-size: 16px;
+                    font-weight: 400;
+                    line-height: 19px;
+                }
+            }
+        }
+    }
+}

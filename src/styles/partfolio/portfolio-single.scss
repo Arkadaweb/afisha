@@ -1,0 +1,176 @@
+.portfolio-single {
+
+    h1 {
+        margin-top: 40px;
+
+        font-size: 34px;
+        font-weight: 500;
+        line-height: 41px;
+        color: $beige;
+
+        @media(max-width: 1024px) {
+            font-size: 30px;
+            font-weight: 500;
+            line-height: 36px;
+        }
+    }
+
+    p {
+        margin-top: 13px;
+
+        font-size: 16px;
+        font-weight: 300;
+        line-height: 19px;
+        color: $beige8;
+
+        @media(max-width: 1024px) {
+            font-size: 16px;
+            font-weight: 300;
+            line-height: 19px;
+        }
+    }
+
+    h2 {
+        margin: 80px 0 30px;
+
+        @media(max-width: 1024px) {
+            margin: 50px 0 30px;
+        }
+
+        font-size: 32px;
+        font-weight: 500;
+        line-height: 39px;
+        color: $beige;
+    }
+
+    &-items {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 40px;
+
+        &-img {
+            position: relative;
+            width: 100%;
+            height: 238px;
+            border-radius: 20px;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        @media(max-width: 900px) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        @media(max-width: 600px) {
+            grid-template-columns: repeat(1, 1fr);
+            gap: 20px;
+        }
+    }
+
+    &-desc {
+        margin-top: 25px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+
+        @media(max-width: 1024px) {
+            margin-top: 20px;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        p {
+            font-size: 18px;
+            font-weight: 400;
+            line-height: 22px;
+            color: $beige;
+
+            @media(max-width: 1024px) {
+                font-size: 16px;
+                font-weight: 400;
+                line-height: 19px;
+            }
+        }
+    }
+
+    &-show-more {
+        margin: 60px auto;
+
+        @media(max-width: 1024px) {
+            margin: 25px auto;
+        }
+
+        display: flex;
+        justify-content: center;
+        align-content: center;
+    }
+
+    &-partner {
+        margin: 70px 0;
+
+        @media(max-width: 1024px) {
+            margin: 50px 0;
+        }
+
+        h2 {
+            font-size: 32px;
+            font-weight: 500;
+            line-height: 39px;
+            color: $beige;
+
+            @media(max-width: 1024px) {
+                font-size: 24px;
+                font-weight: 500;
+                line-height: 29px;
+            }
+        }
+
+        &-items {
+            margin-top: 35px;
+
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+
+            @media(max-width: 1024px) {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            @media(max-width: 600px) {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    }
+}
+
+
+.ant-modal-content {
+    width: 100%;
+    height: 100%;
+    background-color: transparent !important;
+
+    button {
+        svg {
+            color: $beige;
+        }
+    }
+
+    .ant-modal-body {
+        width: 100%;
+        height: 100%;
+    }
+
+    .modal-wrap-img {
+        width: 100%;
+        height: 100%;
+
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        margin: 0 auto;
+
+        img {
+            margin: 0 auto;
+        }
+    }
+}

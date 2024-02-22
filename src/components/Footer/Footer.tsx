@@ -8,39 +8,60 @@ import CustomInput from "../common/CustomInput";
 import CityDropDown from "../common/CityDropDown";
 import {useAppDispatch, useAppSelector} from "../../store/store";
 import {setCityOpen} from '../../store/slices/citySlice'
+import TelegrammICon from "../../assets/icons/footer/TelegrammICon";
+import VkIcon from "../../assets/icons/footer/VkIcon";
+import InstIcon from "../../assets/icons/footer/InstIcon";
 
 const Footer: FC<PropsWithChildren<any>> = ({}) => {
 
     const nav: any = [
         {
             id: 1,
-            path: '',
+            path: '/',
             title: 'Главная'
         },
         {
             id: 2,
-            path: '',
+            path: '/about',
             title: 'О компании'
         },
         {
             id: 3,
-            path: '',
+            path: '/afisha',
             title: 'Афиша'
         },
         {
             id: 4,
-            path: '',
-            title: 'Услуги'
+            path: '/direction',
+            title: 'Направления деятельности'
         },
         {
             id: 5,
-            path: '',
+            path: '/portfolio',
             title: 'Портфолио'
         },
         {
             id: 5,
-            path: '',
+            path: '/contacts',
             title: 'Контакты'
+        },
+    ]
+
+    const cosLinks = [
+        {
+            id: 1,
+            path: '',
+            icon: <TelegrammICon/>
+        },
+        {
+            id: 2,
+            path: '',
+            icon: <VkIcon/>
+        },
+        {
+            id: 3,
+            path: '',
+            icon: <InstIcon/>
         },
     ]
 
@@ -49,12 +70,12 @@ const Footer: FC<PropsWithChildren<any>> = ({}) => {
             <MaxWithLayout>
                 <div className="footer-content">
                     <div className="footer-content-top">
-                        <div className="footer-content-top-logo">
+                        <Link href={'/'} className="footer-content-top-logo">
                             <Image
                                 src={logo}
                                 layout={'fill'}
                             />
-                        </div>
+                        </Link>
                         <div className="footer-content-top-main">
                             <CustomInput/>
                             <a href={'tel:+7 904-471-07-14'} className="footer-content-top-main-phone">
@@ -72,13 +93,25 @@ const Footer: FC<PropsWithChildren<any>> = ({}) => {
                         </div>
                     </div>
                     <div className="footer-content-nav">
-                        {
-                            nav?.map((item: any) =>
-                                <Link href={item.path}>
-                                    {item?.title}
-                                </Link>
-                            )
-                        }
+                        <div className="footer-content-nav-soc">
+                            {
+                                cosLinks?.map((item: any) =>
+                                    <Link href={item.path}>
+                                        {item?.icon}
+                                    </Link>
+                                )
+                            }
+                        </div>
+                        <div className="footer-content-nav-links">
+                            {
+                                nav?.map((item: any) =>
+                                    <Link href={item.path}>
+                                        {item?.title}
+                                    </Link>
+                                )
+                            }
+
+                        </div>
                     </div>
                     <div className="footer-content-bottom">
                         <p>

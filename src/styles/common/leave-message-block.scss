@@ -1,0 +1,60 @@
+.leave-message-block {
+
+    display: grid;
+    grid-template-columns: 5fr 1fr;
+    gap: 3px;
+
+
+    @media(max-width: 1024px) {
+        grid-template-columns: 1fr;
+    }
+
+    &-main {
+        background: linear-gradient(90deg, #D8B851 0%, #EED972 21%, #F0DB73 38.14%, #EFC966 67.12%, #C49C39 100%);
+        border-radius: 20px;
+        padding: 24px 66px;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 15px;
+
+        p {
+            font-size: 24px;
+            font-weight: 500;
+            line-height: 29px;
+            color: $grey;
+
+            @media(max-width: 1024px) {
+                font-size: 22px;
+                font-weight: 500;
+                line-height: 27px;
+                text-align: center;
+
+            }
+        }
+
+        @media(max-width: 1300px) {
+            padding: 24px 40px;
+        }
+        @media(max-width: 1210px) {
+            padding: 24px 20px;
+        }
+
+        @media(max-width: 1024px) {
+            flex-direction: column;
+            gap: 35px;
+        }
+
+        button{
+            min-width: 240px;
+        }
+    }
+
+    &-empty {
+        min-height: 75px;
+        background: linear-gradient(90deg, #D8B851 0%, #EED972 21%, #F0DB73 38.14%, #EFC966 67.12%, #C49C39 100%);
+        border-radius: 20px;
+
+    }
+}

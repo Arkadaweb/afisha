@@ -1,0 +1,109 @@
+.partfolio {
+
+
+    h1 {
+        margin-top: 40px;
+        font-size: 54px;
+        font-weight: 500;
+        line-height: 65px;
+        color: $beige;
+
+        @media(max-width: 1024px) {
+            margin-top: 20px;
+            font-size: 30px;
+            font-weight: 500;
+            line-height: 36px;
+        }
+    }
+
+    &-sort {
+        margin: 50px 0;
+
+        display: flex;
+        align-items: center;
+        gap: 20px;
+
+        @media(max-width: 1024px) {
+            margin: 25px 0;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .portfolio-drop-down {
+            padding: 18px 28px;
+
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            background: transparent;
+            border: 1px solid rgba(197, 163, 94, 0.6);
+            border-radius: 10px;
+            transition: all 0.5s;
+
+            p {
+                font-size: 18px;
+                font-weight: 500;
+                line-height: 22px;
+                color: $beige;
+
+                @media(max-width: 1024px) {
+                    font-size: 16px;
+                    font-weight: 500;
+                    line-height: 19px;
+                }
+            }
+
+            svg {
+                transition: all 0.5s;
+                color: $beige;
+            }
+
+            &.ant-dropdown-open {
+                background: linear-gradient(0deg, rgba(197, 163, 94, 0.6), rgba(197, 163, 94, 0.6)), linear-gradient(90deg, #D8B851 0%, #EED972 21%, #F0DB73 38.14%, #EFC966 67.12%, #C49C39 100%);
+
+                p {
+                    color: $grey;
+                }
+
+                svg {
+                    transform: rotate(180deg);
+                    color: $grey;
+                }
+            }
+        }
+
+        .dropdown-border {
+            background-color: #ff6a28;
+        }
+    }
+
+    &-items {
+        margin-top: 60px;
+
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 40px;
+
+        @media(max-width: 1024px) {
+           margin-top: 30px;
+        }
+
+        @media(max-width: 900px) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        @media(max-width: 450px) {
+            grid-template-columns: repeat(1, 1fr);
+        }
+    }
+
+    &-show-more {
+        margin: 60px auto;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+}

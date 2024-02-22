@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@ant-design/icons": "^5.2.6",
+    "@fancyapps/fancybox": "^3.5.7",
     "@reduxjs/toolkit": "^1.9.7",
     "@types/woocommerce__woocommerce-rest-api": "^1.0.5",
     "@woocommerce/woocommerce-rest-api": "^1.0.1",

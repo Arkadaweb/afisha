@@ -1,0 +1,17 @@
+.partner-item {
+    width: 100%;
+    height: 100%;
+    max-width: 309px;
+    max-height: 186px;
+
+    padding: 25px 28px;
+    border-radius: 18px;
+    background: linear-gradient(90deg, #D8B851 0%, #EED972 21%, #F0DB73 38.14%, #EFC966 67.12%, #C49C39 100%);
+
+    position: relative;
+
+    img {
+        width: 100%;
+        height: 100%;
+    }
+}

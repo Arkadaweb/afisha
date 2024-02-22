@@ -1,0 +1,69 @@
+.pagination {
+    height: auto !important;
+
+    @media(max-width: 800px) {
+        margin: 0 auto;
+        display: flex !important;
+        justify-content: center;
+    }
+
+    ul{
+        display: flex !important;
+        align-items: flex-end !important;
+        width: auto !important;
+    }
+
+    li {
+        height: 38px !important;
+        width: 38px !important;
+        min-width: 38px !important;
+        display: inline-flex !important;
+        justify-content: center;
+        align-items: center;
+        border-radius: 8px !important;
+        background-color: transparent !important;
+
+        @media(max-width: 800px) {
+            height: 28px !important;
+            width: 28px !important;
+            min-width: 28px !important;
+        }
+
+        &.ant-pagination-item-active {
+            background: linear-gradient(90deg, #D8B851 0%, #EED972 21%, #F0DB73 38.14%, #EFC966 67.12%, #C49C39 100%) !important;
+            border: none !important;
+
+            a {
+                color: $grey !important;
+            }
+        }
+
+        a, span {
+            color: $beige !important;
+            font-size: 18px !important;
+            font-weight: 400 !important;
+            line-height: 22px !important;
+
+            @media(max-width: 800px) {
+                font-size: 14px !important;
+            }
+        }
+    }
+
+    .ant-pagination-item-ellipsis{
+        transform: translateY(15px);
+        @media(max-width: 800px) {
+            transform: translateY(10px);
+        }
+    }
+
+    svg {
+        height: 38px !important;
+        width: 38px !important;
+
+        @media(max-width: 800px) {
+            height: 28px !important;
+            width: 28px !important;
+        }
+    }
+}

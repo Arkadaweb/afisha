@@ -1,0 +1,90 @@
+.leave-message-modal {
+    position: relative;
+
+    .ant-modal-content {
+        background-color: transparent;
+        box-shadow: none;
+
+        .ant-modal-close {
+            display: none;
+        }
+    }
+
+    &-close {
+        cursor: pointer;
+        position: absolute;
+        top: 30px;
+        right: 30px;
+    }
+
+    &-form-button {
+        margin-top: 25px;
+    }
+
+    &-form-error {
+        margin-top: 25px;
+        padding: 13px 20px;
+        background-color: rgba(255, 74, 74, 0.08);
+        border-radius: 10px;
+
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 19px;
+        color: rgba(255, 74, 74, 1);
+    }
+
+    .ant-form-item-explain-error {
+        display: none;
+    }
+
+    h2 {
+        font-size: 30px;
+        font-weight: 500;
+        line-height: 36px;
+        color: $beige;
+        text-align: center;
+        margin-bottom: 25px;
+    }
+
+    p {
+        margin-top: 15px;
+
+        font-size: 16px;
+        font-weight: 300;
+        line-height: 19px;
+        color: $beige;
+        text-align: center;
+    }
+
+    input {
+        background-color: rgba(255, 255, 255, 0.1) !important;
+        color: $beige;
+
+        font-size: 18px;
+        font-weight: 300;
+        line-height: 22px;
+        border-color: transparent;
+
+        &::placeholder {
+            color: $beige !important;
+        }
+
+        &.ant-input-status-error {
+            color: rgba(255, 74, 74, 1) !important;
+
+            &::placeholder {
+                color: rgba(255, 74, 74, 1) !important;
+            }
+        }
+
+        &:focus {
+            border-color: transparent !important;
+        }
+
+        &:hover {
+            border-color: transparent !important;
+        }
+    }
+
+
+}

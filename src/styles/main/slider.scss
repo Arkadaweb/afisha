@@ -61,40 +61,41 @@
         height: 300px !important;
         overflow: hidden;
     }
-}
+    .slick-dots{
+        li{
 
-.slick-dots{
-    li{
-
-        @media(max-width: 1024px) {
-            margin: 0 !important;
-        }
-
-        button{
-            width: 12px;
-            height: 12px;
-            background-color: $beige5;
-            border-radius: 50px;
-
-            &:before{
-                content: '' !important;
-            }
             @media(max-width: 1024px) {
-                width: 8px;
-                height: 8px;
+                margin: 0 !important;
             }
-        }
-        &.slick-active{
+
             button{
                 width: 12px;
                 height: 12px;
-                background-color: $beige;
+                background-color: $beige5;
                 border-radius: 50px;
+
+                &:before{
+                    content: '' !important;
+                }
                 @media(max-width: 1024px) {
                     width: 8px;
                     height: 8px;
                 }
             }
+            &.slick-active{
+                button{
+                    width: 12px;
+                    height: 12px;
+                    background-color: $beige;
+                    border-radius: 50px;
+                    @media(max-width: 1024px) {
+                        width: 8px;
+                        height: 8px;
+                    }
+                }
+            }
         }
     }
 }
+
+

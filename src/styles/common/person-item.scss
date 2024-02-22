@@ -1,0 +1,41 @@
+.person-item {
+    width: 100%;
+    max-width: 295px;
+
+    &-img {
+        height: auto;
+        width: 100%;
+        position: relative;
+
+    }
+
+    h3 {
+        margin-top: 15px;
+        font-size: 20px;
+        font-weight: 400;
+        line-height: 24px;
+        color: $beige;
+
+        @media(max-width: 1024px) {
+            font-size: 18px;
+            font-weight: 400;
+            line-height: 22px;
+        }
+    }
+
+    p {
+        margin-top: 8px;
+
+        font-size: 16px;
+        font-weight: 300;
+        line-height: 19px;
+        color: $beige8;
+
+        @media(max-width: 1024px) {
+            font-size: 14px;
+            font-weight: 300;
+            line-height: 17px;
+        }
+    }
+
+}

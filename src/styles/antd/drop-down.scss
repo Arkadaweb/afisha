@@ -1,0 +1,47 @@
+.drop-down-button {
+    padding: 20px !important;
+}
+
+.ant-dropdown {
+    background: linear-gradient(90deg, #D8B851 0%, #EED972 21%, #F0DB73 38.14%, #EFC966 67.12%, #C49C39 100%);
+
+    border-radius: 10px;
+
+    ul {
+        background-color: transparent !important;
+        max-height: 160px;
+        max-width: 100%;
+        margin: 10px 5px 0 0 !important;
+        overflow-y: scroll;
+        padding: 0 !important;
+
+        &::-webkit-scrollbar {
+            width: 3px;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background-color: rgba(9, 5, 47, 1)
+        }
+
+        &::-webkit-scrollbar-track {
+            background: rgba(51, 51, 51, 0.3);
+        }
+    }
+
+    .ant-checkbox {
+
+        span {
+            width: 20px;
+            height: 20px;
+            background-color: transparent !important;
+            border: 1px solid rgba(44, 44, 44, 0.3) !important;
+        }
+    }
+    .ant-checkbox-checked .ant-checkbox-inner {
+        background-color: rgba(9, 5, 47, 1) !important;
+        border-color: red;
+    }
+    .ant-checkbox .ant-checkbox-inner:after{
+        border-color: rgba(197, 163, 94, 1);
+    }
+}
