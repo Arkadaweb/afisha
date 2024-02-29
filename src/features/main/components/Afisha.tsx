@@ -5,6 +5,7 @@ import Image from "next/dist/client/legacy/image";
 import testImage11 from '../../../../public/testImage11.jpg'
 import testImage31 from '../../../../public/testImage31.jpg'
 import testImage41 from '../../../../public/testImage41.jpg'
+import testImage51 from '../../../../public/testImage51.jpg'
 import {useOrderTicket} from "../../../components/modals/OrderTicketController";
 
 const {RangePicker} = DatePicker;
@@ -17,20 +18,20 @@ const Afisha: FC<PropsWithChildren<any>> = () => {
     const [isIos, setIsIos] = useState('')
 
     const items = [
-        {
-            id: 5428,
-            title: 'MINECRAFT ШОУ',
-            place: '17 февраля, 12:00 ДК Железнодорожников',
-            price: 'от 800 руб.',
-            img: testImage11,
-        },
-        {
-            id: 5427,
-            title: 'MINECRAFT ШОУ',
-            place: '17 февраля, 15:00 ДК Железнодорожников',
-            price: 'от 800 руб.',
-            img: testImage11
-        },
+        // {
+        //     id: 5428,
+        //     title: 'MINECRAFT ШОУ',
+        //     place: '17 февраля, 12:00 ДК Железнодорожников',
+        //     price: 'от 800 руб.',
+        //     img: testImage11,
+        // },
+        // {
+        //     id: 5427,
+        //     title: 'MINECRAFT ШОУ',
+        //     place: '17 февраля, 15:00 ДК Железнодорожников',
+        //     price: 'от 800 руб.',
+        //     img: testImage11
+        // },
         {
             id: 5387,
             title: 'Юлия Славянская',
@@ -44,6 +45,13 @@ const Afisha: FC<PropsWithChildren<any>> = () => {
             place: '09 апреля, 19:00 ДК Железнодорожников',
             price: 'от 1500 руб.',
             img: testImage41
+        },
+        {
+            id: 5936,
+            title: 'Группа лесоповал',
+            place: '25 апреля 21:00 Ресторан Максимилианс',
+            price: 'от 1500 руб.',
+            img: testImage51
         },
     ]
 

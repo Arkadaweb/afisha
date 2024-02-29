@@ -1,10 +1,67 @@
-import React, {FC, PropsWithChildren} from 'react';
+import React, {FC, PropsWithChildren, useEffect} from 'react';
 import MaxWithLayout from "../../layouts/MaxWithLayout";
 import SliderCustom from "./components/SliderCustom";
 import Afisha from "./components/Afisha";
 import ReactPlayer from "react-player";
+import {createEvent, createStore, createEffect, sample, EventCallable} from 'effector'
+import {useUnit} from "effector-react";
+//
+// interface StoreTest {
+//     isLoading: boolean,
+//     list: string[],
+//     isError: string
+// }
+//
+// const fetchUserReposFx = createEffect(async () => {
+//     const url = `https://jsonplaceholder.typicode.com/posts`;
+//     const req = await fetch(url);
+//     return req.json();
+// });
+//
+// export const $mainState = createStore<StoreTest>({
+//     isLoading: true,
+//     list: [],
+//     isError: ''
+// })
+//     .on(fetchUserReposFx.finally, (store, data) => {
+//         if (data.status === 'done') {
+//             return (
+//                 {
+//                     list: [...data.result],
+//                     isLoading: false,
+//                     isError: '',
+//                 }
+//             )
+//         } else if (data.status === 'fail') {
+//             return (
+//                 {
+//                     list: [],
+//                     isLoading: false,
+//                     isError: String(data.error),
+//                 }
+//             )
+//         } else {
+//             return (
+//                 {
+//                     list: [],
+//                     isLoading: false,
+//                     isError: '',
+//                 }
+//             )
+//         }
+//     })
 
 const MainContent: FC<PropsWithChildren<any>> = ({}) => {
+
+    // const srore = useUnit($mainState)
+    //
+    //
+    // useEffect(() => {
+    //     fetchUserReposFx();
+    // }, [])
+    //
+    // console.log(srore)
+
 
     return (
         <MaxWithLayout>
