@@ -55,6 +55,7 @@ const Afisha: FC<PropsWithChildren<any>> = () => {
         },
     ]
 
+
     const handleReset = () => {
         console.log('Выбранные даты:', selectedDates);
 
