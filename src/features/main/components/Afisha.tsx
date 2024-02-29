@@ -47,8 +47,8 @@ const Afisha: FC<PropsWithChildren<any>> = () => {
             img: testImage41
         },
         {
-            id: 5936,
-            title: 'Группа лесоповал',
+            id: 6134,
+            title: 'Группа есоповал',
             place: '25 апреля 21:00 Ресторан Максимилианс',
             price: 'от 1500 руб.',
             img: testImage51
