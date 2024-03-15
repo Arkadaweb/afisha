@@ -1,7 +1,8 @@
 import React from 'react';
 import CityIcon from "../../assets/icons/footer/CityIcon";
 import {useAppDispatch, useAppSelector} from "../../store/store";
-import {setCityOpen} from "../../store/slices/citySlice";
+import { useUnit } from "effector-react";
+import { $cityList, $currentCity, $isOpenCityModal, changeOpenCityModal } from "../../models/City";
 
 const CityDropDown = ({
                           backgroundColor = 'rgba(231, 207, 126, 1)',
@@ -9,49 +10,15 @@ const CityDropDown = ({
                           iconColor = 'rgba(29, 29, 27, 1)'
                       }) => {
 
-    const {currentCity} = useAppSelector((state: any) => state.city)
-    const dispatch = useAppDispatch()
-
-    const nav: any = [
-        {
-            id: 1,
-            path: '',
-            title: 'Главная'
-        },
-        {
-            id: 2,
-            path: '',
-            title: 'О компании'
-        },
-        {
-            id: 3,
-            path: '',
-            title: 'Афиша'
-        },
-        {
-            id: 4,
-            path: '',
-            title: 'Услуги'
-        },
-        {
-            id: 5,
-            path: '',
-            title: 'Портфолио'
-        },
-        {
-            id: 5,
-            path: '',
-            title: 'Контакты'
-        },
-    ]
+    const [currentCity] = useUnit([$currentCity])
 
     const onOpenCity = () => {
-        dispatch(setCityOpen())
+        changeOpenCityModal(true)
     }
 
     const sliceText = (text: any) =>{
         if (text?.length > 7){
-            return text.slice(0, 7) + '...'
+            return text?.slice(0, 7) + '...'
         } else {
             return text
         }
@@ -71,7 +38,7 @@ const CityDropDown = ({
                     color
                 }}
             >
-                {sliceText(currentCity)}
+                {sliceText(currentCity?.name)}
             </p>
         </div>
     );

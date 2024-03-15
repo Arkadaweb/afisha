@@ -2,7 +2,6 @@ import React, {FC, PropsWithChildren, useEffect, useState} from "react";
 import Meta from "../seo/Meta";
 import MainLayout from "../layouts/MainLayout";
 import MainContent from "../features/main/MainContent";
-import {useAppDispatch, useAppSelector} from "../store/store";
 
 const Home: FC<PropsWithChildren<any>> = ({
 

@@ -47,10 +47,15 @@
 
                 &-block {
                     display: flex;
-                    align-items: flex-start;
+                    align-items: center;
                     gap: 10px;
 
-
+                    span{
+                        min-width: 24px !important;
+                        min-height: 25px !important;
+                        width: 24px !important;
+                        height: 25px !important;
+                    }
                     svg {
                         min-height: 24px;
                         min-width: 24px;

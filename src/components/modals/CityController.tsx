@@ -1,64 +1,45 @@
-import React, {FC, PropsWithChildren, useContext, useEffect, useRef, useState} from 'react';
-import {Checkbox, Form, Input, message} from "antd";
-import Link from "next/link";
-import {useRouter} from "next/router";
-import {useAppDispatch, useAppSelector} from "../../store/store";
+import React, { FC, PropsWithChildren, useContext, useEffect, useRef, useState } from 'react';
 import CrossIcon from "../../assets/icons/common/CrossIcon";
-import {setCityOpen, setCity, setCityClose} from "../../store/slices/citySlice";
+import { useUnit } from "effector-react";
+import { $cityList, $currentCity, $isOpenCityModal, changeOpenCityModal, setCurrentCity } from "../../models/City";
 
 
-const CityController: FC<PropsWithChildren<any>> = ({children}) => {
+const CityController: FC<PropsWithChildren<any>> = ({ children }) => {
 
-    const {isOpen, currentCity} = useAppSelector(state => state.city)
-    const dispatch = useAppDispatch()
+  const [cities, currentCity, isOpenCityModal] = useUnit([$cityList, $currentCity, $isOpenCityModal])
 
-    const onClose = () => {
-        dispatch(setCityClose())
-    }
-
-    const onChooseCity = (item: any) => {
-        dispatch(setCity(item))
-        dispatch(setCityClose())
-    }
-
-    const citys = [
-        'Тюмень',
-        'Сургут',
-        'Нижневартовск',
-    ]
-
-    return (
-        <>
-            <div className={`city ${isOpen ? 'city-visible' : ''}`}>
-                <div className="city-wrapper">
-                    <div className="city-close" onClick={onClose}>
-                        <CrossIcon/>
-                    </div>
-                    <h3>
-                        Выберите ваш город
-                    </h3>
-                    <div className="city-list">
-                        {
-                            citys?.map((item: any) =>
-                                <div
-                                    onClick={() => onChooseCity(item)}
-                                    className='city-list-item'
-                                    style={{
-                                        color: currentCity !== item ? 'rgba(203, 159, 102, 1)' : 'rgba(226, 209, 175, 1)'
-                                    }}
-                                >
-                                    {item}
-                                </div>
-                            )
-                        }
-                    </div>
-
+  return (
+    <>
+      <div className={`city ${isOpenCityModal ? 'city-visible' : ''}`}>
+        <div className="city-wrapper">
+          <div className="city-close" onClick={() => changeOpenCityModal(false)}>
+            <CrossIcon />
+          </div>
+          <h3>
+            Выберите ваш город
+          </h3>
+          <div className="city-list">
+            {
+              cities?.map((item: any) =>
+                <div
+                  onClick={() => setCurrentCity(item)}
+                  className='city-list-item'
+                  style={{
+                    color: currentCity?.id !== item?.id ? 'rgba(203, 159, 102, 1)' : 'rgba(226, 209, 175, 1)'
+                  }}
+                >
+                  {item?.name}
                 </div>
-            </div>
-            {children}
-        </>
+              )
+            }
+          </div>
 
-    );
+        </div>
+      </div>
+      {children}
+    </>
+
+  );
 };
 
-export {CityController};
+export { CityController };
