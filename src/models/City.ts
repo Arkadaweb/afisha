@@ -1,5 +1,6 @@
 import { createEvent, createStore } from "effector";
-import { persist } from "@effector-storage/react-native-async-storage";
+import { persist } from 'effector-storage/local'
+
 
 export const $cityList = createStore<any>([])
 export const $currentCity = createStore<any>('')

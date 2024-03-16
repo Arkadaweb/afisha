@@ -10,7 +10,6 @@
   },
   "dependencies": {
     "@ant-design/icons": "^5.2.6",
-    "@effector-storage/react-native-async-storage": "^1.1.0",
     "@fancyapps/fancybox": "^3.5.7",
     "@reduxjs/toolkit": "^1.9.7",
     "@types/woocommerce__woocommerce-rest-api": "^1.0.5",
@@ -22,6 +21,7 @@
     "dayjs": "^1.11.10",
     "effector": "^23.2.0",
     "effector-react": "^23.2.0",
+    "effector-storage": "^7.1.0",
     "next": "14.0.1",
     "nprogress": "^0.2.0",
     "oauth-1.0a": "^2.2.5",
