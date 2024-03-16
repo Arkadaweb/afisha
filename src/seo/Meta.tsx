@@ -3,7 +3,6 @@ import Head from "next/head";
 
 const Meta: FC<PropsWithChildren<IMeta>> = ({
                                                 title,
-                                                pageTitle,
                                                 children,
                                                 metaData
                                             }) => {

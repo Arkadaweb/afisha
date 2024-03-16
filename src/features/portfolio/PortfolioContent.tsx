@@ -9,7 +9,9 @@ import type { MenuProps } from 'antd';
 
 const { useToken } = theme;
 
-const PortfolioContent: FC<PropsWithChildren<any>> = () => {
+const PortfolioContent: FC<PropsWithChildren<any>> = ({
+                                                          title
+                                                      }) => {
 
     const { token } = useToken();
 
@@ -268,7 +270,7 @@ const PortfolioContent: FC<PropsWithChildren<any>> = () => {
 
             <div className="partfolio">
                 <h1>
-                    Портфолио
+                    {title}
                 </h1>
                 <div className="partfolio-sort">
                     <Dropdown

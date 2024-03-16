@@ -20,6 +20,7 @@ import { LeaveMessageController } from "../components/modals/LeaveMessageControl
 import FetchStartProvider from "../providers/FetchStartProvider";
 
 import("dayjs/locale/ru");
+
 dayjs.extend(utc);
 dayjs.extend(timezone);
 dayjs.tz.setDefault('Europe/Moscow');

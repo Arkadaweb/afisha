@@ -1,241 +1,301 @@
-import React, {FC, PropsWithChildren, useEffect, useState} from 'react';
+import React, { FC, PropsWithChildren, useEffect, useState } from 'react';
 import MaxWithLayout from "../../layouts/MaxWithLayout";
-import {useRouter} from "next/navigation";
 import BreadCrumbs from "../../components/common/BreadCrumbs";
-import GoldButton from "../../components/common/GoldButton";
-import {useOrderTicket} from "../../components/modals/OrderTicketController";
-import testImage11 from "../../../public/testImage11.jpg";
-import testImage31 from "../../../public/testImage31.jpg";
-import testImage41 from "../../../public/testImage41.jpg";
-import afishaMainInfo from "../../../public/afisha-main-info.png";
 import partnerImg from "../../../public/partner-img.png";
 import CalendarIcon from "../../assets/icons/common/CalendarIcon";
-import {Button, DatePicker} from "antd";
+import { Button, DatePicker, message, Spin } from "antd";
 import Image from "next/dist/client/legacy/image";
-import CustomPagination from "../../components/common/CustomPagination";
 import PartnerItem from "../../components/common/PartnerItem";
 import LeaveMessageBlock from "../../components/common/LeaveMessageBlock";
 import Link from "next/link";
 import WeBanner from "../../components/common/WeBanner";
+import { useUnit } from "effector-react";
+import { $dateToSort } from "../../models/Afisha";
+import { get } from "../../api/request";
+import { LoadingOutlined } from "@ant-design/icons/lib";
+import dayjs from "dayjs";
 
-const {RangePicker} = DatePicker;
+const { RangePicker } = DatePicker;
 
-const AfishaContent: FC<PropsWithChildren<any>> = () => {
+const AfishaContent: FC<PropsWithChildren<any>> = ({
+                                                     title,
+                                                     pageData
+                                                   }) => {
 
-    const breadCrumbs = [
-        {
-            id: 1,
-            path: '/',
-            title: 'Главная'
-        },
-        {
-            id: 2,
-            path: '/',
-            title: 'Афиша'
-        },
-    ]
+  const breadCrumbs = [
+    {
+      id: 1,
+      path: '/',
+      title: 'Главная'
+    },
+    {
+      id: 2,
+      path: '/',
+      title: title
+    },
+  ]
 
-    const [selectedDates, setSelectedDates] = useState<any>([]);
-    const [pickerOpen, setPickerOpen] = useState<any>(false)
+  const dates = useUnit($dateToSort)
 
-    const items = [
-        {
-            id: 5428,
-            title: 'MINECRAFT ШОУ',
-            place: '17 февраля, 12:00 ДК Железнодорожников',
-            price: 'от 800 руб.',
-            img: testImage11,
-        },
-        {
-            id: 5427,
-            title: 'MINECRAFT ШОУ',
-            place: '17 февраля, 15:00 ДК Железнодорожников',
-            price: 'от 800 руб.',
-            img: testImage11
-        },
-        {
-            id: 5387,
-            title: 'Юлия Славянская',
-            place: '08 мая, 19:00 ДК Железнодорожников',
-            price: 'от 1000 руб.',
-            img: testImage31
-        },
-        {
-            id: 5929,
-            title: 'Однажды вечером',
-            place: '09 апреля, 19:00 ДК Железнодорожников',
-            price: 'от 1500 руб.',
-            img: testImage41
-        },
-        {
-            id: 5929,
-            title: 'Однажды вечером',
-            place: '09 апреля, 19:00 ДК Железнодорожников',
-            price: 'от 1500 руб.',
-            img: testImage41
-        },
-    ]
+  const [selectedDates, setSelectedDates] = useState<any>([]);
+  const [pickerOpen, setPickerOpen] = useState<any>(false)
 
-    const handleReset = () => {
-        console.log('Выбранные даты:', selectedDates);
+  const [isLoading, setIsLoading] = useState<any>(true)
+  const [isLoadingPartner, setIsLoadingPartner] = useState<any>(true)
+  const [afishes, setAfishes] = useState<any>([])
+  const [partners, setPartners] = useState<any>([])
+  const [page, setPage] = useState(1);
+  const [limit, setLimit] = useState(10);
 
-        setSelectedDates([]);
-    };
+  useEffect(() => {
+    setSelectedDates(dates)
+    getAfishes()
+    getPartners()
+  }, [])
 
-    const handleRangeChangeTable = (dateStrings: any) => {
-        console.log(dateStrings)
-        // setSelectedDates([dateStrings[0], dateStrings[1]])
+  useEffect(() => {
+    getAfishes()
+  }, [selectedDates])
+
+
+  const getAfishes = () => {
+    let link = 'wp-json/wp/v2/events?event_type=afisha'
+
+    if (selectedDates?.length !== 0 && selectedDates?.length && selectedDates?.every((item: any) => item !== undefined)) {
+      link += `&page=${page}&per_page=${limit}&date_before=${dayjs(selectedDates[0]).format('YYYY-MM-DD')}&date_after=${dayjs(selectedDates[1]).format('YYYY-MM-DD')}`
+    } else {
+      link += `&page=${page}&per_page=${limit}`
     }
 
-    const onClose = () => {
-        console.log('1')
-        setPickerOpen(false)
-    }
+    get(link)
+      .then((res: any) => {
+        setAfishes(res)
+        console.log('afishes')
+        console.log(res)
+      })
+      .catch(() => {
+        message.error('Ошибка при получении афиш')
+      })
+      .finally(() => {
+        setIsLoading(false)
+      });
+  }
+
+  const getPartners = () => {
+    let link = 'wp-json/wp/v2/afisha_partners'
+
+    get(link)
+      .then((res: any) => {
+        setPartners(res)
+      })
+      .catch(() => {
+        message.error('Ошибка при получении афиш')
+      })
+      .finally(() => {
+        setIsLoadingPartner(false)
+      });
+  }
+
+  const handleReset = () => {
+    console.log('Выбранные даты:', selectedDates);
+
+    setSelectedDates([]);
+  };
+
+  const handleRangeChangeTable = (dateStrings: any) => {
+    console.log('dateStrings')
+    setSelectedDates([dateStrings[0], dateStrings[1]])
+  }
+
+  const onClose = () => {
+    console.log('1')
+    setPickerOpen(false)
+  }
 
 
-    const highlightedDates = [
-        '2023-12-17',
-        '2023-12-15',
-        '2023-12-13',
-        // Добавьте другие даты, которые вы хотите выделить
-    ];
+  const highlightedDates = [
+    '2023-12-17',
+    '2023-12-15',
+    '2023-12-13',
+    // Добавьте другие даты, которые вы хотите выделить
+  ];
 
-    // Функция для проверки, нужно ли выделить определенный день
-    const isHighlighted = (date: any) => {
-        return highlightedDates.includes(date.format('YYYY-MM-DD'));
-    };
+  // Функция для проверки, нужно ли выделить определенный день
+  const isHighlighted = (date: any) => {
+    return highlightedDates.includes(date.format('YYYY-MM-DD'));
+  };
 
-    const dateCellRender = (current: any) => {
-        const date = current.format('YYYY-MM-DD');
-        // if (isHighlighted(current)) {
-        //     return (
-        //         <div className="highlighted-date">
-        //             {current.date()}
-        //         </div>
-        //     );
-        // }
-        return <div>{current.date()}</div>;
-    };
+  const dateCellRender = (current: any) => {
+    const date = current.format('YYYY-MM-DD');
+    // if (isHighlighted(current)) {
+    //     return (
+    //         <div className="highlighted-date">
+    //             {current.date()}
+    //         </div>
+    //     );
+    // }
+    return <div>{current.date()}</div>;
+  };
 
-    return (
-        <MaxWithLayout isPaddingTop={true}>
-            <BreadCrumbs elements={breadCrumbs}/>
+  return (
+    <MaxWithLayout isPaddingTop={true}>
+      <BreadCrumbs elements={breadCrumbs} />
 
-            <div className="afisha-content-title">
-                <h2>
-                    АФИША
-                </h2>
-            </div>
-            <div className="afisha-calendar">
-                <div className="afisha-calendar-wrap">
-                    <button
-                        onClick={() => setPickerOpen(true)}
-                    >
-                        <CalendarIcon/>
-                        Выбрать дату
-                    </button>
+      <div className="afisha-content-title">
+        <h2>
+          {title}
+        </h2>
+      </div>
+      <div className="afisha-calendar">
+        <div className="afisha-calendar-wrap">
+          <button
+            onClick={() => setPickerOpen(true)}
+          >
+            <CalendarIcon />
+            Выбрать дату
+          </button>
 
-                    <RangePicker
-                        dateRender={dateCellRender}
-                        format={"dd.MM.yyyy"}
-                        onCalendarChange={(dates) => {
-                            console.log(dates)
-                            setSelectedDates(dates);
-                        }}
-                        value={selectedDates}
-                        onOpenChange={(e) => {
-                            if (!e) {
-                                setPickerOpen(false)
-                            }
-                        }}
-                        open={pickerOpen}
-                        onChange={async (date: any) => {
-                            await handleRangeChangeTable(date)
-                            await setPickerOpen(false)
-                        }}
-                        renderExtraFooter={(e) => {
-                            return (
-                                <div className="extra-footer-calendar">
-                                    <Button
-                                        onClick={handleReset}
-                                        className="extra-footer-calendar-button"
-                                    >
-                                        Сбросить
-                                    </Button>
-                                    <Button
-                                        onClick={onClose}
-                                        className="extra-footer-calendar-button"
-                                    >
-                                        Закрыть
-                                    </Button>
-                                </div>
-                            )
-                        }}
-                    />
+          <RangePicker
+            dateRender={dateCellRender}
+            format={"dd.MM.yyyy"}
+            onCalendarChange={(dates) => {
+              console.log(dates)
+              setSelectedDates(dates);
+            }}
+            value={selectedDates}
+            onOpenChange={(e) => {
+              if (!e) {
+                setPickerOpen(false)
+              }
+            }}
+            open={pickerOpen}
+            onChange={async(date: any) => {
+              await handleRangeChangeTable(date)
+              await setPickerOpen(false)
+            }}
+            renderExtraFooter={(e) => {
+              return (
+                <div className="extra-footer-calendar">
+                  <Button
+                    onClick={handleReset}
+                    className="extra-footer-calendar-button"
+                  >
+                    Сбросить
+                  </Button>
+                  <Button
+                    onClick={onClose}
+                    className="extra-footer-calendar-button"
+                  >
+                    Закрыть
+                  </Button>
                 </div>
+              )
+            }}
+          />
+        </div>
 
-            </div>
+      </div>
+      {
+        isLoading
+          ? <div
+            style={{
+              height: '100%',
+              width: '100%',
+              paddingTop: 200,
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              textAlign: "center",
+            }}
+          >
+            <Spin
+              indicator={<LoadingOutlined style={{ fontSize: 120, color: '#fff' }} />}
+            />
+          </div>
+          :
+          <>
             <div className="afisha-items">
-                {
-                    items?.map((item: any) =>
-                        <Link href={'/afisha/single'} className="afisha-items-item">
-                            <div className="afisha-items-item-top">
-                                <h2>
-                                    {item?.title}
-                                </h2>
-                                <p>
-                                    {item?.place}
-                                </p>
-                                <h3>
-                                    {item?.price}
-                                </h3>
-                                <div className="afisha-items-item-top-bot"/>
-                            </div>
-                            <div className="afisha-items-item-bottom">
-                                <Image
-                                    src={item?.img}
-                                    // layout={'fill'}
-                                    // objectFit={'cover'}
-                                    // objectFit={'fill'}
-                                    objectFit={'contain'}
-                                    layout="responsive"
-                                />
-                                <div className="afisha-items-item-bottom-bot"/>
-                            </div>
-                        </Link>
-                    )
-                }
+              {
+                afishes?.map((item: any) =>
+                  <Link href={`/afisha/${item?.slug}`} className="afisha-items-item">
+                    <div className="afisha-items-item-top">
+                      <h2>
+                        {item?.title?.rendered}
+                      </h2>
+                      <p>
+                        {dayjs(item?.date_gmt).format("DD MMMM, HH:mm")} {' '}
+                        {item?.event_location}
+                      </p>
+                      <h3>
+                        от {item?.btickets_min_price} р.
+                      </h3>
+                      <div className="afisha-items-item-top-bot" />
+                    </div>
+                    <div className="afisha-items-item-bottom">
+                      <Image
+                        src={item?.event_preview_image}
+                        objectFit={'contain'}
+                        layout="responsive"
+                        width={70}
+                        height={100}
+                      />
+                      <div className="afisha-items-item-bottom-bot" />
+                    </div>
+                  </Link>
+                )
+              }
             </div>
 
-            <div className="afisha-content-pagination">
-                <CustomPagination/>
-            </div>
+            {/*<div className="afisha-content-pagination">*/}
+            {/*  <CustomPagination />*/}
+            {/*</div>*/}
+          </>
+      }
 
-            <div className="afisha-content-info">
-                <WeBanner/>
-            </div>
 
-            <div className="afisha-content-partners">
-                <h2>
-                    Информационные партнеры
-                </h2>
-                <div className="afisha-content-partners-items">
-                    <PartnerItem img={partnerImg}/>
-                    <PartnerItem img={partnerImg}/>
-                    <PartnerItem img={partnerImg}/>
-                    <PartnerItem img={partnerImg}/>
-                    <PartnerItem img={partnerImg}/>
-                    <PartnerItem img={partnerImg}/>
-                    <PartnerItem img={partnerImg}/>
-                </div>
-            </div>
+      <div className="afisha-content-info">
+        <WeBanner bannerData={pageData?.about}/>
+      </div>
 
-            <div className="afisha-content-questions">
-                <LeaveMessageBlock/>
+      {
+        isLoading
+          ? <div
+            style={{
+              height: '100%',
+              width: '100%',
+              paddingTop: 200,
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              textAlign: "center",
+            }}
+          >
+            <Spin
+              indicator={<LoadingOutlined style={{ fontSize: 120, color: '#fff' }} />}
+            />
+          </div>
+          :
+          <div className="afisha-content-partners">
+            <h2>
+              Информационные партнеры
+            </h2>
+            <div className="afisha-content-partners-items">
+              {
+                partners?.map((item: any) =>
+                  <PartnerItem img={item?.partner_image_link} />
+                )
+              }
             </div>
+          </div>
+      }
 
-        </MaxWithLayout>
-    );
+
+      <div className="afisha-content-questions">
+        <LeaveMessageBlock />
+      </div>
+
+    </MaxWithLayout>
+  );
 };
 
 export default AfishaContent;

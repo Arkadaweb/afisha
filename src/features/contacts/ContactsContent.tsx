@@ -11,7 +11,8 @@ import InstIcon from "../../assets/icons/contscts/InstIcon";
 import Image from "next/dist/client/legacy/image";
 
 const ContactsContent: FC<PropsWithChildren<any>> = ({
-                                                       pageData
+                                                       pageData,
+                                                       title
                                                      }) => {
 
   const breadCrumbs = [
@@ -33,7 +34,7 @@ const ContactsContent: FC<PropsWithChildren<any>> = ({
 
       <div className="contacts-content">
         <h1>
-          Контакты
+          {title}
         </h1>
         <div className="contacts-content-wrap">
           <div className="contacts-content-wrap-info">

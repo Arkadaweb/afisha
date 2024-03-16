@@ -9,9 +9,9 @@ const PartnerItem: FC<PropsWithChildren<any>> = ({
         <div className='partner-item'>
             <Image
                 src={img}
-
                 objectFit={'contain'}
-                layout="responsive"
+                layout="fill"
+
             />
         </div>
     );

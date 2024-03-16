@@ -12,9 +12,12 @@ const Contacts: FC<PropsWithChildren<any>> = ({
   console.log(pageData)
 
   return (
-        <Meta title={'Контакты'}>
+        <Meta title={'Контакты'} metaData={pageData}>
             <MainLayout>
-                <ContactsContent pageData={pageData}/>
+                <ContactsContent
+                  pageData={pageData?.page_fields}
+                  title={pageData?.title?.rendered ? pageData?.title?.rendered : 'Направления деятельности'}
+                />
             </MainLayout>
         </Meta>
     );
@@ -24,8 +27,7 @@ export async function getStaticProps(context: any) {
 
   try {
 
-    const pageData: any = await get(`wp-json/afisha-rest-api/v1/page/contacts`);
-    console.log(pageData)
+    const pageData: any = await get(`wp-json/wp/v2/pages/60`);
 
     return {
       props: {

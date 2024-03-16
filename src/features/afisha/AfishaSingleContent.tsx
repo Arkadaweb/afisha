@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, { FC, PropsWithChildren, useEffect, useRef, useState } from 'react';
 import MaxWithLayout from "../../layouts/MaxWithLayout";
 import BreadCrumbs from "../../components/common/BreadCrumbs";
 import Image from "next/dist/client/legacy/image";
@@ -10,8 +10,13 @@ import PartnerItem from "../../components/common/PartnerItem";
 import partnerImg from "../../../public/partner-img.png";
 import ReactPlayer from "react-player";
 import {useOrderTicket} from "../../components/modals/OrderTicketController";
+import dayjs from "dayjs";
+import utc from "dayjs/plugin/utc";
+import timezone from "dayjs/plugin/timezone";
 
-const AfishaSingleContent = () => {
+const AfishaSingleContent: FC<PropsWithChildren<any>>  = ({
+                                 pageData
+                             }) => {
 
     const playerRef = useRef(null);
 
@@ -28,6 +33,13 @@ const AfishaSingleContent = () => {
             })
         }
     }
+
+    useEffect(() => {
+        dayjs.extend(utc);
+        dayjs.extend(timezone);
+        dayjs.tz.setDefault('Europe/Moscow');
+        dayjs.locale('ru');
+    }, [])
 
     useEffect(() => {
         if (typeof window !== 'undefined' && window.navigator) {
@@ -57,7 +69,7 @@ const AfishaSingleContent = () => {
         {
             id: 2,
             path: '/afisha',
-            title: 'Название мероприятия'
+            title: pageData?.title?.rendered
         },
     ]
 
@@ -68,40 +80,35 @@ const AfishaSingleContent = () => {
             <div className="afisha-single-main">
                 <div className="afisha-single-main-img">
                     <Image
-                        src={afishaSingle}
-                        // layout={'fill'}
-                        // objectFit={'cover'}
-                        // objectFit={'fill'}
-                        objectFit={'contain'}
-                        layout="responsive"
+                      src={pageData?.event_preview_image}
+                      objectFit={'contain'}
+                      layout="responsive"
+                      width={100}
+                      height={145}
                     />
                 </div>
                 <div className="afisha-single-main-data">
                     <h1>
-                        MINECRAFT ШОУ
+                        {pageData?.title?.rendered}
                     </h1>
                     <div className="afisha-single-main-data-info">
                         <div className="afisha-single-main-data-info-block">
                             <TimeIcon/>
-                            17 февраля, 12:00
+                            {dayjs(pageData?.date_gmt).format("DD MMMM, HH:mm")} {' '}
                         </div>
                         <div className="afisha-single-main-data-info-block">
                             <CalendarIcon/>
-                            ДК Железнодорожников
+                            {pageData?.event_location}
                         </div>
                     </div>
                     <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                        laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-                        voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
-                        non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+                        {pageData?.description}
                     </p>
                     <div className="afisha-single-main-data-price">
-                        от 800 руб.
+                        от {pageData?.btickets_min_price} р.
                     </div>
                     <GoldButton
-                        onClick={() => onOpenAfisha({id: 1})}
+                        onClick={() => onOpenAfisha({id: pageData?.btickets_id})}
                         title={'Купить билет'}
                         padding={'22px 80px'}
                     />
@@ -113,14 +120,11 @@ const AfishaSingleContent = () => {
                     Партнеры мероприятия
                 </h2>
                 <div className="afisha-content-partners-items">
-                    <PartnerItem img={partnerImg}/>
-                    <PartnerItem img={partnerImg}/>
-                    <PartnerItem img={partnerImg}/>
-                    <PartnerItem img={partnerImg}/>
-                    <PartnerItem img={partnerImg}/>
-                    <PartnerItem img={partnerImg}/>
-                    <PartnerItem img={partnerImg}/>
-                    <PartnerItem img={partnerImg}/>
+                    {
+                        pageData?.partners?.map((item: any) =>
+                          <PartnerItem img={item?.image_link}/>
+                        )
+                    }
                 </div>
             </div>
 
@@ -131,7 +135,7 @@ const AfishaSingleContent = () => {
                 <div className="afisha-single-video-wrap">
                     <ReactPlayer
                         ref={playerRef}
-                        url={'https://www.youtube.com/watch?v=HghHApc6uRY'}
+                        url={pageData?.video_link}
                         width="100%"
                         height="100%"
                         controls
@@ -140,15 +144,8 @@ const AfishaSingleContent = () => {
             </div>
 
             <div className="afisha-single-info">
-                <p>
-                    Организатор: ООО "Компас"
-                </p>
-                <p>
-                    Адрес: 000000, г. Тюмень, ул. _____________
-                </p>
-                <p>
-                    ИНН: 0000000000 ОГРН: 000000000000
-                </p>
+                <p dangerouslySetInnerHTML={{__html: pageData?.event_organizer_text || ''}}/>
+
             </div>
 
 

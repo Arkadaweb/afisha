@@ -4,7 +4,9 @@ import afishaMainInfo from "../../../public/afisha-main-info.png";
 import GoldButton from "./GoldButton";
 import {useRouter} from "next/router";
 
-const WeBanner: FC<PropsWithChildren<any>> = () => {
+const WeBanner: FC<PropsWithChildren<any>> = ({
+                                                bannerData
+                                              }) => {
 
     const router = useRouter()
 
@@ -12,19 +14,19 @@ const WeBanner: FC<PropsWithChildren<any>> = () => {
         <div className="we-banner-info">
             <div className="we-banner-info-img">
                 <Image
-                    src={afishaMainInfo}
+                    src={bannerData?.image_link}
                     objectFit={'contain'}
                     layout="responsive"
+                    width={100}
+                    height={60}
                 />
             </div>
             <div className="we-banner-info-data">
                 <h2>
-                    Мы ежегодно организуем более 60 мероприятий
+                  {bannerData?.tittle}
                 </h2>
                 <p>
-                    Концерты Юлии Савичевой, Нодара Ревия, Юлии Славянской, Варвары, MILANA STAR, выступления Ольги
-                    Сычевой, группы «Белый орёл», Московского музыкального театра «Экспериментъ», оперетта «Сильва»
-                    и другие
+                  {bannerData?.description}
                 </p>
                 <GoldButton
                     onClick={() => router.push('about')}

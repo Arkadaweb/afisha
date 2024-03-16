@@ -5,7 +5,9 @@ import DirectionItem from "./components/DirectionItem";
 import WeBanner from "../../components/common/WeBanner";
 import PartnerSlider from "../../components/common/PartnerSlider";
 
-const DirectionContent: FC<PropsWithChildren<any>> = () => {
+const DirectionContent: FC<PropsWithChildren<any>> = ({
+                                                          title
+                                                      }) => {
 
     const breadCrumbs = [
         {
@@ -16,7 +18,7 @@ const DirectionContent: FC<PropsWithChildren<any>> = () => {
         {
             id: 2,
             path: '/',
-            title: 'Направления деятельности'
+            title: title
         },
     ]
 
@@ -26,7 +28,7 @@ const DirectionContent: FC<PropsWithChildren<any>> = () => {
 
             <div className="direction-content">
                 <h1>
-                    Направления деятельности
+                    {title}
                 </h1>
 
                 <div className="direction-content-items">

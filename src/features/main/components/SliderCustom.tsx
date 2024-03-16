@@ -8,9 +8,10 @@ import slide2 from '../../../../public/slide2.png'
 import slide3 from '../../../../public/slide3.png'
 import slide1 from '../../../../public/slide1.jpg'
 import slide4 from '../../../../public/slide4.jpg'
+import Link from "next/link";
 
 const SliderCustom: FC<PropsWithChildren<any>> = ({
-                                                      elements
+                                                      slides
                                                   }) => {
 
 
@@ -26,7 +27,7 @@ const SliderCustom: FC<PropsWithChildren<any>> = ({
         arrows: false,
         dots: true,
         loop: true,
-        autoplay: true,
+        // autoplay: true,
         autoplaySpeed: 5000,
     };
 
@@ -44,39 +45,39 @@ const SliderCustom: FC<PropsWithChildren<any>> = ({
     };
 
 
-    const slides = [
-        {
-            id: 1,
-            src: slide1
-        },
-        // {
-        //         //     id: 2,
-        //         //     src: slide2
-        //         // },
-        {
-            id: 3,
-            src: slide3
-        },
-        {
-            id: 4,
-            src: slide4
-        },
-    ]
+    // const slides = [
+    //     {
+    //         id: 1,
+    //         src: slide1
+    //     },
+    //     // {
+    //     //         //     id: 2,
+    //     //         //     src: slide2
+    //     //         // },
+    //     {
+    //         id: 3,
+    //         src: slide3
+    //     },
+    //     {
+    //         id: 4,
+    //         src: slide4
+    //     },
+    // ]
 
     return (
         <div className="slider-content">
             <Slider ref={(c) => (slider = c)} {...settings} beforeChange={handleBeforeChange}>
                 {
                     slides?.map((item: any) =>
-                        <div className="slider-content-item" id={item.id}>
+                        <Link href={`afisha/${item.page_link}`} className="slider-content-item" id={item.page_link}>
                             <Image
-                                // layout={'fill'}
-                                src={item.src}
-                                objectFit="contain"
-                                width={undefined}
-                                height={undefined}
+                                src={item.image_link}
+                                objectFit={'contain'}
+                                layout="responsive"
+                                width={100}
+                                height={39}
                             />
-                        </div>
+                        </Link>
                     )
                 }
             </Slider>

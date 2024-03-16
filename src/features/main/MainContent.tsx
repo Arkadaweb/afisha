@@ -3,72 +3,17 @@ import MaxWithLayout from "../../layouts/MaxWithLayout";
 import SliderCustom from "./components/SliderCustom";
 import Afisha from "./components/Afisha";
 import ReactPlayer from "react-player";
-import {createEvent, createStore, createEffect, sample, EventCallable} from 'effector'
-import {useUnit} from "effector-react";
-//
-// interface StoreTest {
-//     isLoading: boolean,
-//     list: string[],
-//     isError: string
-// }
-//
-// const fetchUserReposFx = createEffect(async () => {
-//     const url = `https://jsonplaceholder.typicode.com/posts`;
-//     const req = await fetch(url);
-//     return req.json();
-// });
-//
-// export const $mainState = createStore<StoreTest>({
-//     isLoading: true,
-//     list: [],
-//     isError: ''
-// })
-//     .on(fetchUserReposFx.finally, (store, data) => {
-//         if (data.status === 'done') {
-//             return (
-//                 {
-//                     list: [...data.result],
-//                     isLoading: false,
-//                     isError: '',
-//                 }
-//             )
-//         } else if (data.status === 'fail') {
-//             return (
-//                 {
-//                     list: [],
-//                     isLoading: false,
-//                     isError: String(data.error),
-//                 }
-//             )
-//         } else {
-//             return (
-//                 {
-//                     list: [],
-//                     isLoading: false,
-//                     isError: '',
-//                 }
-//             )
-//         }
-//     })
 
-const MainContent: FC<PropsWithChildren<any>> = ({}) => {
-
-    // const srore = useUnit($mainState)
-    //
-    //
-    // useEffect(() => {
-    //     fetchUserReposFx();
-    // }, [])
-    //
-    // console.log(srore)
-
+const MainContent: FC<PropsWithChildren<any>> = ({
+                                                   pageData,
+                                                 }) => {
 
     return (
         <MaxWithLayout>
             <div className="main-content">
                 <div className="main-content-video">
                     <ReactPlayer
-                        url={'https://xn--80atghghgz.xn--p1ai/wp-content/uploads/2024/01/Компас_логотип_анимация_933х791_с_синим_фоном_вар_2.mp4'}
+                        url={pageData?.logo?.file_link}
                         controls={false}
                         playing={true}
                         loop={true}
@@ -82,7 +27,7 @@ const MainContent: FC<PropsWithChildren<any>> = ({}) => {
 
                 {/*</div>*/}
                 <div className="main-content-slider">
-                    <SliderCustom/>
+                    <SliderCustom slides={pageData?.slider}/>
                 </div>
                 <div className="main-content-afisha">
                     <Afisha/>
