@@ -7,6 +7,7 @@ import { get } from "../api/request";
 const Home: FC<PropsWithChildren<any>> =  ({
                                             pageData,
                                           }) => {
+
   return (
     <Meta title={'Главная'} metaData={pageData}>
       <MainLayout>
