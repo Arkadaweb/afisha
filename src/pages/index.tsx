@@ -9,7 +9,6 @@ const Home: FC<PropsWithChildren<any>> =  ({
                                           }) => {
 
 
-
   return (
     <Meta title={'Главная'} metaData={pageData}>
       <MainLayout>
