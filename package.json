@@ -35,6 +35,7 @@
     "redux": "^4.2.1",
     "redux-persist": "^6.0.0",
     "sass": "^1.69.5",
+    "sharp": "^0.33.2",
     "slick-carousel": "^1.8.1",
     "use-debounce": "^10.0.0"
   },

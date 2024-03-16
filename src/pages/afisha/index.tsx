@@ -22,9 +22,9 @@ const Home: FC<PropsWithChildren<any>> = ({
 
 export async function getStaticProps(context: any){
 
-  const pageData: any = await get(`wp-json/wp/v2/pages/100`);
-
   try {
+    const pageData: any = await get(`wp-json/wp/v2/pages/100`);
+
     return {
       props: {
         pageData: pageData
