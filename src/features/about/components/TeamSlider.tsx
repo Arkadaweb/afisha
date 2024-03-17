@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { FC, PropsWithChildren, useState } from 'react';
 import slide1 from "../../../../public/slide1.jpg";
 import slide2 from "../../../../public/slide2.png";
 import slide3 from "../../../../public/slide3.png";
@@ -9,7 +9,9 @@ import PartnerItem from "../../../components/common/PartnerItem";
 import partnerImg from "../../../../public/partner-img.png";
 import PersonItem from "./PersonItem";
 
-const TeamSlider = () => {
+const TeamSlider: FC<PropsWithChildren<any>>  = ({
+                        slides
+                    }) => {
     const [isPrevButtonDisabled, setIsPrevButtonDisabled] = useState(true);
     const [isNextButtonDisabled, setIsNextButtonDisabled] = useState(false);
 
@@ -54,28 +56,28 @@ const TeamSlider = () => {
     };
 
 
-    const slides = [
-        {
-            id: 1,
-            src: slide1
-        },
-        {
-            id: 2,
-            src: slide2
-        },
-        {
-            id: 3,
-            src: slide3
-        },
-        {
-            id: 4,
-            src: slide3
-        },
-        {
-            id: 5,
-            src: slide3
-        },
-    ]
+    // const slides = [
+    {/*    {*/}
+    {/*        id: 1,*/}
+    {/*        src: slide1*/}
+    {/*    },*/}
+    {/*    {*/}
+    {/*        id: 2,*/}
+    //         src: slide2
+    //     },
+    //     {
+    {/*        id: 3,*/}
+    //         src: slide3
+    //     },
+    //     {
+    //         id: 4,
+    //         src: slide3
+    //     },
+    //     {
+    //         id: 5,
+    //         src: slide3
+    //     },
+    // ]
 
     return (
         <div className="slider-verticle">
@@ -106,7 +108,7 @@ const TeamSlider = () => {
                 {
                     slides?.map((item: any) =>
                         <div className="slider-verticle-item" id={item.id}>
-                            <PersonItem/>
+                            <PersonItem item={item}/>
                         </div>
                     )
                 }

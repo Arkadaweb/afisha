@@ -1,23 +1,27 @@
-import React from 'react';
+import React, { FC, PropsWithChildren } from 'react';
 import personItemImg from '../../../../public/person-item-img.png'
 import Image from "next/dist/client/legacy/image";
 
-const PersonItem = () => {
+const PersonItem: FC<PropsWithChildren<any>> = ({
+                      item
+                    }) => {
 
     return (
         <div className='person-item'>
             <div className="person-item-img">
                 <Image
-                    src={personItemImg}
-                    objectFit={'cover'}
+                    src={item?.image_link}
+                    objectFit={'contain'}
                     layout="responsive"
+                    width={91}
+                    height={100}
                 />
             </div>
             <h3>
-                Имя Фамилия
+              {item?.name}
             </h3>
             <p>
-                Должность
+              {item?.job_title}
             </p>
         </div>
     );

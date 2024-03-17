@@ -14,6 +14,7 @@ import { $dateToSort } from "../../models/Afisha";
 import { get } from "../../api/request";
 import { LoadingOutlined } from "@ant-design/icons/lib";
 import dayjs from "dayjs";
+import CustomPagination from "../../components/common/CustomPagination";
 
 const { RangePicker } = DatePicker;
 
@@ -44,8 +45,9 @@ const AfishaContent: FC<PropsWithChildren<any>> = ({
   const [isLoadingPartner, setIsLoadingPartner] = useState<any>(true)
   const [afishes, setAfishes] = useState<any>([])
   const [partners, setPartners] = useState<any>([])
+  const [totalPage, setTotalPage] = useState(null);
   const [page, setPage] = useState(1);
-  const [limit, setLimit] = useState(10);
+  const [limit, setLimit] = useState(8);
 
   useEffect(() => {
     setSelectedDates(dates)
@@ -55,10 +57,11 @@ const AfishaContent: FC<PropsWithChildren<any>> = ({
 
   useEffect(() => {
     getAfishes()
-  }, [selectedDates])
+  }, [selectedDates, page])
 
 
   const getAfishes = () => {
+    setIsLoading(true)
     let link = 'wp-json/wp/v2/events?event_type=afisha'
 
     if (selectedDates?.length !== 0 && selectedDates?.length && selectedDates?.every((item: any) => item !== undefined)) {
@@ -69,8 +72,8 @@ const AfishaContent: FC<PropsWithChildren<any>> = ({
 
     get(link)
       .then((res: any) => {
-        setAfishes(res)
-        console.log('afishes')
+        setAfishes(res?.data)
+        setTotalPage(res?.headers['X-WP-Total'])
         console.log(res)
       })
       .catch(() => {
@@ -246,19 +249,24 @@ const AfishaContent: FC<PropsWithChildren<any>> = ({
               }
             </div>
 
-            {/*<div className="afisha-content-pagination">*/}
-            {/*  <CustomPagination />*/}
-            {/*</div>*/}
+            <div className="afisha-content-pagination">
+              <CustomPagination
+                total={totalPage}
+                limit={limit}
+                page={page}
+                changePage={setPage}
+              />
+            </div>
           </>
       }
 
 
       <div className="afisha-content-info">
-        <WeBanner bannerData={pageData?.about}/>
+        <WeBanner bannerData={pageData?.about} />
       </div>
 
       {
-        isLoading
+        isLoadingPartner
           ? <div
             style={{
               height: '100%',
@@ -291,7 +299,7 @@ const AfishaContent: FC<PropsWithChildren<any>> = ({
 
 
       <div className="afisha-content-questions">
-        <LeaveMessageBlock />
+        <LeaveMessageBlock subject={'[Страница афиша]: Главная форма'}/>
       </div>
 
     </MaxWithLayout>

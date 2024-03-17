@@ -11,7 +11,9 @@ const Portfolio: FC<PropsWithChildren<any>> = ({
     return (
         <Meta title={'Портфолио'}  metaData={pageData}>
             <MainLayout>
-                <PortfolioContent title={pageData?.title?.rendered ? pageData?.title?.rendered : 'Направления деятельности'}/>
+                <PortfolioContent
+                  title={pageData?.title?.rendered ? pageData?.title?.rendered : 'Направления деятельности'}
+                />
             </MainLayout>
         </Meta>
     );

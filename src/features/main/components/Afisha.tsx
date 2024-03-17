@@ -25,9 +25,9 @@ const Afisha: FC<PropsWithChildren<any>> = ({}) => {
   const [afishes, setAfishes] = useState<any>([])
 
   const getAfishes = () => {
-    get(`wp-json/wp/v2/events?per_page=10&event_type=afisha`)
+    get(`wp-json/wp/v2/events?per_page=10&event_type=afisha&page=1&per_page=4`)
       .then((res: any) => {
-        setAfishes(res)
+        setAfishes(res?.data)
       })
       .catch()
       .finally(() => {

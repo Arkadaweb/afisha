@@ -1,4 +1,4 @@
-import React, { FC, PropsWithChildren } from 'react';
+import React, { FC, PropsWithChildren, useEffect, useState } from 'react';
 import MaxWithLayout from "../../layouts/MaxWithLayout";
 import BreadCrumbs from "../../components/common/BreadCrumbs";
 import Image from "next/dist/client/legacy/image";
@@ -10,11 +10,14 @@ import DirectionItem from "../direction/components/DirectionItem";
 import GoldButton from "../../components/common/GoldButton";
 import LeaveMessageBlock from "../../components/common/LeaveMessageBlock";
 import StarItem from "./components/StarItem";
+import { get } from "../../api/request";
+import { message, Spin } from "antd";
+import { LoadingOutlined } from "@ant-design/icons/lib";
 
 const AboutContent: FC<PropsWithChildren<any>> = ({
-                                                    title
+                                                    title,
+                                                    pageData
                                                   }) => {
-
 
   const breadCrumbs = [
     {
@@ -29,6 +32,27 @@ const AboutContent: FC<PropsWithChildren<any>> = ({
     },
   ]
 
+  const [isLoadingDirections, setIsLoadingDirections] = useState<any>(true)
+  const [directions, setDirections] = useState<any>([])
+  const getDirections = () => {
+    let link = 'wp-json/wp/v2/activities_services'
+
+    get(link)
+      .then((res: any) => {
+        setDirections(res)
+      })
+      .catch(() => {
+        message.error('Ошибка при получении направлений')
+      })
+      .finally(() => {
+        setIsLoadingDirections(false)
+      });
+  }
+
+  useEffect(() => {
+    getDirections()
+  }, [])
+
   return (
     <MaxWithLayout isPaddingTop={true}>
       <BreadCrumbs elements={breadCrumbs} />
@@ -39,57 +63,68 @@ const AboutContent: FC<PropsWithChildren<any>> = ({
         </h1>
         <div className="about-intro-img">
           <Image
-            src={aboutMainImg}
-            // layout={'fill'}
-            // objectFit={'cover'}
-            // objectFit={'fill'}
+            src={pageData?.intro_image_link}
             objectFit={'cover'}
             layout="fill"
           />
         </div>
         <div className="about-desc">
           <h2>
-            История компании
+            {pageData?.title_description}
           </h2>
           <div className="about-desc-p">
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-              labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-              laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-              voluptate
+              {pageData?.description_column_1}
             </p>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-              labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-              laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-              voluptate
+              {pageData?.description_column_2}
             </p>
           </div>
         </div>
 
         <div className="about-team">
-          <TeamSlider />
+          <TeamSlider slides={pageData?.slider_team?.items} />
         </div>
 
         <div className="about-work-with-us">
-          <PartnerSlider />
+          <PartnerSlider slides={pageData?.slider_partners} />
         </div>
 
         <div className="about-letters">
-          <LettersSlider />
+          <LettersSlider slides={pageData?.slider_letters} />
         </div>
 
-        <div className="about-directions">
-          <h2>
-            Направления деятельности
-          </h2>
-          <div className="about-directions-items">
-            <DirectionItem />
-            <DirectionItem />
-            <DirectionItem />
-            <DirectionItem />
-          </div>
-        </div>
+        {
+          isLoadingDirections
+            ? <div
+              style={{
+                height: '100%',
+                width: '100%',
+                paddingTop: 200,
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                textAlign: "center",
+              }}
+            >
+              <Spin
+                indicator={<LoadingOutlined style={{ fontSize: 120, color: '#fff' }} />}
+              />
+            </div>
+            :
+            <div className="about-directions">
+              <h2>
+                Направления деятельности
+              </h2>
+              <div className="about-directions-items">
+                {
+                  directions?.map((item: any) =>
+                    <DirectionItem item={item}/>
+                  )
+                }
+              </div>
+            </div>
+        }
 
         <div className="about-stars">
           <h2>
@@ -112,7 +147,7 @@ const AboutContent: FC<PropsWithChildren<any>> = ({
         </div>
 
         <div className="about-questions">
-          <LeaveMessageBlock />
+          <LeaveMessageBlock subject={'[Страница о компании]: Главная форма'}/>
         </div>
       </div>
 

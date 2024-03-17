@@ -11,7 +11,10 @@ const Direction: FC<PropsWithChildren<any>> = ({
     return (
         <Meta title={'Направления деятельности'} metaData={pageData}>
             <MainLayout>
-               <DirectionContent title={pageData?.title?.rendered ? pageData?.title?.rendered : 'Направления деятельности'}/>
+               <DirectionContent
+                 title={pageData?.title?.rendered ? pageData?.title?.rendered : 'Направления деятельности'}
+                 pageData={pageData?.page_fields}
+               />
             </MainLayout>
         </Meta>
     );

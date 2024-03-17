@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { FC, PropsWithChildren, useState } from 'react';
 import slide1 from "../../../public/slide1.jpg";
 import slide2 from "../../../public/slide2.png";
 import slide3 from "../../../public/slide3.png";
@@ -11,7 +11,9 @@ import grammaImg from '../../../../public/gramma.png'
 import directionImg from "../../../../public/direction-img.png";
 import {Modal} from "antd";
 
-const LettersSlider = () => {
+const LettersSlider: FC<PropsWithChildren<any>> = ({
+                           slides
+                       }) => {
 
     const [modalVisible, setModalVisible] = useState(false);
     const [currentImage, setCurrentImage] = useState(null);
@@ -70,25 +72,6 @@ const LettersSlider = () => {
         setIsNextButtonDisabled(newIndex === slider?.props?.children?.length - 1);
     };
 
-
-    const slides = [
-        {
-            id: 1,
-        },
-        {
-            id: 2,
-        },
-        {
-            id: 3,
-        },
-        {
-            id: 4,
-        },
-        {
-            id: 5,
-        },
-    ]
-
     return (
         <div className="slider-verticle">
 
@@ -116,15 +99,14 @@ const LettersSlider = () => {
 
             <Slider ref={(c) => (slider = c)} {...settings} beforeChange={handleBeforeChange}>
                 {
-                    slides?.map((item: any) =>
+                    slides?.items?.map((item: any) =>
                         <div className="slider-verticle-item" id={item.id} onClick={() => openModal(grammaImg)}>
                             <Image
-                                src={grammaImg}
-                                // layout={'fill'}
-                                // objectFit={'cover'}
-                                // objectFit={'fill'}
+                                src={item?.image_link}
                                 objectFit={'contain'}
                                 layout="responsive"
+                                width={70}
+                                height={100}
                             />
                         </div>
                     )

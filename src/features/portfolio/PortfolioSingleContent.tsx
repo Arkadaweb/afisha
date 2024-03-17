@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, { FC, PropsWithChildren, useEffect, useState } from 'react';
 import MaxWithLayout from "../../layouts/MaxWithLayout";
 import BreadCrumbs from "../../components/common/BreadCrumbs";
 import Image from "next/dist/client/legacy/image";
@@ -7,8 +7,16 @@ import {Modal} from "antd";
 import GoldButton from "../../components/common/GoldButton";
 import PartnerItem from "../../components/common/PartnerItem";
 import partnerImg from "../../../public/partner-img.png";
+import dayjs from "dayjs";
+import utc from "dayjs/plugin/utc";
+import timezone from "dayjs/plugin/timezone";
 
-const PortfolioSingleContent = () => {
+import("dayjs/locale/ru");
+
+
+const PortfolioSingleContent: FC<PropsWithChildren<any>> = ({
+                                    pageData
+                                }) => {
 
     const breadCrumbs = [
         {
@@ -24,9 +32,16 @@ const PortfolioSingleContent = () => {
         {
             id: 3,
             path: '',
-            title: 'MINECRAFT ШОУ'
+            title: pageData?.title?.rendered
         },
     ]
+
+    useEffect(() => {
+        dayjs.extend(utc);
+        dayjs.extend(timezone);
+        dayjs.tz.setDefault('Europe/Moscow');
+        dayjs.locale('ru');
+    }, [])
 
     const [modalVisible, setModalVisible] = useState(false);
     const [currentImage, setCurrentImage] = useState(null);
@@ -47,23 +62,18 @@ const PortfolioSingleContent = () => {
 
             <div className="portfolio-single">
                 <h1>
-                    MINECRAFT ШОУ
+                    {pageData?.title?.rendered}
                 </h1>
                 <p>
-                    17 февраля, 12:00 I ДК Железнодорожников
+                    {dayjs(pageData?.date_gmt).format("DD MMMM, HH:mm")} {' '}
+                    {pageData?.event_location}
                 </p>
                 <div className="portfolio-single-desc">
                     <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                        laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-                        voluptate
+                        {pageData?.description_column_1}
                     </p>
                     <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                        laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-                        voluptate
+                        {pageData?.description_column_2}
                     </p>
                 </div>
                 <h2>
@@ -113,14 +123,11 @@ const PortfolioSingleContent = () => {
                         Информационные партнеры
                     </h2>
                     <div className="portfolio-single-partner-items">
-                        <PartnerItem img={partnerImg}/>
-                        <PartnerItem img={partnerImg}/>
-                        <PartnerItem img={partnerImg}/>
-                        <PartnerItem img={partnerImg}/>
-                        <PartnerItem img={partnerImg}/>
-                        <PartnerItem img={partnerImg}/>
-                        <PartnerItem img={partnerImg}/>
-                        <PartnerItem img={partnerImg}/>
+                        {
+                            pageData?.partners?.map((item: any) =>
+                              <PartnerItem img={item?.image_link}/>
+                            )
+                        }
                     </div>
                 </div>
             </div>

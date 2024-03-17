@@ -14,6 +14,8 @@ import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc";
 import timezone from "dayjs/plugin/timezone";
 
+import("dayjs/locale/ru");
+
 const AfishaSingleContent: FC<PropsWithChildren<any>>  = ({
                                  pageData
                              }) => {
@@ -63,12 +65,12 @@ const AfishaSingleContent: FC<PropsWithChildren<any>>  = ({
         },
         {
             id: 2,
-            path: '/',
+            path: '/afisha',
             title: 'Афиша'
         },
         {
-            id: 2,
-            path: '/afisha',
+            id: 3,
+            path: '',
             title: pageData?.title?.rendered
         },
     ]

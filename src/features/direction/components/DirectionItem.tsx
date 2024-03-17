@@ -5,7 +5,9 @@ import GoldButton from "../../../components/common/GoldButton";
 import {useRouter} from "next/router";
 import {useLeaveMessage} from "../../../components/modals/LeaveMessageController";
 
-const DirectionItem: FC<PropsWithChildren<any>> = () => {
+const DirectionItem: FC<PropsWithChildren<any>> = ({
+                                                       item
+                                                   }) => {
 
     const router = useRouter();
     const uLeaveMessage = useLeaveMessage()
@@ -14,32 +16,41 @@ const DirectionItem: FC<PropsWithChildren<any>> = () => {
         <div className="direction-item">
             <div className="direction-item-img">
                 <Image
-                    src={directionImg}
-                    // layout={'fill'}
+                    src={item?.preview_image}
                     objectFit={'cover'}
-                    // objectFit={'fill'}
-                    // objectFit={'contain'}
+                    layout="fill"
+                />
+            </div>
+            <div className="direction-item-img-mob">
+                <Image
+                    src={item?.preview_image}
+                    objectFit={'contain'}
                     layout="responsive"
+                    width={100}
+                    height={60}
                 />
             </div>
             <div className="direction-item-info">
                 <h2>
-                    Организация мероприятия под любой праздник
+                  {
+                    item?.title?.rendered
+                  }
                 </h2>
                 <p>
-                    Новый год, День нефтяника, День защиты детей — мы знаем, как подарить светлые эмоции и взрослым, и
-                    детям круглый год
+                  {
+                    item?.short_description
+                  }
                 </p>
                 <div className="direction-item-info-buttons">
                     <GoldButton
-                        onClick={() => uLeaveMessage(true)}
+                        onClick={() => uLeaveMessage(true, `[Направление деятельности]: ${item?.title?.rendered}`)}
                         title={'Заказать'}
                         padding={'16px 30px'}
                         backColor={'rgba(9, 6, 47, 1)'}
                         color={'rgba(197, 163, 94, 1)'}
                     />
                     <GoldButton
-                        onClick={() => router.push('direction/1')}
+                        onClick={() => router.push(`direction/${item?.slug}`)}
                         title={'Подробнее'}
                         padding={'16px 30px'}
                         isWithBorder={true}
