@@ -4,8 +4,9 @@ import MainLayout from "../layouts/MainLayout";
 import MainContent from "../features/main/MainContent";
 import { get } from "../api/request";
 
-const Home: FC<PropsWithChildren<any>> =  ({
+const Home: FC<PropsWithChildren<any>> = ({
                                             pageData,
+                                            slider
                                           }) => {
 
   return (
@@ -13,6 +14,7 @@ const Home: FC<PropsWithChildren<any>> =  ({
       <MainLayout>
         <MainContent
           pageData={pageData?.page_fields}
+          slider={slider}
         />
       </MainLayout>
     </Meta>
@@ -23,10 +25,12 @@ export async function getStaticProps(context: any){
 
   try {
     const pageData: any = await get(`wp-json/wp/v2/pages/90`);
+    const slider: any = await get(`wp-json/wp/v2/slider`);
 
     return {
       props: {
         pageData: pageData,
+        slider: slider,
       },
       revalidate: 60,
     }
@@ -34,7 +38,7 @@ export async function getStaticProps(context: any){
     return {
       props: {
         pageData: {},
-        afishes: []
+        slider: []
       },
       revalidate: 60,
     }

@@ -6,6 +6,7 @@ import ReactPlayer from "react-player";
 
 const MainContent: FC<PropsWithChildren<any>> = ({
                                                    pageData,
+                                                   slider
                                                  }) => {
 
     return (
@@ -27,7 +28,7 @@ const MainContent: FC<PropsWithChildren<any>> = ({
 
                 {/*</div>*/}
                 <div className="main-content-slider">
-                    <SliderCustom slides={pageData?.slider}/>
+                    <SliderCustom slides={slider}/>
                 </div>
                 <div className="main-content-afisha">
                     <Afisha/>

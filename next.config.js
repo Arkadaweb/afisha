@@ -12,6 +12,12 @@ const nextConfig = {
                 hostname: 'afisha.arkada-web-studio.ru',
                 port: '',
                 // pathname: '/account123/**',
+            },
+            {
+                protocol: 'https',
+                hostname: '*',
+                port: '',
+                // pathname: '/account123/**',
             }
         ]
     },

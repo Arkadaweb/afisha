@@ -163,6 +163,8 @@
     .modal-wrap-img {
         width: 100%;
         height: 100%;
+        position: relative;
+        flex: 1;
 
         display: flex;
         justify-content: flex-start;

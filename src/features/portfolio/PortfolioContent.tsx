@@ -7,7 +7,7 @@ import Arrow from "../../assets/icons/portfolio/Arrow";
 import { Dropdown, Checkbox, message, Spin } from 'antd';
 import type { MenuProps } from 'antd';
 import dayjs from "dayjs";
-import { get } from "../../api/request";
+import { get, post } from "../../api/request";
 import { LoadingOutlined } from "@ant-design/icons/lib";
 import CustomPagination from "../../components/common/CustomPagination";
 
@@ -19,65 +19,46 @@ const PortfolioContent: FC<PropsWithChildren<any>> = ({
   const [selectedYear, setSelectedYear] = useState<Array<string>>([]);
   const [selectedDirection, setSelectedDirection] = useState<Array<string>>([]);
 
-  const years = [
-    {
-      id: 1,
-      name: '2000'
-    },
-    {
-      id: 2,
-      name: '2001'
-    },
-    {
-      id: 3,
-      name: '2002'
-    },
-    {
-      id: 4,
-      name: '2003'
-    },
-    {
-      id: 5,
-      name: '2003'
-    },
-    {
-      id: 6,
-      name: '2003'
-    },
-    {
-      id: 7,
-      name: '2003'
-    },
-  ]
-
-  const directions = [
-    {
-      id: 1,
-      name: 'Организация мероприятия под любой праздник'
-    },
-    {
-      id: 2,
-      name: 'Корпоративные подарки'
-    },
-    {
-      id: 3,
-      name: 'Концертная деятельность'
-    },
-    {
-      id: 4,
-      name: 'Благотворительные мероприятия'
-    },
-    {
-      id: 5,
-      name: 'Корпоративные мероприятия под любой праздник'
-    },
-  ]
-
   const contentStyle: React.CSSProperties = {};
 
   const menuStyle: React.CSSProperties = {
     boxShadow: 'none',
   };
+
+  const [directions, setDirections] = useState([])
+  const [years, setYears] = useState([])
+
+  const getDirections = () => {
+    get('wp-json/wp/v2/area_activity?per_page=100')
+      .then((res: any) => {
+        setDirections(res)
+      })
+      .catch(() => {
+
+      })
+      .finally(() => {
+
+      })
+  }
+  const getYears = () => {
+    post('wp-json/afisha-rest-api/v1/dropdown_years')
+      .then((res: any) => {
+        setYears(res?.filter((item: any) => item?.year !== null && item?.year !== undefined))
+        console.log('years')
+        console.log(res)
+      })
+      .catch(() => {
+
+      })
+      .finally(() => {
+
+      })
+  }
+
+  useEffect(() => {
+    getDirections()
+    getYears()
+  }, [])
 
   const getYearsItems = () => {
     if (!years) {
@@ -88,7 +69,7 @@ const PortfolioContent: FC<PropsWithChildren<any>> = ({
     let selectedItems: any[] = [];
 
     years?.forEach((item: any) => {
-      const isDuplicate = selectedYear.some((sellerItem: any) => sellerItem?.id.toString() === item?.id.toString());
+      const isDuplicate = selectedYear.some((sellerItem: any) => sellerItem?.year.toString() === item?.year.toString());
 
       if (!isDuplicate) {
         allItems.push({
@@ -101,29 +82,29 @@ const PortfolioContent: FC<PropsWithChildren<any>> = ({
             >
               <Checkbox
                 style={{ width: '100%' }}
-                value={item?.name}
-                checked={selectedYear.some((sellerItem: any) => sellerItem?.id.toString() === item?.id.toString())}
+                value={item?.year}
+                checked={selectedYear.some((sellerItem: any) => sellerItem?.year.toString() === item?.year.toString())}
                 onChange={(e) => {
                   let newSelectedSellers = [...selectedYear];
                   if (e.target.checked) {
                     newSelectedSellers.push(item);
                   } else {
-                    newSelectedSellers = newSelectedSellers.filter((el: any) => el?.id.toString() !== item?.id.toString());
+                    newSelectedSellers = newSelectedSellers.filter((el: any) => el?.year.toString() !== item?.year.toString());
                   }
                   setSelectedYear(newSelectedSellers);
                 }}
               >
-                {item?.name}
+                {item?.year}
               </Checkbox>
             </div>
           ),
-          key: `year-${item.id.toString()}`,
+          key: `year-${item.year.toString()}`,
         });
       }
     });
 
     selectedYear?.forEach((item: any) => {
-      const isDuplicate = selectedYear.some((sellerItem: any) => sellerItem?.id?.toString() === item?.id?.toString());
+      const isDuplicate = selectedYear.some((sellerItem: any) => sellerItem?.year?.toString() === item?.year?.toString());
 
       if (isDuplicate) {
         selectedItems.push({
@@ -136,23 +117,23 @@ const PortfolioContent: FC<PropsWithChildren<any>> = ({
             >
               <Checkbox
                 style={{ width: '100%' }}
-                value={item?.name}
-                checked={selectedYear.some((sellerItem: any) => sellerItem?.id.toString() === item?.id.toString())}
+                value={item?.year}
+                checked={selectedYear.some((sellerItem: any) => sellerItem?.year.toString() === item?.year.toString())}
                 onChange={(e) => {
                   let newSelectedSellers = [...selectedYear];
                   if (e.target.checked) {
                     newSelectedSellers.push(item);
                   } else {
-                    newSelectedSellers = newSelectedSellers.filter((el: any) => el?.id.toString() !== item?.id.toString());
+                    newSelectedSellers = newSelectedSellers.filter((el: any) => el?.year.toString() !== item?.year.toString());
                   }
                   setSelectedYear(newSelectedSellers);
                 }}
               >
-                {item?.name}
+                {item?.year}
               </Checkbox>
             </div>
           ),
-          key: `year-${item.id}`,
+          key: `year-${item.year}`,
         });
       }
     });
@@ -276,6 +257,14 @@ const PortfolioContent: FC<PropsWithChildren<any>> = ({
 
     link += `&page=${page}&per_page=${limit}`
 
+    if (selectedDirection?.length !== 0 && selectedDirection) {
+      link += `&area_activity=${selectedDirection?.map((item: any) => item?.id).join(',')}`
+    }
+
+    if (selectedYear?.length !== 0 && selectedYear) {
+      link += `&date_portfolio=${selectedYear?.map((item: any) => item?.year).join(',')}`
+    }
+
     get(link)
       .then((res: any) => {
         setAfishes(res?.data)
@@ -316,6 +305,7 @@ const PortfolioContent: FC<PropsWithChildren<any>> = ({
 
                 <div className="drop-down-button">
                   <GoldButton
+                    onClick={getAfishes}
                     title={'Применить'}
                     width={'100%'}
                     padding={'13px 0'}
@@ -342,6 +332,7 @@ const PortfolioContent: FC<PropsWithChildren<any>> = ({
 
                 <div className="drop-down-button">
                   <GoldButton
+                    onClick={getAfishes}
                     title={'Применить'}
                     width={'100%'}
                     padding={'13px 0'}
@@ -377,25 +368,39 @@ const PortfolioContent: FC<PropsWithChildren<any>> = ({
               />
             </div>
             :
-            <>
-              <div className="partfolio-items">
-                {
-                  afishes?.map((item: any) =>
-                    <PortfolioItem item={item} />
-                  )
-                }
+            afishes?.length !== 0
+              ?
+              <>
+                <div className="partfolio-items">
+                  {
+                    afishes?.map((item: any) =>
+                      <PortfolioItem item={item} />
+                    )
+                  }
 
-                {/*<PortfolioItem />*/}
+                  {/*<PortfolioItem />*/}
+                </div>
+                <div className="afisha-content-pagination">
+                  <CustomPagination
+                    total={totalPage}
+                    limit={limit}
+                    page={page}
+                    changePage={setPage}
+                  />
+                </div>
+              </>
+              :
+              <div
+                style={{
+                  marginTop: 200,
+                  display: "flex",
+                  justifyContent: 'center',
+                  alignItems: "center",
+                  fontSize: 32,
+                  color: "#fff"
+                }}>
+                По данному запросу ничего не найдено
               </div>
-              <div className="afisha-content-pagination">
-                <CustomPagination
-                  total={totalPage}
-                  limit={limit}
-                  page={page}
-                  changePage={setPage}
-                />
-              </div>
-            </>
         }
         {/*<div className="partfolio-show-more">*/}
         {/*  <GoldButton*/}

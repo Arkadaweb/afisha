@@ -14,6 +14,8 @@ const SliderCustom: FC<PropsWithChildren<any>> = ({
                                                       slides
                                                   }) => {
 
+    console.log(slides)
+    console.log(slides)
 
     const [isPrevButtonDisabled, setIsPrevButtonDisabled] = useState(true);
     const [isNextButtonDisabled, setIsNextButtonDisabled] = useState(false);
@@ -69,9 +71,9 @@ const SliderCustom: FC<PropsWithChildren<any>> = ({
             <Slider ref={(c) => (slider = c)} {...settings} beforeChange={handleBeforeChange}>
                 {
                     slides?.map((item: any) =>
-                        <Link href={`afisha/${item.page_link}`} className="slider-content-item" id={item.page_link}>
+                        <Link href={`afisha/${item.attached_page?.slug}`} className="slider-content-item" id={item.slug}>
                             <Image
-                                src={item.image_link}
+                                src={item.slider_image}
                                 objectFit={'contain'}
                                 layout="responsive"
                                 width={100}

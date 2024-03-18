@@ -3,6 +3,8 @@ import { Form, Input, message, Modal } from "antd";
 import CrossIcon from "../../assets/icons/common/CrossIcon";
 import GoldButton from "../common/GoldButton";
 import { post } from "../../api/request";
+import { useUnit } from "effector-react";
+import { $contacts } from "../../models/Contacts";
 
 const Context = React.createContext<any>(null);
 
@@ -26,8 +28,9 @@ const LeaveMessageController: FC<PropsWithChildren<any>> = ({ children }) => {
   const [subject, setSubject] = useState<any>();
   const [isError, setIsError] = useState<any>(false);
 
-  console.log('subject')
-  console.log(subject)
+  const data = useUnit($contacts)
+
+
   const handleCloseModal = () => {
     setIsOpen(false)
   }
@@ -56,7 +59,7 @@ const LeaveMessageController: FC<PropsWithChildren<any>> = ({ children }) => {
     bodyFormData.append('_wpcf7_unit_tag', generateUnitTag());
 
 
-    post('wp-json/contact-form-7/v1/contact-forms/118/feedback', bodyFormData)
+    post(`wp-json/contact-form-7/v1/contact-forms/${data?.contact_form_7}/feedback`, bodyFormData)
       .then(() => {
         form.resetFields()
         setSubject('')
