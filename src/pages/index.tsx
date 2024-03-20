@@ -8,7 +8,6 @@ const Home: FC<PropsWithChildren<any>> = ({
                                             pageData,
                                             slider
                                           }) => {
-
   return (
     <Meta title={'Главная'} metaData={pageData}>
       <MainLayout>
