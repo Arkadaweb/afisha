@@ -13,12 +13,9 @@ const WeBanner: FC<PropsWithChildren<any>> = ({
     return (
         <div className="we-banner-info">
             <div className="we-banner-info-img">
-                <Image
+                <img
                     src={bannerData?.image_link}
-                    objectFit={'contain'}
-                    layout="responsive"
-                    width={100}
-                    height={60}
+                    loading={'lazy'}
                 />
             </div>
             <div className="we-banner-info-data">

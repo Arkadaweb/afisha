@@ -34,18 +34,6 @@ const MainContent: FC<PropsWithChildren<any>> = ({
                     <Afisha/>
                 </div>
 
-                <div
-                    style={{
-                        margin: '120px 0',
-                        color: 'rgba(197, 163, 94, 1)',
-                        fontSize: 32,
-                        fontWeight: 500
-                    }}
-                >
-                    Сейчас сайт находится в разработке, поэтому часть разделов пока недоступна, но вы уже сейчас можете
-                    забронировать себе место на мероприятии - это главное!
-                </div>
-
             </div>
         </MaxWithLayout>
     );

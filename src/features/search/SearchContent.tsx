@@ -18,8 +18,6 @@ const SearchContent: FC<PropsWithChildren<any>> = ({
                                                      searchValue
                                                    }) => {
 
-  console.log('searchData')
-  console.log(searchData)
 
   useEffect(() => {
     dayjs.extend(utc);
@@ -101,6 +99,8 @@ const SearchContent: FC<PropsWithChildren<any>> = ({
                           </h2>
                           <p>
                             {dayjs(item?.date_gmt).format("DD MMMM, HH:mm")} {' '}
+                          </p>
+                          <p>
                             {item?.event_location}
                           </p>
                           <h3>

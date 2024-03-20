@@ -7,10 +7,9 @@ const PartnerItem: FC<PropsWithChildren<any>> = ({
 
   return (
     <div className='partner-item'>
-      <Image
+      <img
         src={img}
-        objectFit={'contain'}
-        layout="fill"
+        loading={'lazy'}
       />
     </div>
   );

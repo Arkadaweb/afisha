@@ -1,8 +1,10 @@
-import React, { FC, PropsWithChildren } from 'react';
+import React, { FC, PropsWithChildren, useEffect } from 'react';
 import Image from "next/dist/client/legacy/image";
 import partfolioImg from '../../../../public/partfolio-item-img.png'
 import Link from "next/link";
 import dayjs from "dayjs";
+import utc from "dayjs/plugin/utc";
+import timezone from "dayjs/plugin/timezone";
 
 import("dayjs/locale/ru");
 
@@ -11,12 +13,19 @@ const PortfolioItem: FC<PropsWithChildren<any>> = ({
                                                      item
                                                    }) => {
 
+  useEffect(() => {
+    dayjs.extend(utc);
+    dayjs.extend(timezone);
+    dayjs.tz.setDefault('Europe/Moscow');
+    dayjs.locale('ru');
+  }, [])
+
   return (
     <Link href={`/portfolio/${item?.slug}`} className="partfolio-item">
       <div className="partfolio-item-img">
         <Image
-          src={partfolioImg}
-          objectFit={'contain'}
+          src={item?.event_preview_image}
+          objectFit={'cover'}
           layout="responsive"
           width={100}
           height={59}

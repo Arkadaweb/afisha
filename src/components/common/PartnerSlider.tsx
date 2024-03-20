@@ -86,15 +86,29 @@ const PartnerSlider: FC<PropsWithChildren<any>> = ({
 
       </div>
 
-      <Slider ref={(c) => (slider = c)} {...settings} beforeChange={handleBeforeChange}>
-        {
-          slides?.items?.map((item: any) =>
-            <div className="slider-verticle-item" id={item.id}>
-              <PartnerItem img={item?.image_link} />
-            </div>
-          )
-        }
-      </Slider>
+      {slides?.items?.length < 4
+        ?
+        <div className="slider-verticle-grid">
+          {
+            slides?.items?.map((item: any) =>
+              <div className="slider-verticle-item" id={item.id}>
+                <PartnerItem img={item?.image_link} />
+              </div>
+            )
+          }
+        </div>
+        :<Slider ref={(c) => (slider = c)} {...settings} beforeChange={handleBeforeChange}>
+          {
+            slides?.items?.map((item: any) =>
+              <div className="slider-verticle-item" id={item.id}>
+                <PartnerItem img={item?.image_link} />
+              </div>
+            )
+          }
+        </Slider>
+
+      }
+
 
     </div>
   );

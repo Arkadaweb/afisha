@@ -248,15 +248,17 @@ const AfishaContent: FC<PropsWithChildren<any>> = ({
                 )
               }
             </div>
-
-            <div className="afisha-content-pagination">
-              <CustomPagination
-                total={totalPage}
-                limit={limit}
-                page={page}
-                changePage={setPage}
-              />
-            </div>
+            {
+              totalPage && totalPage > 8 &&
+              <div className="afisha-content-pagination">
+                  <CustomPagination
+                      total={totalPage}
+                      limit={limit}
+                      page={page}
+                      changePage={setPage}
+                  />
+              </div>
+            }
           </>
       }
 

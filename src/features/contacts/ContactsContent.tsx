@@ -114,9 +114,8 @@ const ContactsContent: FC<PropsWithChildren<any>> = ({
           </div>
           <div className="contacts-content-wrap-map">
             <iframe
-              src="https://yandex.ru/map-widget/v1/?um=constructor%3Acde7ba1fba2d97508e7760c6d5977a12cb7474ec61bdfb7d81ed2777e9c857d0&amp;source=constructor"
-              width="100%" height="100%" frameBorder="0">
-            </iframe>
+              src="https://yandex.ru/map-widget/v1/?um=constructor%3A4cd6ba0f138805a792de3e420e240a0391c3674e465aacc2803e92dad416c5c1&amp;source=constructor"
+              width="100%" height="100%" frameBorder="0"></iframe>
           </div>
         </div>
       </div>

@@ -19,8 +19,6 @@ const PortfolioSingleContent: FC<PropsWithChildren<any>> = ({
                                                               pageData
                                                             }) => {
 
-  console.log('pageData')
-  console.log(pageData)
 
   const playerRef = useRef(null);
   const breadCrumbs = [
@@ -31,7 +29,7 @@ const PortfolioSingleContent: FC<PropsWithChildren<any>> = ({
     },
     {
       id: 2,
-      path: 'portfolio',
+      path: '/portfolio',
       title: 'Портфолио'
     },
     {
@@ -137,18 +135,22 @@ const PortfolioSingleContent: FC<PropsWithChildren<any>> = ({
         {/*  />*/}
         {/*</div>*/}
 
-        <div className="portfolio-single-partner">
-          <h2>
-            Информационные партнеры
-          </h2>
-          <div className="portfolio-single-partner-items">
-            {
-              pageData?.partners?.map((item: any) =>
-                <PartnerItem img={item?.image_link} />
-              )
-            }
+        {
+          pageData?.partners?.length !== 0 &&
+          <div className="portfolio-single-partner">
+              <h2>
+                  Информационные партнеры
+              </h2>
+              <div className="portfolio-single-partner-items">
+                {
+                  pageData?.partners?.map((item: any) =>
+                    <PartnerItem img={item?.image_link} />
+                  )
+                }
+              </div>
           </div>
-        </div>
+        }
+
       </div>
 
       <Modal

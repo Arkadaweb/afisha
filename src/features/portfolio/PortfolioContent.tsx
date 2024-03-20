@@ -380,14 +380,17 @@ const PortfolioContent: FC<PropsWithChildren<any>> = ({
 
                   {/*<PortfolioItem />*/}
                 </div>
-                <div className="afisha-content-pagination">
-                  <CustomPagination
-                    total={totalPage}
-                    limit={limit}
-                    page={page}
-                    changePage={setPage}
-                  />
-                </div>
+                {
+                  totalPage && totalPage > 9 &&
+                  <div className="afisha-content-pagination">
+                      <CustomPagination
+                          total={totalPage}
+                          limit={limit}
+                          page={page}
+                          changePage={setPage}
+                      />
+                  </div>
+                }
               </>
               :
               <div

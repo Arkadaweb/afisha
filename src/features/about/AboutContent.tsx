@@ -95,10 +95,9 @@ const AboutContent: FC<PropsWithChildren<any>> = ({
           {title}
         </h1>
         <div className="about-intro-img">
-          <Image
+          <img
             src={pageData?.intro_image_link}
-            objectFit={'cover'}
-            layout="fill"
+            loading={'lazy'}
           />
         </div>
         <div className="about-desc">
@@ -189,14 +188,18 @@ const AboutContent: FC<PropsWithChildren<any>> = ({
                   )
                 }
               </div>
-              <div className="about-stars-button">
-                <CustomPagination
-                  total={totalPage}
-                  limit={limit}
-                  page={page}
-                  changePage={setPage}
-                />
-              </div>
+              {
+                totalPage && totalPage > 7 &&
+                <div className="about-stars-button">
+                    <CustomPagination
+                        total={totalPage}
+                        limit={limit}
+                        page={page}
+                        changePage={setPage}
+                    />
+                </div>
+              }
+
             </div>
         }
         <div className="about-questions">

@@ -135,16 +135,29 @@ input::placeholder {
 }
 
 #nprogress .bar {
-    background: #ff6a28 !important;
+    background: #dbb95a !important;
     height: 5px !important;
 }
 
 
 #nprogress .spinner-icon {
-    border-top-color: #ff6a28;
-    border-left-color: #ff6a28;
+    border-top-color: #dbb95a;
+    border-left-color: #dbb95a;
     width: 20px;
     height: 20px;
+}
+#nprogress .peg {
+    display: block;
+    position: absolute;
+    right: 0px;
+    width: 100px;
+    height: 100%;
+    box-shadow: 0 0 10px #dbb95a, 0 0 5px #dbb95a;
+    opacity: 1.0;
+
+    -webkit-transform: rotate(3deg) translate(0px, -4px);
+    -ms-transform: rotate(3deg) translate(0px, -4px);
+    transform: rotate(3deg) translate(0px, -4px);
 }
 
 .main-block {

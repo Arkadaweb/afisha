@@ -191,7 +191,8 @@ const Afisha: FC<PropsWithChildren<any>> = ({}) => {
           : <div className="afisha-items">
             {
               afishes?.map((item: any) =>
-                <div className="afisha-items-item" onClick={() => onOpenAfisha(item?.btickets_id)}>
+                // <div className="afisha-items-item" onClick={() => onOpenAfisha(item?.btickets_id)}>
+                <div className="afisha-items-item" onClick={() => router.push(`/afisha/${item?.slug}`)}>
                   <div className="afisha-items-item-top">
                     <h2>
                       {item?.title?.rendered}

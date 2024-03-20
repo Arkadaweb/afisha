@@ -81,7 +81,7 @@ const Footer: FC<PropsWithChildren<any>> = ({}) => {
             <div className="footer-content-nav-soc">
               {
                 data?.social?.map((item: any) =>
-                  <a href={item?.link}>
+                  <a href={item?.link} target="_blank">
                     <Image
                       src={item?.icon}
                       width={24}

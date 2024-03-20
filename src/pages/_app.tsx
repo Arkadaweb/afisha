@@ -33,7 +33,7 @@ export default function App({ Component, pageProps }: AppProps){
     minimum: 0.3,
     easing: 'ease',
     speed: 800,
-    showSpinner: true,
+    showSpinner: false,
   });
 
   Router.events.on('routeChangeStart', () => NProgress.start());

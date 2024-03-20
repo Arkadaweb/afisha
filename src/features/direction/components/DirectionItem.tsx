@@ -15,19 +15,15 @@ const DirectionItem: FC<PropsWithChildren<any>> = ({
     return (
         <div className="direction-item">
             <div className="direction-item-img">
-                <Image
+                <img
                     src={item?.preview_image}
-                    objectFit={'cover'}
-                    layout="fill"
+                    loading={'lazy'}
                 />
             </div>
             <div className="direction-item-img-mob">
-                <Image
+                <img
                     src={item?.preview_image}
-                    objectFit={'contain'}
-                    layout="responsive"
-                    width={100}
-                    height={60}
+                    loading={'lazy'}
                 />
             </div>
             <div className="direction-item-info">

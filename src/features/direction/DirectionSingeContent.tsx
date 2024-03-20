@@ -25,7 +25,7 @@ const DirectionSingeContent: FC<PropsWithChildren<any>> = ({
     },
     {
       id: 2,
-      path: 'direction',
+      path: '/direction',
       title: 'Направления деятельности'
     },
     {
