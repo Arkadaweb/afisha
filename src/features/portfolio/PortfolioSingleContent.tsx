@@ -144,7 +144,7 @@ const PortfolioSingleContent: FC<PropsWithChildren<any>> = ({
               <div className="portfolio-single-partner-items">
                 {
                   pageData?.partners?.map((item: any) =>
-                    <PartnerItem img={item?.image_link} />
+                    <PartnerItem img={item?.image_link} href={item?.partner_link}/>
                   )
                 }
               </div>

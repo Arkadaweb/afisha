@@ -33,5 +33,7 @@ jobs:
           username: ${{ secrets.SERVER_USER_NAME }}
           script: |
             cd /root/poster
-            docker-compose up -d --build
+            docker-compose stop poster_client
+            docker-compose build poster_client
+            docker-compose up -d poster_client
             docker system prune -af

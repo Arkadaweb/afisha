@@ -92,7 +92,7 @@ const PartnerSlider: FC<PropsWithChildren<any>> = ({
           {
             slides?.items?.map((item: any) =>
               <div className="slider-verticle-item" id={item.id}>
-                <PartnerItem img={item?.image_link} />
+                <PartnerItem img={item?.image_link} href={item?.partner_link}/>
               </div>
             )
           }
@@ -101,12 +101,11 @@ const PartnerSlider: FC<PropsWithChildren<any>> = ({
           {
             slides?.items?.map((item: any) =>
               <div className="slider-verticle-item" id={item.id}>
-                <PartnerItem img={item?.image_link} />
+                <PartnerItem img={item?.image_link} href={item?.partner_link}/>
               </div>
             )
           }
         </Slider>
-
       }
 
 

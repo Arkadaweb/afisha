@@ -13,6 +13,9 @@ const Footer: FC<PropsWithChildren<any>> = ({}) => {
 
   const data = useUnit($contacts)
 
+  console.log('$contacts')
+  console.log(data)
+
   const nav: any = [
     {
       id: 1,
@@ -105,10 +108,10 @@ const Footer: FC<PropsWithChildren<any>> = ({}) => {
             <p>
               © 2024 Все права защищены
             </p>
-            <Link href={'/policy-privacy'}>
+            <Link href={'/rules'}>
               Правила продажи и возврата билетов
             </Link>
-            <Link href={'policy-privacy'}>
+            <Link href={'/policy-privacy'}>
               Политика конфиденциальности
             </Link>
           </div>

@@ -20,6 +20,9 @@ const AboutContent: FC<PropsWithChildren<any>> = ({
                                                     pageData
                                                   }) => {
 
+  // console.log('pageData')
+  // console.log(pageData)
+
   const breadCrumbs = [
     {
       id: 1,
@@ -101,16 +104,13 @@ const AboutContent: FC<PropsWithChildren<any>> = ({
           />
         </div>
         <div className="about-desc">
+
           <h2>
             {pageData?.title_description}
           </h2>
           <div className="about-desc-p">
-            <p>
-              {pageData?.description_column_1}
-            </p>
-            <p>
-              {pageData?.description_column_2}
-            </p>
+            <p dangerouslySetInnerHTML={{ __html: pageData?.description_column_1 || '' }} />
+            <p dangerouslySetInnerHTML={{ __html: pageData?.description_column_2 || '' }} />
           </div>
         </div>
 
@@ -184,7 +184,7 @@ const AboutContent: FC<PropsWithChildren<any>> = ({
               <div className="about-stars-items">
                 {
                   stars?.map((item: any) =>
-                    <StarItem item={item}/>
+                    <StarItem item={item} />
                   )
                 }
               </div>

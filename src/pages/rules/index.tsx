@@ -1,26 +1,26 @@
-import React, {FC, PropsWithChildren} from 'react';
+import React, { FC, PropsWithChildren } from "react";
 import Meta from "../../seo/Meta";
 import MainLayout from "../../layouts/MainLayout";
 import PolicyPrivacyContent from "../../features/policy-privacy/PolicyPrivacyContent";
-import {api, get} from "../../api/request";
+import { get } from "../../api/request";
 
-const PolicyPrivacy: FC<PropsWithChildren<any>> = ({
+const Rules: FC<PropsWithChildren<any>> = ({
                                                      pageData
                                                    }) => {
 
-    return (
-        <Meta title={'Политика конфидецеальности'} metaData={pageData}>
-            <MainLayout>
-                <PolicyPrivacyContent pageData={pageData}/>
-            </MainLayout>
-        </Meta>
-    );
+  return (
+    <Meta title={'Политика конфидецеальности'} metaData={pageData}>
+      <MainLayout>
+        <PolicyPrivacyContent pageData={pageData}/>
+      </MainLayout>
+    </Meta>
+  );
 };
 
 export async function getStaticProps(context: any){
 
   try {
-    const pageData: any = await get(`wp-json/wp/v2/pages?template=policy_privacy`);
+    const pageData: any = await get(`wp-json/wp/v2/pages?template=sales_rules`);
 
     return {
       props: {
@@ -38,4 +38,4 @@ export async function getStaticProps(context: any){
   }
 }
 
-export default PolicyPrivacy;
+export default Rules;

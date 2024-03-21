@@ -198,7 +198,9 @@ const Afisha: FC<PropsWithChildren<any>> = ({}) => {
                       {item?.title?.rendered}
                     </h2>
                     <p>
-                      {dayjs(item?.date_gmt).format("DD MMMM, HH:mm")} {' '}
+                      {dayjs(item?.date_gmt).format("DD MMMM, HH:mm")} {''}
+                    </p>
+                    <p>
                       {item?.event_location}
                     </p>
                     <h3>

@@ -56,7 +56,6 @@ const AfishaSingleContent: FC<PropsWithChildren<any>>  = ({
         }
     }, []);
 
-
     const breadCrumbs = [
         {
             id: 1,
@@ -124,7 +123,7 @@ const AfishaSingleContent: FC<PropsWithChildren<any>>  = ({
                 <div className="afisha-content-partners-items">
                     {
                         pageData?.partners?.map((item: any) =>
-                          <PartnerItem img={item?.image_link}/>
+                          <PartnerItem img={item?.image_link} href={item?.partner_link}/>
                         )
                     }
                 </div>

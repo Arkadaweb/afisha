@@ -86,33 +86,47 @@ const TeamSlider: FC<PropsWithChildren<any>>  = ({
                 <h2>
                     Наша команда
                 </h2>
+                {slides?.length > 4 &&
                 <div className="slider-verticle-top-buttons">
                     <button
-                        className={`slider-verticle-top-buttons-left ${isPrevButtonDisabled ? 'disabled' : ''}`}
-                        onClick={goToPrev}
-                        disabled={isPrevButtonDisabled}
+                      className={`slider-verticle-top-buttons-left ${isPrevButtonDisabled ? 'disabled' : ''}`}
+                      onClick={goToPrev}
+                      disabled={isPrevButtonDisabled}
                     >
-                        <ArrowToLeft/>
+                        <ArrowToLeft />
                     </button>
                     <button
-                        className={`slider-verticle-top-buttons-right ${isNextButtonDisabled ? 'disabled' : ''}`}
-                        onClick={goToNext}
-                        disabled={isNextButtonDisabled}
+                      className={`slider-verticle-top-buttons-right ${isNextButtonDisabled ? 'disabled' : ''}`}
+                      onClick={goToNext}
+                      disabled={isNextButtonDisabled}
                     >
-                        <ArrowToRight/>
+                        <ArrowToRight />
                     </button>
                 </div>
+                }
             </div>
 
-            <Slider ref={(c) => (slider = c)} {...settings} beforeChange={handleBeforeChange}>
-                {
-                    slides?.map((item: any) =>
+            {slides?.length < 4
+              ?
+              <div className="slider-verticle-grid">
+                  {
+                      slides?.map((item: any) =>
                         <div className="slider-verticle-item" id={item.id}>
                             <PersonItem item={item}/>
                         </div>
-                    )
-                }
-            </Slider>
+                      )
+                  }
+              </div>
+              :<Slider ref={(c) => (slider = c)} {...settings} beforeChange={handleBeforeChange}>
+                  {
+                      slides?.map((item: any) =>
+                        <div className="slider-verticle-item" id={item.id}>
+                            <PersonItem item={item}/>
+                        </div>
+                      )
+                  }
+              </Slider>
+            }
 
         </div>
     );
