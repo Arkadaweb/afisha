@@ -11,6 +11,8 @@ import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc";
 import timezone from "dayjs/plugin/timezone";
 import ReactPlayer from "react-player";
+import "react-image-gallery/styles/css/image-gallery.css";
+import ImageGallery from 'react-image-gallery';
 
 import("dayjs/locale/ru");
 
@@ -21,6 +23,7 @@ const PortfolioSingleContent: FC<PropsWithChildren<any>> = ({
 
 
   const playerRef = useRef(null);
+  const imgRef = useRef<any>(null);
   const breadCrumbs = [
     {
       id: 1,
@@ -46,31 +49,42 @@ const PortfolioSingleContent: FC<PropsWithChildren<any>> = ({
     dayjs.locale('ru');
   }, [])
 
-  const [modalVisible, setModalVisible] = useState(false);
-  const [currentImage, setCurrentImage] = useState(null);
-  const [currentVideo, setCurrentVideo] = useState(null);
+  const [modalVisibleVideo, setModalVisibleVideo] = useState(false);
+  const [modalVisibleGalery, setModalVisibleGalery] = useState(false);
+  const [currentVideo, setCurrentVideo] = useState<any>(null);
 
   const openModal = (imageSrc: any, type: any) => {
-    if (type === 'img') {
-      setCurrentImage(imageSrc);
-    }
     if (type === 'video') {
       setCurrentVideo(imageSrc);
     }
-    setModalVisible(true);
+    setModalVisibleVideo(true);
   };
 
   const closeModal = () => {
-    setCurrentImage(null);
     setCurrentVideo(null);
-    setModalVisible(false);
+    setModalVisibleVideo(false);
+    setModalVisibleGalery(false);
   };
+
+  const handleImageClick = (index: any) => {
+    setModalVisibleGalery(true);
+    if (imgRef?.current){
+      imgRef?.current?.slideToIndex(index as any)
+    }
+  };
+
+  const imagesGel = pageData?.media_gallery?.filter((item: any) => item?.type === 'img')
+    .map((item: any) => ({
+      original: item?.link,
+      thumbnail: item?.link
+    }))
 
   return (
     <MaxWithLayout isPaddingTop={true}>
       <BreadCrumbs elements={breadCrumbs} />
 
       <div className="portfolio-single">
+
         <h1>
           {pageData?.title?.rendered}
         </h1>
@@ -86,17 +100,20 @@ const PortfolioSingleContent: FC<PropsWithChildren<any>> = ({
             {pageData?.description_column_2}
           </p>
         </div>
-        {pageData?.media_gallery?.filter((item: any) => item?.type === 'img')?.length !== 0 &&
+        {imagesGel?.length !== 0 &&
         <>
             <h2>
                 Фото
             </h2>
             <div className="portfolio-single-items">
               {
-                pageData?.media_gallery?.filter((item: any) => item?.type === 'img')?.map((item: any) =>
-                  <div className="portfolio-single-items-img" onClick={() => openModal(item?.link, item?.type)}>
+                imagesGel?.map((item: any, index: number) =>
+                  <div
+                    className="portfolio-single-items-img"
+                    onClick={() => handleImageClick(index)}
+                  >
                     <Image
-                      src={item?.link}
+                      src={item?.original}
                       layout="fill"
                       objectFit="cover"
                     />
@@ -144,7 +161,7 @@ const PortfolioSingleContent: FC<PropsWithChildren<any>> = ({
               <div className="portfolio-single-partner-items">
                 {
                   pageData?.partners?.map((item: any) =>
-                    <PartnerItem img={item?.image_link} href={item?.partner_link}/>
+                    <PartnerItem img={item?.image_link} href={item?.partner_link} />
                   )
                 }
               </div>
@@ -154,7 +171,7 @@ const PortfolioSingleContent: FC<PropsWithChildren<any>> = ({
       </div>
 
       <Modal
-        visible={modalVisible}
+        visible={modalVisibleVideo}
         onCancel={closeModal}
         footer={null}
         bodyStyle={{ padding: 0 }}
@@ -162,27 +179,46 @@ const PortfolioSingleContent: FC<PropsWithChildren<any>> = ({
         width={'100%'}
         style={{
           width: '100vw',
-          height: '100vh'
+          height: '100vh',
+          backgroundColor: 'rgba(0,0,0,0.7)'
         }}
       >
         <div className="modal-wrap-img">
-          {currentImage &&
-          <Image
-              src={currentImage}
-              layout={'fill'}
-              objectFit={'contain'}
-              style={{ width: '100%', height: 'auto' }}
-          />
-          }
-          {currentVideo &&
           <ReactPlayer
-              ref={playerRef}
-              url={currentVideo}
-              width="100%"
-              height="100%"
-              controls
+            ref={playerRef}
+            url={currentVideo}
+            width="100%"
+            height="100%"
+            controls
           />
-          }
+        </div>
+
+      </Modal>
+
+      <Modal
+        visible={modalVisibleGalery}
+        onCancel={closeModal}
+        footer={null}
+        bodyStyle={{ padding: 0 }}
+        centered
+        width={'100%'}
+        style={{
+          width: '100vw',
+          height: '100vh',
+          backgroundColor: 'rgba(0,0,0,0.7)'
+        }}
+      >
+        <div className="modal-wrap-img">
+          <ImageGallery
+            ref={imgRef}
+            items={
+              pageData?.media_gallery?.filter((item: any) => item?.type === 'img')
+                .map((item: any) => ({
+                  original: item?.link,
+                  thumbnail: item?.link
+                }))
+            }
+          />
         </div>
 
       </Modal>

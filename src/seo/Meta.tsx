@@ -15,7 +15,7 @@ const Meta: FC<PropsWithChildren<IMeta>> = ({
     return (
         <>
             <Head>
-                {
+              {
                     metaData?.yoast_head_json?.title
                         ?
                         <>

@@ -167,7 +167,7 @@
         flex: 1;
 
         display: flex;
-        justify-content: flex-start;
+        justify-content:center;
         align-items: center;
         margin: 0 auto;
 
@@ -178,4 +178,13 @@
             object-fit: contain;
         }
     }
+}
+
+.image-gallery-content .image-gallery-slide .image-gallery-image{
+    height: 100%;
+    width: 90vw;
+}
+
+.image-gallery-thumbnails-container{
+    width: 90vw;
 }
