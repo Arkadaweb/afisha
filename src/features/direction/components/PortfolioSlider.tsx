@@ -55,42 +55,46 @@ const PortfolioSlider: FC<PropsWithChildren<any>> = ({
 
   return (
     <div className="slider-verticle">
-
-      <div className="slider-verticle-top">
-        <h2>
-          Наше портфолио
-        </h2>
-        {
-          slides?.length > 3 &&
-          <div className="slider-verticle-top-buttons">
-              <button
-                  className={`slider-verticle-top-buttons-left ${isPrevButtonDisabled ? 'disabled' : ''}`}
-                  onClick={goToPrev}
-                  disabled={isPrevButtonDisabled}
-              >
-                  <ArrowToLeft />
-              </button>
-              <button
-                  className={`slider-verticle-top-buttons-right ${isNextButtonDisabled ? 'disabled' : ''}`}
-                  onClick={goToNext}
-                  disabled={isNextButtonDisabled}
-              >
-                  <ArrowToRight />
-              </button>
-          </div>
-        }
-
-      </div>
-
-      <Slider ref={(c) => (slider = c)} {...settings} beforeChange={handleBeforeChange}>
-        {
-          slides?.map((item: any) =>
-            <div className="slider-verticle-item" id={item?.id}>
-              <PortfolioItem item={item}/>
+      {
+        slides && slides?.length !== 0 &&
+        <>
+            <div className="slider-verticle-top">
+                <h2>
+                    Наше портфолио
+                </h2>
+              {
+                slides?.length > 3 &&
+                <div className="slider-verticle-top-buttons">
+                    <button
+                        className={`slider-verticle-top-buttons-left ${isPrevButtonDisabled ? 'disabled' : ''}`}
+                        onClick={goToPrev}
+                        disabled={isPrevButtonDisabled}
+                    >
+                        <ArrowToLeft />
+                    </button>
+                    <button
+                        className={`slider-verticle-top-buttons-right ${isNextButtonDisabled ? 'disabled' : ''}`}
+                        onClick={goToNext}
+                        disabled={isNextButtonDisabled}
+                    >
+                        <ArrowToRight />
+                    </button>
+                </div>
+              }
             </div>
-          )
-        }
-      </Slider>
+
+            <Slider ref={(c) => (slider = c)} {...settings} beforeChange={handleBeforeChange}>
+              {
+                slides?.map((item: any) =>
+                  <div className="slider-verticle-item" id={item?.id}>
+                    <PortfolioItem item={item} />
+                  </div>
+                )
+              }
+            </Slider>
+        </>
+      }
+
 
     </div>
   );

@@ -75,7 +75,7 @@ const PortfolioSingleContent: FC<PropsWithChildren<any>> = ({
           {pageData?.title?.rendered}
         </h1>
         <p>
-          {dayjs(pageData?.date_gmt).format("DD MMMM, HH:mm")} {' '}
+          {dayjs(pageData?.event_date_time).format("DD MMMM, HH:mm")} {' '}
           {pageData?.event_location}
         </p>
         <div className="portfolio-single-desc">

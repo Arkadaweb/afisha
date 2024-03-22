@@ -65,7 +65,7 @@ const LeaveMessageController: FC<PropsWithChildren<any>> = ({ children }) => {
         setSubject('')
         message.success('Ваш запрос принят в обработку')
       })
-      .catch((e) => {
+      .catch((e: any) => {
         message.error('Произошла ошибка при отправки офрмы')
       })
       .finally(() => {

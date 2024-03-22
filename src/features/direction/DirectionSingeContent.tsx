@@ -14,6 +14,8 @@ const DirectionSingeContent: FC<PropsWithChildren<any>> = ({
                                                              pageData
                                                            }) => {
 
+  console.log('DirectionSingeContent')
+  console.log(pageData)
 
   const uLeaveMessage = useLeaveMessage()
 
@@ -72,8 +74,9 @@ const DirectionSingeContent: FC<PropsWithChildren<any>> = ({
         console.log('res')
         console.log(res)
       })
-      .catch(() => {
-        message.error('Ошибка при получении портфолио')
+      .catch((e: any) => {
+        console.log(e?.response?.data?.data?.message)
+        // message.error('Ошибка при получении портфолио')
       })
       .finally(() => {
         setIsLoading(false)
@@ -104,7 +107,12 @@ const DirectionSingeContent: FC<PropsWithChildren<any>> = ({
           </p>
         </div>
         <div className="direction-single-price">
-          от {pageData?.price} руб.
+          {
+            pageData?.title?.rendered !== "Концертная деятельность" &&
+              <>
+                  от {pageData?.price} руб.
+              </>
+          }
         </div>
         <div className="direction-single-buttons">
           <GoldButton

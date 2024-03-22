@@ -18,11 +18,7 @@ const StarItem: FC<PropsWithChildren<any>> = ({
         />
       </div>
       <div className="start-item-bottom">
-        <h3>
-          {
-            item?.title?.rendered
-          }
-        </h3>
+        <h3 dangerouslySetInnerHTML={{__html: item?.title?.rendered || ''}}/>
         <GoldButton
           title={'Мероприятие'}
           padding={"14px 16px"}

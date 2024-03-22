@@ -77,7 +77,7 @@ const LettersSlider: FC<PropsWithChildren<any>> = ({
 
             <div className="slider-verticle-top">
                 <h2>
-                    С нами сотрудничают
+                    Благодарственные письма
                 </h2>
                 <div className="slider-verticle-top-buttons">
                     <button
@@ -100,7 +100,7 @@ const LettersSlider: FC<PropsWithChildren<any>> = ({
             <Slider ref={(c) => (slider = c)} {...settings} beforeChange={handleBeforeChange}>
                 {
                     slides?.items?.map((item: any) =>
-                        <div className="slider-verticle-item" id={item.id} onClick={() => openModal(grammaImg)}>
+                        <div className="slider-verticle-item" id={item.id} onClick={() => openModal(item?.image_link)}>
                             <Image
                                 src={item?.image_link}
                                 objectFit={'contain'}
@@ -122,10 +122,8 @@ const LettersSlider: FC<PropsWithChildren<any>> = ({
             >
                 <div className="modal-wrap-img">
                     {currentImage &&
-                    <Image
+                    <img
                         src={currentImage}
-                        alt="Full-size"
-                        objectFit={'fill'}
                     />
                     }
                 </div>

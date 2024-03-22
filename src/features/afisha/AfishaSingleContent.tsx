@@ -95,7 +95,7 @@ const AfishaSingleContent: FC<PropsWithChildren<any>>  = ({
                     <div className="afisha-single-main-data-info">
                         <div className="afisha-single-main-data-info-block">
                             <TimeIcon/>
-                            {dayjs(pageData?.date_gmt).format("DD MMMM, HH:mm")} {' '}
+                            {dayjs(pageData?.event_date_time).format("DD MMMM, HH:mm")} {' '}
                         </div>
                         <div className="afisha-single-main-data-info-block">
                             <CalendarIcon/>
@@ -103,7 +103,10 @@ const AfishaSingleContent: FC<PropsWithChildren<any>>  = ({
                         </div>
                     </div>
                     <p>
-                        {pageData?.description}
+                        {pageData?.description_column_1}
+                    </p>
+                    <p>
+                        {pageData?.description_column_2}
                     </p>
                     <div className="afisha-single-main-data-price">
                         от {pageData?.btickets_min_price} р.
