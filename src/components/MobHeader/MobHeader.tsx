@@ -21,7 +21,7 @@ const MobHeader: FC<PropsWithChildren<any>> = () => {
   const nav: any = [
     {
       id: 1,
-      path: '',
+      path: '/',
       title: 'Главная'
     },
     {

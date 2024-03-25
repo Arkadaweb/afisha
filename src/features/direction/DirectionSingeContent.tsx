@@ -106,14 +106,14 @@ const DirectionSingeContent: FC<PropsWithChildren<any>> = ({
             {pageData?.description_column_2}
           </p>
         </div>
-        <div className="direction-single-price">
-          {
-            pageData?.title?.rendered !== "Концертная деятельность" &&
-              <>
-                  от {pageData?.price} руб.
-              </>
-          }
-        </div>
+        {/*<div className="direction-single-price">*/}
+        {/*  {*/}
+        {/*    pageData?.title?.rendered !== "Концертная деятельность" &&*/}
+        {/*      <>*/}
+        {/*          от {pageData?.price} руб.*/}
+        {/*      </>*/}
+        {/*  }*/}
+        {/*</div>*/}
         <div className="direction-single-buttons">
           <GoldButton
             onClick={() => uLeaveMessage(true)}

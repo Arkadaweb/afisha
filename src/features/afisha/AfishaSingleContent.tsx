@@ -102,20 +102,21 @@ const AfishaSingleContent: FC<PropsWithChildren<any>>  = ({
                             {pageData?.event_location}
                         </div>
                     </div>
+                    <div className="afisha-single-main-data-price">
+                        от {pageData?.btickets_min_price} р.
+                    </div>
+                    <GoldButton
+                      onClick={() => onOpenAfisha({id: pageData?.btickets_id})}
+                      title={'Купить билет'}
+                      padding={'22px 80px'}
+                    />
                     <p>
                         {pageData?.description_column_1}
                     </p>
                     <p>
                         {pageData?.description_column_2}
                     </p>
-                    <div className="afisha-single-main-data-price">
-                        от {pageData?.btickets_min_price} р.
-                    </div>
-                    <GoldButton
-                        onClick={() => onOpenAfisha({id: pageData?.btickets_id})}
-                        title={'Купить билет'}
-                        padding={'22px 80px'}
-                    />
+
                 </div>
             </div>
 
