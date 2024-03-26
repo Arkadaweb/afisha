@@ -36,7 +36,7 @@ const PortfolioItem: FC<PropsWithChildren<any>> = ({
       </h3>
       <p>
         {/*17 февраля, 12:00 I ДК Железнодорожников*/}
-        {dayjs(item?.event_date_time).format("DD MMMM, HH:mm")} {' '}
+        {item?.event_date_time && dayjs(item?.event_date_time).format("DD MMMM, HH:mm")} {' '}
         {item?.event_location}
       </p>
     </Link>

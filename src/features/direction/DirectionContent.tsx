@@ -6,7 +6,7 @@ import WeBanner from "../../components/common/WeBanner";
 import PartnerSlider from "../../components/common/PartnerSlider";
 import afishaMainInfo from "../../../public/afisha-main-info.png";
 import { get } from "../../api/request";
-import { message, Spin } from "antd";
+import { message, Modal, Spin } from "antd";
 import { LoadingOutlined } from "@ant-design/icons/lib";
 import StarItem from "../about/components/StarItem";
 import CustomPagination from "../../components/common/CustomPagination";
@@ -82,6 +82,19 @@ const DirectionContent: FC<PropsWithChildren<any>> = ({
     getStart()
   }, [page])
 
+  const [modalVisible, setModalVisible] = useState(false);
+  const [currentImage, setCurrentImage] = useState(null);
+
+  const openModal = (imageSrc: any) => {
+    setCurrentImage(imageSrc);
+    setModalVisible(true);
+  };
+
+  const closeModal = () => {
+    setCurrentImage(null);
+    setModalVisible(false);
+  };
+
   return (
     <MaxWithLayout isPaddingTop={true}>
       <BreadCrumbs elements={breadCrumbs} />
@@ -111,7 +124,10 @@ const DirectionContent: FC<PropsWithChildren<any>> = ({
             <div className="direction-content-items">
               {
                 directions?.map((item: any) =>
-                  <DirectionItem item={item} />
+                  <DirectionItem
+                    item={item}
+                    onClick={() => openModal(item?.preview_image)}
+                  />
                 )
               }
             </div>
@@ -120,6 +136,7 @@ const DirectionContent: FC<PropsWithChildren<any>> = ({
         <div className="direction-content-we">
           <WeBanner
             bannerData={pageData?.about}
+            onClick={() => openModal(pageData?.about?.image_link)}
           />
         </div>
 
@@ -127,7 +144,7 @@ const DirectionContent: FC<PropsWithChildren<any>> = ({
           <PartnerSlider slides={{
             title: "Информационные партнеры",
             items: pageData?.partners
-          }}/>
+          }} />
         </div>
 
 
@@ -178,6 +195,29 @@ const DirectionContent: FC<PropsWithChildren<any>> = ({
 
       </div>
 
+      <Modal
+        visible={modalVisible}
+        onCancel={closeModal}
+        footer={null}
+        bodyStyle={{ padding: 0 }}
+        centered
+        width={'100%'}
+        style={{
+          width: '100vw',
+          height: '100vh',
+          backgroundColor: 'rgba(0,0,0,0.7)'
+        }}
+
+      >
+        <div className="modal-wrap-img">
+          {currentImage &&
+          <img
+              src={currentImage}
+          />
+          }
+        </div>
+
+      </Modal>
     </MaxWithLayout>
   );
 };

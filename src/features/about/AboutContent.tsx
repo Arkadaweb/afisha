@@ -11,7 +11,7 @@ import GoldButton from "../../components/common/GoldButton";
 import LeaveMessageBlock from "../../components/common/LeaveMessageBlock";
 import StarItem from "./components/StarItem";
 import { get } from "../../api/request";
-import { message, Spin } from "antd";
+import { message, Modal, Spin } from "antd";
 import { LoadingOutlined } from "@ant-design/icons/lib";
 import CustomPagination from "../../components/common/CustomPagination";
 
@@ -89,6 +89,19 @@ const AboutContent: FC<PropsWithChildren<any>> = ({
     getStart()
   }, [page])
 
+  const [modalVisible, setModalVisible] = useState(false);
+  const [currentImage, setCurrentImage] = useState(null);
+
+  const openModal = (imageSrc: any) => {
+    setCurrentImage(imageSrc);
+    setModalVisible(true);
+  };
+
+  const closeModal = () => {
+    setCurrentImage(null);
+    setModalVisible(false);
+  };
+
   return (
     <MaxWithLayout isPaddingTop={true}>
       <BreadCrumbs elements={breadCrumbs} />
@@ -99,6 +112,7 @@ const AboutContent: FC<PropsWithChildren<any>> = ({
         </h1>
         <div className="about-intro-img">
           <img
+            onClick={() => openModal(pageData?.intro_image_link)}
             src={pageData?.intro_image_link}
             loading={'lazy'}
           />
@@ -151,7 +165,10 @@ const AboutContent: FC<PropsWithChildren<any>> = ({
               <div className="about-directions-items">
                 {
                   directions?.map((item: any) =>
-                    <DirectionItem item={item} />
+                    <DirectionItem
+                      item={item}
+                      onClick={() => openModal(item?.preview_image)}
+                    />
                   )
                 }
               </div>
@@ -206,6 +223,30 @@ const AboutContent: FC<PropsWithChildren<any>> = ({
           <LeaveMessageBlock subject={'[Страница о компании]: Главная форма'} />
         </div>
       </div>
+
+      <Modal
+        visible={modalVisible}
+        onCancel={closeModal}
+        footer={null}
+        bodyStyle={{ padding: 0 }}
+        centered
+        width={'100%'}
+        style={{
+          width: '100vw',
+          height: '100vh',
+          backgroundColor: 'rgba(0,0,0,0.7)'
+        }}
+
+      >
+        <div className="modal-wrap-img">
+          {currentImage &&
+          <img
+              src={currentImage}
+          />
+          }
+        </div>
+
+      </Modal>
 
     </MaxWithLayout>
   );

@@ -48,7 +48,7 @@ const DirectionSingeContent: FC<PropsWithChildren<any>> = ({
     // Создаем ссылку для скачивания
     const link = document.createElement('a');
     link.href = url;
-    link.download = pageData?.pdf_file_link;
+    link.download = pageData?.external_button?.link;
 
     // Открываем ссылку в новой вкладке
     link.target = '_blank';
@@ -120,11 +120,15 @@ const DirectionSingeContent: FC<PropsWithChildren<any>> = ({
             padding={'22px 30px'}
             title={'Заказать услугу'}
           />
-          <GoldButton
-            onClick={() => handleDownload()}
-            padding={'22px 30px'}
-            title={'Скачать презентацию'}
-          />
+          {
+            pageData?.external_button?.status !== 'hidden' &&
+            <GoldButton
+                onClick={() => handleDownload()}
+                padding={'22px 30px'}
+                title={pageData?.external_button?.name}
+            />
+          }
+
         </div>
 
         {

@@ -3,7 +3,7 @@ import MaxWithLayout from "../../layouts/MaxWithLayout";
 import BreadCrumbs from "../../components/common/BreadCrumbs";
 import partnerImg from "../../../public/partner-img.png";
 import CalendarIcon from "../../assets/icons/common/CalendarIcon";
-import { Button, DatePicker, message, Spin } from "antd";
+import { Button, DatePicker, message, Modal, Spin } from "antd";
 import Image from "next/dist/client/legacy/image";
 import PartnerItem from "../../components/common/PartnerItem";
 import LeaveMessageBlock from "../../components/common/LeaveMessageBlock";
@@ -142,6 +142,19 @@ const AfishaContent: FC<PropsWithChildren<any>> = ({
     return <div>{current.date()}</div>;
   };
 
+  const [modalVisible, setModalVisible] = useState(false);
+  const [currentImage, setCurrentImage] = useState(null);
+
+  const openModal = (imageSrc: any) => {
+    setCurrentImage(imageSrc);
+    setModalVisible(true);
+  };
+
+  const closeModal = () => {
+    setCurrentImage(null);
+    setModalVisible(false);
+  };
+
   return (
     <MaxWithLayout isPaddingTop={true}>
       <BreadCrumbs elements={breadCrumbs} />
@@ -268,7 +281,10 @@ const AfishaContent: FC<PropsWithChildren<any>> = ({
 
 
       <div className="afisha-content-info">
-        <WeBanner bannerData={pageData?.about} />
+        <WeBanner
+          bannerData={pageData?.about}
+          onClick={() => openModal(pageData?.about?.image_link)}
+        />
       </div>
 
       {
@@ -307,7 +323,29 @@ const AfishaContent: FC<PropsWithChildren<any>> = ({
       <div className="afisha-content-questions">
         <LeaveMessageBlock subject={'[Страница афиша]: Главная форма'}/>
       </div>
+      <Modal
+        visible={modalVisible}
+        onCancel={closeModal}
+        footer={null}
+        bodyStyle={{ padding: 0 }}
+        centered
+        width={'100%'}
+        style={{
+          width: '100vw',
+          height: '100vh',
+          backgroundColor: 'rgba(0,0,0,0.7)'
+        }}
 
+      >
+        <div className="modal-wrap-img">
+          {currentImage &&
+          <img
+              src={currentImage}
+          />
+          }
+        </div>
+
+      </Modal>
     </MaxWithLayout>
   );
 };

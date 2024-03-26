@@ -220,7 +220,6 @@ const PortfolioSingleContent: FC<PropsWithChildren<any>> = ({
             }
           />
         </div>
-
       </Modal>
 
     </MaxWithLayout>

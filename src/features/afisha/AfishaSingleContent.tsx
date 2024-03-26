@@ -13,6 +13,8 @@ import {useOrderTicket} from "../../components/modals/OrderTicketController";
 import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc";
 import timezone from "dayjs/plugin/timezone";
+import { Modal } from "antd";
+import DirectionItem from "../direction/components/DirectionItem";
 
 import("dayjs/locale/ru");
 
@@ -74,6 +76,19 @@ const AfishaSingleContent: FC<PropsWithChildren<any>>  = ({
         },
     ]
 
+    const [modalVisible, setModalVisible] = useState(false);
+    const [currentImage, setCurrentImage] = useState(null);
+
+    const openModal = (imageSrc: any) => {
+        setCurrentImage(imageSrc);
+        setModalVisible(true);
+    };
+
+    const closeModal = () => {
+        setCurrentImage(null);
+        setModalVisible(false);
+    };
+
     return (
         <MaxWithLayout isPaddingTop={true}>
             <BreadCrumbs elements={breadCrumbs}/>
@@ -81,6 +96,7 @@ const AfishaSingleContent: FC<PropsWithChildren<any>>  = ({
             <div className="afisha-single-main">
                 <div className="afisha-single-main-img">
                     <Image
+                      onClick={() => openModal(pageData?.event_preview_image)}
                       src={pageData?.event_preview_image}
                       objectFit={'contain'}
                       layout="responsive"
@@ -153,7 +169,29 @@ const AfishaSingleContent: FC<PropsWithChildren<any>>  = ({
 
             </div>
 
+            <Modal
+              visible={modalVisible}
+              onCancel={closeModal}
+              footer={null}
+              bodyStyle={{ padding: 0 }}
+              centered
+              width={'100%'}
+              style={{
+                  width: '100vw',
+                  height: '100vh',
+                  backgroundColor: 'rgba(0,0,0,0.7)'
+              }}
 
+            >
+                <div className="modal-wrap-img">
+                    {currentImage &&
+                    <img
+                      src={currentImage}
+                    />
+                    }
+                </div>
+
+            </Modal>
         </MaxWithLayout>
     );
 };
