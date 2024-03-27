@@ -136,18 +136,22 @@ const AfishaSingleContent: FC<PropsWithChildren<any>>  = ({
                 </div>
             </div>
 
-            <div className="afisha-single-partner">
-                <h2>
-                    Партнеры мероприятия
-                </h2>
-                <div className="afisha-content-partners-items">
-                    {
-                        pageData?.partners?.map((item: any) =>
-                          <PartnerItem img={item?.image_link} href={item?.partner_link}/>
-                        )
-                    }
+            {
+                pageData?.partners?.length !== 0 &&
+                <div className="afisha-single-partner">
+                    <h2>
+                        Партнеры мероприятия
+                    </h2>
+                    <div className="afisha-content-partners-items">
+                        {
+                            pageData?.partners?.map((item: any) =>
+                              <PartnerItem img={item?.image_link} href={item?.partner_link}/>
+                            )
+                        }
+                    </div>
                 </div>
-            </div>
+            }
+
 
             <div className="afisha-single-video">
                 <h2>

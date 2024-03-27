@@ -3,10 +3,16 @@ import Meta from "../../../seo/Meta";
 import MainLayout from "../../../layouts/MainLayout";
 import PortfolioSingleContent from "../../../features/portfolio/PortfolioSingleContent";
 import { get } from "../../../api/request";
+import { useRouter } from "next/router";
 
 const PortfolioSingle: FC<PropsWithChildren<any>> = ({
                                                        pageData
                                                      }) => {
+
+  const router = useRouter()
+  if (pageData === null){
+    router.push('/404')
+  }
 
   return (
     <Meta title={'Портфолио'} metaData={pageData}>

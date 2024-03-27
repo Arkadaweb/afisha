@@ -14,6 +14,8 @@ import { get } from "../../api/request";
 import { message, Modal, Spin } from "antd";
 import { LoadingOutlined } from "@ant-design/icons/lib";
 import CustomPagination from "../../components/common/CustomPagination";
+import { useUnit } from "effector-react";
+import { $contacts } from "../../models/Contacts";
 
 const AboutContent: FC<PropsWithChildren<any>> = ({
                                                     title,
@@ -69,7 +71,7 @@ const AboutContent: FC<PropsWithChildren<any>> = ({
       .then((res: any) => {
         setStars(res?.data)
         setTotalPage(res?.headers['X-WP-Total'])
-        console.log('res')
+        console.log('start')
         console.log(res)
       })
       .catch(() => {
@@ -206,7 +208,7 @@ const AboutContent: FC<PropsWithChildren<any>> = ({
                 }
               </div>
               {
-                totalPage && totalPage > 7 &&
+                totalPage && totalPage > 6 &&
                 <div className="about-stars-button">
                     <CustomPagination
                         total={totalPage}
@@ -245,7 +247,6 @@ const AboutContent: FC<PropsWithChildren<any>> = ({
           />
           }
         </div>
-
       </Modal>
 
     </MaxWithLayout>

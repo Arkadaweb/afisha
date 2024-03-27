@@ -14,9 +14,6 @@ const DirectionSingeContent: FC<PropsWithChildren<any>> = ({
                                                              pageData
                                                            }) => {
 
-  console.log('DirectionSingeContent')
-  console.log(pageData)
-
   const uLeaveMessage = useLeaveMessage()
 
   const breadCrumbs = [
@@ -87,8 +84,6 @@ const DirectionSingeContent: FC<PropsWithChildren<any>> = ({
     getAfishes()
   }, [])
 
-  console.log('pageData')
-  console.log(pageData)
 
   return (
     <MaxWithLayout isPaddingTop={true}>

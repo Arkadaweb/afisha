@@ -21,6 +21,8 @@ const PortfolioSingleContent: FC<PropsWithChildren<any>> = ({
                                                               pageData
                                                             }) => {
 
+  console.log('pageData')
+  console.log(pageData)
 
   const playerRef = useRef(null);
   const imgRef = useRef<any>(null);

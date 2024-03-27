@@ -36,6 +36,13 @@ export default function App({ Component, pageProps }: AppProps){
     showSpinner: false,
   });
 
+  useEffect(() => {
+    dayjs.extend(utc);
+    dayjs.extend(timezone);
+    dayjs.tz.setDefault('Europe/Moscow');
+    dayjs.locale('ru');
+  }, [])
+
   Router.events.on('routeChangeStart', () => NProgress.start());
   Router.events.on('routeChangeComplete', () => NProgress.done());
   Router.events.on('routeChangeError', () => NProgress.done());

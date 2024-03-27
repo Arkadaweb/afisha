@@ -9,6 +9,8 @@ import TelegramIcon from "../../assets/icons/contscts/TelegramIcon";
 import VkIcon from "../../assets/icons/contscts/VKIcon";
 import InstIcon from "../../assets/icons/contscts/InstIcon";
 import Image from "next/dist/client/legacy/image";
+import { useUnit } from "effector-react";
+import { $contacts } from "../../models/Contacts";
 
 const ContactsContent: FC<PropsWithChildren<any>> = ({
                                                        pageData,
@@ -114,7 +116,7 @@ const ContactsContent: FC<PropsWithChildren<any>> = ({
           </div>
           <div className="contacts-content-wrap-map">
             <iframe
-              src="https://yandex.ru/map-widget/v1/?um=constructor%3A4cd6ba0f138805a792de3e420e240a0391c3674e465aacc2803e92dad416c5c1&amp;source=constructor"
+              src={pageData?.yandex_map_widget_link}
               width="100%" height="100%" frameBorder="0"></iframe>
           </div>
         </div>
